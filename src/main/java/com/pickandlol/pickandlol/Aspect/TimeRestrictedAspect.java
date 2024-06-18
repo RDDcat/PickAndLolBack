@@ -15,8 +15,8 @@ public class TimeRestrictedAspect {
         LocalTime start = LocalTime.of(17, 0);
         LocalTime end = LocalTime.of(22, 0);
 
-        if (!now.isBefore(start) && !now.isAfter(end)) {
-            throw new RuntimeException("This method cannot be accessed between 17:00 and 22:00");
+        if (now.isBefore(start) || now.isAfter(end)) {
+            throw new RuntimeException("This method cannot be accessed between "+start+" and "+ end+" "+ now);
         }
     }
 }

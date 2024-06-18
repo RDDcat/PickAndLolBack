@@ -13,7 +13,7 @@ public class MainController {
     @TimeRestricted
     @GetMapping("/save")
     public String save(){
-        return "server on health check";
+        return "server save";
     }
     // 랭킹
     @GetMapping("/rank")
