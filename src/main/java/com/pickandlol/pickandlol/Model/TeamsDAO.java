@@ -20,7 +20,7 @@ public class TeamsDAO {
     Integer winCount;
     Integer loseCount;
     Integer totalGap;
-    Integer winRate;
+    Double winRate;
     Double kda;
     Integer killCount;
     Integer deathCount;

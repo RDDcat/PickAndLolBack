@@ -25,6 +25,9 @@ public class MatchTeamDAO {
     Integer drakes;
     Integer elders;
     Integer barons;
+    Integer killCount;
+    Integer deathCount;
+    Integer assistCount;
     Long teamId;
     Long topId;
     Long jungleId;
