@@ -19,9 +19,9 @@ public class CreateTeamDTOBean {
                 .totalGap(teamsDAO.getTotalGap())
                 .winRate(teamsDAO.getWinRate())
                 .kda(teamsDAO.getKda())
-                .kill(teamsDAO.getKill())
-                .death(teamsDAO.getDeath())
-                .assist(teamsDAO.getAssist())
+                .killCount(teamsDAO.getKillCount())
+                .deathCount(teamsDAO.getDeathCount())
+                .assistCount(teamsDAO.getAssistCount())
                 .build();
     }
 

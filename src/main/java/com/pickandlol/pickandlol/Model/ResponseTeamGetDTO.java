@@ -15,7 +15,7 @@ public class ResponseTeamGetDTO {
     Integer totalGap;
     Integer winRate;
     Double kda;
-    Integer kill;
-    Integer death;
-    Integer assist;
+    Integer killCount;
+    Integer deathCount;
+    Integer assistCount;
 }

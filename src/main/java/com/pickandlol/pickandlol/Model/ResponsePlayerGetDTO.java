@@ -13,9 +13,9 @@ public class ResponsePlayerGetDTO {
     String playerTeam;
     Integer stat;
     Double kda;
-    Integer kill;
-    Integer death;
-    Integer assist;
+    Integer killCount;
+    Integer deathCount;
+    Integer assistCount;
     Double killRate;
     Integer playCount;
 }

@@ -18,9 +18,9 @@ public class CreatePlayersDTOBean {
                 .playerTeam(playerDAO.getPlayerTeam())
                 .stat(playerDAO.getStat())
                 .kda(playerDAO.getKda())
-                .kill(playerDAO.getKill())
-                .death(playerDAO.getDeath())
-                .assist(playerDAO.getAssist())
+                .killCount(playerDAO.getKillCount())
+                .deathCount(playerDAO.getDeathCount())
+                .assistCount(playerDAO.getAssistCount())
                 .killRate(playerDAO.getKillRate())
                 .playCount(playerDAO.getPlayCount())
                 .build();
