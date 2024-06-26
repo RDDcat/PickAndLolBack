@@ -1,7 +1,7 @@
 package com.pickandlol.pickandlol.Controller;
 
-import com.pickandlol.pickandlol.Model.RequestMatchPlayerSaveDTO;
-import com.pickandlol.pickandlol.Model.RequestMatchClubSaveDTO;
+import com.pickandlol.pickandlol.Model.RequestPlayerLogSaveDTO;
+import com.pickandlol.pickandlol.Model.RequestClubLogSaveDTO;
 import com.pickandlol.pickandlol.Service.MatchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,8 +25,8 @@ public class MatchController {
 
     // 경기 - 팀 정보 저장
     @PostMapping("/team")
-    public ResponseEntity<Map<String, Object>> saveMatchTeam(@RequestBody RequestMatchClubSaveDTO requestMatchClubSaveDTO) {
-        Long matchTeamId = matchService.saveMatchTeam(requestMatchClubSaveDTO);
+    public ResponseEntity<Map<String, Object>> saveMatchTeam(@RequestBody RequestClubLogSaveDTO requestClubLogSaveDTO) {
+        Long matchTeamId = matchService.saveMatchTeam(requestClubLogSaveDTO);
 
         // 메시지와 id 값 json 데이터로 반환
         Map<String, Object> requestMap = new HashMap<>();
@@ -38,8 +38,8 @@ public class MatchController {
 
     // 경기 - 선수 정보 저장
     @PostMapping("/player")
-    public ResponseEntity<Map<String, Object>> saveMatchPlayer(@RequestBody RequestMatchPlayerSaveDTO requestMatchPlayerSaveDTO) {
-        Long matchPlayerId = matchService.saveMatchPlayer(requestMatchPlayerSaveDTO);
+    public ResponseEntity<Map<String, Object>> saveMatchPlayer(@RequestBody RequestPlayerLogSaveDTO requestPlayerLogSaveDTO) {
+        Long matchPlayerId = matchService.saveMatchPlayer(requestPlayerLogSaveDTO);
 
         // 메시지와 id 값 json 데이터로 반환
         Map<String, Object> requestMap = new HashMap<>();

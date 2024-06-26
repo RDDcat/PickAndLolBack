@@ -1,7 +1,7 @@
 package com.pickandlol.pickandlol.Bean.Small;
 
 import com.pickandlol.pickandlol.Model.Enum.MatchResult;
-import com.pickandlol.pickandlol.Model.MatchClubDAO;
+import com.pickandlol.pickandlol.Model.ClubLog;
 import com.pickandlol.pickandlol.Model.ClubDAO;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +10,7 @@ import java.util.List;
 @Component
 public class UpdateClubDAOBean {
 
-    public void exec(ClubDAO clubDAO, List<MatchClubDAO> matchClubDAOS) {
+    public void exec(ClubDAO clubDAO, List<ClubLog> clubLogs) {
         int totalWinCount = 0;
         int totalLoseCount = 0;
         int totalKillCount = 0;
@@ -20,12 +20,12 @@ public class UpdateClubDAOBean {
         double totalKDA;
         double winRate;
 
-        for (MatchClubDAO matchClubDAO : matchClubDAOS) {
-            totalWinCount += matchClubDAO.getMatchResult() == MatchResult.WIN ? 1 : 0;
-            totalLoseCount += matchClubDAO.getMatchResult() == MatchResult.LOSE ? 1 : 0;
-            totalKillCount += matchClubDAO.getKillCount();
-            totalDeathCount += matchClubDAO.getDeathCount();
-            totalAssistCount += matchClubDAO.getAssistCount();
+        for (ClubLog clubLog : clubLogs) {
+            totalWinCount += clubLog.getMatchResult() == MatchResult.WIN ? 1 : 0;
+            totalLoseCount += clubLog.getMatchResult() == MatchResult.LOSE ? 1 : 0;
+            totalKillCount += clubLog.getKillCount();
+            totalDeathCount += clubLog.getDeathCount();
+            totalAssistCount += clubLog.getAssistCount();
         }
 
         if (totalDeathCount > 0) {

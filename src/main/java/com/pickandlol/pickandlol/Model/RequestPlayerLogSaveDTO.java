@@ -1,22 +1,14 @@
 package com.pickandlol.pickandlol.Model;
 
 import com.pickandlol.pickandlol.Model.Enum.PlayerPosition;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
 
-import java.time.LocalDateTime;
-
-@Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 @Builder
-public class MatchPlayerDAO {
-    @Id
-    Long matchPlayerId;
+public class RequestPlayerLogSaveDTO {
     Long matchClubId;
+    PlayerPosition playerPosition;
     Long playerId;
     boolean firstKill;
     boolean firstDeath;
@@ -25,7 +17,6 @@ public class MatchPlayerDAO {
     Integer killCount;
     Integer deathCount;
     Integer assistCount;
-    boolean soloKills;
+    boolean soloKill;
     boolean soloDeaths;
-    LocalDateTime createAt;
 }
