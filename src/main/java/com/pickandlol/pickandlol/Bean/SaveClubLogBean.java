@@ -38,13 +38,13 @@ public class SaveClubLogBean {
         saveClubLogDAOBean.exec(clubLog);
 
         // 팀 정보 업데이트
-        ClubDAO clubDAO = getClubDAOBean.exec(requestClubLogSaveDTO.getTeamId());
-        List<ClubLog> clubLogs = getClubLogsDAOBean.exec(requestClubLogSaveDTO.getTeamId());
+        ClubDAO clubDAO = getClubDAOBean.exec(requestClubLogSaveDTO.getClubId());
+        List<ClubLog> clubLogs = getClubLogsDAOBean.exec(requestClubLogSaveDTO.getClubId());
         updateClubDAOBean.exec(clubDAO, clubLogs);
 
         saveClubDAOBean.exec(clubDAO);
 
-        return clubLog.getMatchTeamId();
+        return clubLog.getClubLogId();
     }
 
 }

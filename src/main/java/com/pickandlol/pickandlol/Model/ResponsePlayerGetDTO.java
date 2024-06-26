@@ -10,7 +10,7 @@ public class ResponsePlayerGetDTO {
     String playerName;
     String playerImage;
     String playerPosition;
-    String playerTeam;
+    String playerClub;
     Integer stat;
     Double kda;
     Integer killCount;

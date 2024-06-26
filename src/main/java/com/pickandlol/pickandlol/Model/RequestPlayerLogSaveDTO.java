@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @Builder
 public class RequestPlayerLogSaveDTO {
-    Long matchClubId;
+    Long clubLogId;
     PlayerPosition playerPosition;
     Long playerId;
     boolean firstKill;

@@ -21,7 +21,7 @@ public class CreateClubLogDAOBean {
     public ClubLog exec(RequestClubLogSaveDTO requestClubLogSaveDTO) {
 
         return ClubLog.builder()
-                .matchTeamId(createUniqueIdBean.exec())
+                .clubLogId(createUniqueIdBean.exec())
                 .matchType(requestClubLogSaveDTO.getMatchType())
                 .matchResult(requestClubLogSaveDTO.getMatchResult())
                 .playTime(requestClubLogSaveDTO.getPlayTime())
@@ -33,12 +33,12 @@ public class CreateClubLogDAOBean {
                 .killCount(requestClubLogSaveDTO.getKillCount())
                 .deathCount(requestClubLogSaveDTO.getDeathCount())
                 .assistCount(requestClubLogSaveDTO.getAssistCount())
-                .teamId(requestClubLogSaveDTO.getTeamId())
+                .clubId(requestClubLogSaveDTO.getClubId())
                 .topId(requestClubLogSaveDTO.getTopId())
-                .jungleId(requestClubLogSaveDTO.getJungleId())
+                .jglId(requestClubLogSaveDTO.getJglId())
                 .midId(requestClubLogSaveDTO.getMidId())
                 .adcId(requestClubLogSaveDTO.getAdcId())
-                .supportId(requestClubLogSaveDTO.getSupportId())
+                .supId(requestClubLogSaveDTO.getSupId())
                 .createdAt(LocalDateTime.now())
                 .build();
     }

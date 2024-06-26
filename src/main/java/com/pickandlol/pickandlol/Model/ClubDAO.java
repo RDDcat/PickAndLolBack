@@ -14,9 +14,9 @@ import java.time.LocalDateTime;
 @Builder
 public class ClubDAO {
     @Id
-    Long teamId;
-    String teamLogo;
-    String teamName;
+    Long clubId;
+    String clubLogo;
+    String clubName;
     Integer winCount;
     Integer loseCount;
     Integer totalGap;

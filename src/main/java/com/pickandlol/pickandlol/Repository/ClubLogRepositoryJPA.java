@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ClubLogRepositoryJPA extends JpaRepository<ClubLog, Long> {
 
-    List<ClubLog> findAllByTeamId(Long teamId);
+    List<ClubLog> findAllByClubId(Long clubId);
 }

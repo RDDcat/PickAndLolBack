@@ -17,8 +17,8 @@ public class GetClubLogsDAOBean {
         this.clubLogRepositoryJPA = clubLogRepositoryJPA;
     }
 
-    public List<ClubLog> exec(Long teamId) {
-        return clubLogRepositoryJPA.findAllByTeamId(teamId);
+    public List<ClubLog> exec(Long clubId) {
+        return clubLogRepositoryJPA.findAllByClubId(clubId);
     }
 
 }

@@ -11,9 +11,9 @@ public class CreateClubDTOBean {
 
     public ResponseClubGetDTO exec(ClubDAO clubDAO){
         return ResponseClubGetDTO.builder()
-                .teamId(clubDAO.getTeamId())
-                .teamLogo(clubDAO.getTeamLogo())
-                .teamName(clubDAO.getTeamName())
+                .clubId(clubDAO.getClubId())
+                .clubLogo(clubDAO.getClubLogo())
+                .clubName(clubDAO.getClubName())
                 .winCount(clubDAO.getWinCount())
                 .loseCount(clubDAO.getLoseCount())
                 .totalGap(clubDAO.getTotalGap())

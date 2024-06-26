@@ -16,7 +16,8 @@ import java.time.LocalDateTime;
 @Builder
 public class ClubLog {
     @Id
-    Long matchTeamId;
+    Long clubLogId;
+    Long matchId;
     MatchType matchType;
     MatchResult matchResult;
     String playTime;
@@ -28,11 +29,11 @@ public class ClubLog {
     Integer killCount;
     Integer deathCount;
     Integer assistCount;
-    Long teamId;
+    Long clubId;
     Long topId;
-    Long jungleId;
+    Long jglId;
     Long midId;
     Long adcId;
-    Long supportId;
+    Long supId;
     LocalDateTime createdAt;
 }

@@ -19,8 +19,8 @@ public class CreatePlayerLogDAOBean {
 
     public PlayerLog exec(RequestPlayerLogSaveDTO requestPlayerLogSaveDTO){
         return PlayerLog.builder()
-                .matchPlayerId(createUniqueIdBean.exec())
-                .matchClubId(requestPlayerLogSaveDTO.getMatchClubId())
+                .playerLogId(createUniqueIdBean.exec())
+                .clubLogId(requestPlayerLogSaveDTO.getClubLogId())
                 .playerId(requestPlayerLogSaveDTO.getPlayerId())
                 .firstKill(requestPlayerLogSaveDTO.isFirstKill())
                 .firstDeath(requestPlayerLogSaveDTO.isFirstDeath())

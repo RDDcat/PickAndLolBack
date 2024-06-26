@@ -15,7 +15,7 @@ public class CreatePlayersDTOBean {
                 .playerName(playerDAO.getPlayerName())
                 .playerImage(playerDAO.getPlayerImage())
                 .playerPosition(playerDAO.getPlayerPosition())
-                .playerTeam(playerDAO.getPlayerTeam())
+                .playerClub(playerDAO.getPlayerClub())
                 .stat(playerDAO.getStat())
                 .kda(playerDAO.getKda())
                 .killCount(playerDAO.getKillCount())

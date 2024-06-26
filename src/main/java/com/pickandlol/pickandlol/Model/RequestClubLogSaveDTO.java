@@ -17,10 +17,10 @@ public class RequestClubLogSaveDTO {
     Integer killCount;
     Integer deathCount;
     Integer assistCount;
-    Long teamId;
+    Long clubId;
     Long topId;
-    Long jungleId;
+    Long jglId;
     Long midId;
     Long adcId;
-    Long supportId;
+    Long supId;
 }

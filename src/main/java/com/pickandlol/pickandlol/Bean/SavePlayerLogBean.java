@@ -51,6 +51,6 @@ public class SavePlayerLogBean {
 
         savePlayerDAOBean.exec(playerDAO);
 
-        return playerLog.getMatchClubId();
+        return playerLog.getPlayerLogId();
     }
 }

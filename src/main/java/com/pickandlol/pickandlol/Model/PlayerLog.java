@@ -14,8 +14,8 @@ import java.time.LocalDateTime;
 @Builder
 public class PlayerLog {
     @Id
-    Long matchPlayerId;
-    Long matchClubId;
+    Long playerLogId;
+    Long clubLogId;
     Long playerId;
     boolean firstKill;
     boolean firstDeath;
