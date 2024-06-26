@@ -1,19 +1,12 @@
 package com.pickandlol.pickandlol.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
 
-import java.time.LocalDateTime;
 
-@Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 @Builder
-public class TeamsDAO {
-    @Id
+public class ResponseClubGetDTO {
     Long teamId;
     String teamLogo;
     String teamName;
@@ -25,6 +18,4 @@ public class TeamsDAO {
     Integer killCount;
     Integer deathCount;
     Integer assistCount;
-    LocalDateTime createdAt;
-    LocalDateTime updatedAt;
 }

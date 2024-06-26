@@ -1,7 +1,7 @@
 package com.pickandlol.pickandlol.Controller;
 
 import com.pickandlol.pickandlol.Model.RequestMatchPlayerSaveDTO;
-import com.pickandlol.pickandlol.Model.RequestMatchTeamSaveDTO;
+import com.pickandlol.pickandlol.Model.RequestMatchClubSaveDTO;
 import com.pickandlol.pickandlol.Service.MatchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 @RestController
 @CrossOrigin("*")
@@ -26,8 +25,8 @@ public class MatchController {
 
     // 경기 - 팀 정보 저장
     @PostMapping("/team")
-    public ResponseEntity<Map<String, Object>> saveMatchTeam(@RequestBody RequestMatchTeamSaveDTO requestMatchTeamSaveDTO) {
-        Long matchTeamId = matchService.saveMatchTeam(requestMatchTeamSaveDTO);
+    public ResponseEntity<Map<String, Object>> saveMatchTeam(@RequestBody RequestMatchClubSaveDTO requestMatchClubSaveDTO) {
+        Long matchTeamId = matchService.saveMatchTeam(requestMatchClubSaveDTO);
 
         // 메시지와 id 값 json 데이터로 반환
         Map<String, Object> requestMap = new HashMap<>();

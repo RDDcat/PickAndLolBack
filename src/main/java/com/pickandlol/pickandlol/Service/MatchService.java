@@ -1,27 +1,27 @@
 package com.pickandlol.pickandlol.Service;
 
 import com.pickandlol.pickandlol.Bean.SaveMatchPlayerBean;
-import com.pickandlol.pickandlol.Bean.SaveMatchTeamBean;
+import com.pickandlol.pickandlol.Bean.SaveMatchClubBean;
 import com.pickandlol.pickandlol.Model.RequestMatchPlayerSaveDTO;
-import com.pickandlol.pickandlol.Model.RequestMatchTeamSaveDTO;
+import com.pickandlol.pickandlol.Model.RequestMatchClubSaveDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MatchService {
 
-    SaveMatchTeamBean saveMatchTeamBean;
+    SaveMatchClubBean saveMatchClubBean;
     SaveMatchPlayerBean saveMatchPlayerBean;
 
     @Autowired
-    public MatchService(SaveMatchTeamBean saveMatchTeamBean, SaveMatchPlayerBean saveMatchPlayerBean) {
-        this.saveMatchTeamBean = saveMatchTeamBean;
+    public MatchService(SaveMatchClubBean saveMatchClubBean, SaveMatchPlayerBean saveMatchPlayerBean) {
+        this.saveMatchClubBean = saveMatchClubBean;
         this.saveMatchPlayerBean = saveMatchPlayerBean;
     }
 
     // 경기 - 팀 정보 저장
-    public Long saveMatchTeam(RequestMatchTeamSaveDTO requestMatchTeamSaveDTO) {
-        return saveMatchTeamBean.saveMatchTeam(requestMatchTeamSaveDTO);
+    public Long saveMatchTeam(RequestMatchClubSaveDTO requestMatchClubSaveDTO) {
+        return saveMatchClubBean.saveMatchTeam(requestMatchClubSaveDTO);
     }
 
     // 경기 - 선수 정보 저장

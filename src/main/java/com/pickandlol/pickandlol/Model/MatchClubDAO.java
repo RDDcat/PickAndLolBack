@@ -2,10 +2,21 @@ package com.pickandlol.pickandlol.Model;
 
 import com.pickandlol.pickandlol.Model.Enum.MatchResult;
 import com.pickandlol.pickandlol.Model.Enum.MatchType;
-import lombok.Data;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.*;
 
-@Data
-public class RequestMatchTeamSaveDTO {
+import java.time.LocalDateTime;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class MatchClubDAO {
+    @Id
+    Long matchTeamId;
     MatchType matchType;
     MatchResult matchResult;
     String playTime;
@@ -23,4 +34,5 @@ public class RequestMatchTeamSaveDTO {
     Long midId;
     Long adcId;
     Long supportId;
+    LocalDateTime createdAt;
 }

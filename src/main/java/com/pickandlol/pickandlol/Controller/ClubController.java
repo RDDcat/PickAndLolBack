@@ -1,7 +1,7 @@
 package com.pickandlol.pickandlol.Controller;
 
-import com.pickandlol.pickandlol.Model.ResponseTeamGetDTO;
-import com.pickandlol.pickandlol.Service.TeamService;
+import com.pickandlol.pickandlol.Model.ResponseClubGetDTO;
+import com.pickandlol.pickandlol.Service.ClubService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,18 +13,18 @@ import java.util.List;
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/team")
-public class TeamController {
+public class ClubController {
 
-    TeamService teamService;
+    ClubService clubService;
 
     @Autowired
-    public TeamController(TeamService teamService){
-        this.teamService = teamService;
+    public ClubController(ClubService clubService){
+        this.clubService = clubService;
     }
 
     // 팀 전체 조회
     @GetMapping("/all")
-    public List<ResponseTeamGetDTO> getTeams(){
-        return teamService.getTeams();
+    public List<ResponseClubGetDTO> getTeams(){
+        return clubService.getTeams();
     }
 }
