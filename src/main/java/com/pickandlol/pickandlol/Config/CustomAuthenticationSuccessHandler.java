@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 @Component
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
@@ -28,10 +29,10 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 
         Member member = oAuthService.getCurrentMember(authentication); // 현재 로그인한 사용자의 Member 객체를 가져옵니다.
 
-        System.out.println("onauth 실행");
+        System.out.println("onauth 실행 : " + URLEncoder.encode(member.getName()));
 
         // 필요한 데이터를 리다이렉트 URL에 추가합니다.
-        String redirectUrl = "http://pickandlol.tasty-site.com?name=" + member.getName() + "&email=" + member.getEmail();
+        String redirectUrl = "http://pickandlol.tasty-site.com?name=" + URLEncoder.encode(member.getName(), "UTF-8") + "&email=" + URLEncoder.encode(member.getEmail(), "UTF-8");
 
         response.sendRedirect(redirectUrl); // 리다이렉트 수행
     }
