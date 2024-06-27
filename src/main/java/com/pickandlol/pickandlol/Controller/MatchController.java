@@ -1,5 +1,7 @@
 package com.pickandlol.pickandlol.Controller;
 
+import com.pickandlol.pickandlol.Model.MatchDAO;
+import com.pickandlol.pickandlol.Model.RequestMatchSaveDTO;
 import com.pickandlol.pickandlol.Model.RequestPlayerLogSaveDTO;
 import com.pickandlol.pickandlol.Model.RequestClubLogSaveDTO;
 import com.pickandlol.pickandlol.Service.MatchService;
@@ -23,8 +25,22 @@ public class MatchController {
         this.matchService = matchService;
     }
 
+    // 경기 정보 저장
+    @PostMapping("")
+    public ResponseEntity<Map<String, Object>> saveMatch(@RequestBody RequestMatchSaveDTO requestMatchSaveDTO) {
+        MatchDAO matchId = matchService.saveMatch(requestMatchSaveDTO);
+
+        // 메시지와 id 값 json 데이터로 반환
+        Map<String, Object> requestMap = new HashMap<>();
+        requestMap.put("message", (matchId == null) ? "경기 정보 저장 실패" : "경기 정보 저장 성공");
+        requestMap.put("matchId", matchId);
+
+        return ResponseEntity.status(HttpStatus.OK).body(requestMap);
+    }
+
+
     // 경기 - 팀 정보 저장
-    @PostMapping("/team")
+    @PostMapping("/club")
     public ResponseEntity<Map<String, Object>> saveMatchTeam(@RequestBody RequestClubLogSaveDTO requestClubLogSaveDTO) {
         Long matchTeamId = matchService.saveMatchTeam(requestClubLogSaveDTO);
 
