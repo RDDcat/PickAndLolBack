@@ -21,6 +21,7 @@ public class CreateClubLogDAOBean {
     public ClubLog exec(RequestClubLogSaveDTO requestClubLogSaveDTO) {
 
         return ClubLog.builder()
+                .matchId(requestClubLogSaveDTO.getMatchId())
                 .clubLogId(createUniqueIdBean.exec())
                 .matchType(requestClubLogSaveDTO.getMatchType())
                 .matchResult(requestClubLogSaveDTO.getMatchResult())

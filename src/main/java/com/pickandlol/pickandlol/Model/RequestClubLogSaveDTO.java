@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class RequestClubLogSaveDTO {
+    Long matchId;
     MatchType matchType;
     MatchResult matchResult;
     String playTime;
