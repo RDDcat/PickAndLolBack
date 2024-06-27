@@ -1,6 +1,7 @@
 package com.pickandlol.pickandlol.Bean;
 
 import com.pickandlol.pickandlol.Bean.Small.*;
+import com.pickandlol.pickandlol.Model.ClubDAO;
 import com.pickandlol.pickandlol.Model.PlayerLog;
 import com.pickandlol.pickandlol.Model.PlayerDAO;
 import com.pickandlol.pickandlol.Model.RequestPlayerLogSaveDTO;
@@ -18,15 +19,17 @@ public class SavePlayerLogBean {
     UpdatePlayerDAOBean updatePlayerDAOBean;
     SavePlayerLogDAOBean savePlayerLogDAOBean;
     SavePlayerDAOBean savePlayerDAOBean;
+    GetClubDAOBean getClubDAOBean;
 
     @Autowired
-    public SavePlayerLogBean(CreatePlayerLogDAOBean createPlayerLogDAOBean, GetPlayerDAOBean getPlayerDAOBean, GetPlayerLogsDAOBean getPlayerLogsDAOBean, UpdatePlayerDAOBean updatePlayerDAOBean, SavePlayerLogDAOBean savePlayerLogDAOBean, SavePlayerDAOBean savePlayerDAOBean) {
+    public SavePlayerLogBean(CreatePlayerLogDAOBean createPlayerLogDAOBean, GetPlayerDAOBean getPlayerDAOBean, GetPlayerLogsDAOBean getPlayerLogsDAOBean, UpdatePlayerDAOBean updatePlayerDAOBean, SavePlayerLogDAOBean savePlayerLogDAOBean, SavePlayerDAOBean savePlayerDAOBean, GetClubDAOBean getClubDAOBean) {
         this.createPlayerLogDAOBean = createPlayerLogDAOBean;
         this.getPlayerDAOBean = getPlayerDAOBean;
         this.getPlayerLogsDAOBean = getPlayerLogsDAOBean;
         this.updatePlayerDAOBean = updatePlayerDAOBean;
         this.savePlayerLogDAOBean = savePlayerLogDAOBean;
         this.savePlayerDAOBean = savePlayerDAOBean;
+        this.getClubDAOBean = getClubDAOBean;
     }
 
 
@@ -47,7 +50,8 @@ public class SavePlayerLogBean {
         // 선수 정보 업데이트
         PlayerDAO playerDAO = getPlayerDAOBean.exec(requestPlayerLogSaveDTO.getPlayerId());
         List<PlayerLog> playerLogs = getPlayerLogsDAOBean.exec(requestPlayerLogSaveDTO.getPlayerId());
-        updatePlayerDAOBean.exec(playerDAO, playerLogs);
+        ClubDAO clubDAO = getClubDAOBean.exec(playerDAO.getClubId());
+        updatePlayerDAOBean.exec(playerDAO, playerLogs, clubDAO);
 
         savePlayerDAOBean.exec(playerDAO);
 

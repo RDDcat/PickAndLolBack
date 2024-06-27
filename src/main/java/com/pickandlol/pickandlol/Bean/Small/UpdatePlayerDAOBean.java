@@ -1,5 +1,6 @@
 package com.pickandlol.pickandlol.Bean.Small;
 
+import com.pickandlol.pickandlol.Model.ClubDAO;
 import com.pickandlol.pickandlol.Model.PlayerLog;
 import com.pickandlol.pickandlol.Model.PlayerDAO;
 import org.springframework.stereotype.Component;
@@ -10,8 +11,8 @@ import java.util.List;
 public class UpdatePlayerDAOBean {
 
     // 선수 정보 업데이트
-    // stat와 킬 관여율 추기 예정
-    public void exec(PlayerDAO playerDAO, List<PlayerLog> playerLogs) {
+    // stat와추기 예정
+    public void exec(PlayerDAO playerDAO, List<PlayerLog> playerLogs, ClubDAO clubDAO) {
         int stat = 0;
         double kda;
         int totalKillCount = 0;
@@ -28,11 +29,14 @@ public class UpdatePlayerDAOBean {
 
         kda = totalDeathCount > 0 ? (double) (totalKillCount + totalAssistCount) / totalDeathCount : 0.0;
 
+        totalKillRate = totalPlayCount > 0 ? (double) (totalKillCount + totalAssistCount) / clubDAO.getKillCount() : 0.0;
+
         // Update the PlayerDAO object
         playerDAO.setKillCount(totalKillCount);
         playerDAO.setDeathCount(totalDeathCount);
         playerDAO.setAssistCount(totalAssistCount);
         playerDAO.setKda(kda);
+        playerDAO.setKillRate(totalKillRate);
         playerDAO.setPlayCount(totalPlayCount);
     }
 }
