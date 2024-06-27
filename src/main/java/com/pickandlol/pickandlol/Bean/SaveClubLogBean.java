@@ -7,6 +7,7 @@ import com.pickandlol.pickandlol.Model.RequestClubLogSaveDTO;
 import com.pickandlol.pickandlol.Model.ClubDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -37,6 +38,7 @@ public class SaveClubLogBean {
     }
 
     // 경기 - 팀 정보 저장
+    @Transactional
     public Long saveMatchTeam(RequestClubLogSaveDTO requestClubLogSaveDTO) {
 
         ClubLog clubLog = createClubLogDAOBean.exec(requestClubLogSaveDTO);

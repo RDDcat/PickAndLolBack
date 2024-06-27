@@ -39,6 +39,10 @@ public class UpdateMatchDAOBean {
                     hasTwoWins = true;
                 }
             }
+            else if (matchResult == MatchResult.LOSE) {
+                // 패배한 팀도 winCountMap에 추가, 이미 있는 경우 값 변화 없음
+                winCountMap.putIfAbsent(clubId, 0);
+            }
         }
 
         // 2승을 달성한 팀이 없다면 return

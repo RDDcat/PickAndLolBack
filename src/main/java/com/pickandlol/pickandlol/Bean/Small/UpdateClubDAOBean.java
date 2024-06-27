@@ -34,7 +34,7 @@ public class UpdateClubDAOBean {
         else totalKDA = 0.0;
 
         // 득실차
-        totalGap = totalKillCount - totalDeathCount;
+        totalGap = totalWinCount - totalLoseCount;
 
         // 승률
         if (totalWinCount + totalLoseCount > 0 && totalWinCount - totalLoseCount >= 0) {
