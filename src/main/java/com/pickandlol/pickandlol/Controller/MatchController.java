@@ -42,12 +42,12 @@ public class MatchController {
     // 경기 - 팀 정보 저장
     @PostMapping("/club")
     public ResponseEntity<Map<String, Object>> saveMatchTeam(@RequestBody RequestClubLogSaveDTO requestClubLogSaveDTO) {
-        Long matchTeamId = matchService.saveMatchTeam(requestClubLogSaveDTO);
+        Long matchClubId = matchService.saveMatchTeam(requestClubLogSaveDTO);
 
         // 메시지와 id 값 json 데이터로 반환
         Map<String, Object> requestMap = new HashMap<>();
-        requestMap.put("message", (matchTeamId == null) ? "팀 정보 저장 실패" : "팀 정보 저장 성공");
-        requestMap.put("matchTeamId", matchTeamId);
+        requestMap.put("message", (matchClubId == null) ? "팀 정보 저장 실패" : "팀 정보 저장 성공");
+        requestMap.put("matchClubId", matchClubId);
 
         return ResponseEntity.status(HttpStatus.OK).body(requestMap);
     }

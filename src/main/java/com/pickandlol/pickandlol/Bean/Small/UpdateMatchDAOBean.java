@@ -54,9 +54,9 @@ public class UpdateMatchDAOBean {
             Integer winCount = entry.getValue();
 
             if (winCount > OneSet) {
-                matchDAO.setWinnerTeamId(clubId);
+                matchDAO.setWinnerClubId(clubId);
             }else {
-                matchDAO.setLoserTeamId(clubId);
+                matchDAO.setLoserClubId(clubId);
             }
         }
 

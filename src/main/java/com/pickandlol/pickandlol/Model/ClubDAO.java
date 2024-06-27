@@ -17,6 +17,8 @@ public class ClubDAO {
     Long clubId;
     String clubLogo;
     String clubName;
+    Integer matchWinCount;
+    Integer matchLoseCount;
     Integer winCount;
     Integer loseCount;
     Integer totalGap;

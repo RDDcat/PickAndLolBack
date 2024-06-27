@@ -15,7 +15,7 @@ public class MatchDAO {
     Long matchId;
     String matchType; // ??
     String matchNum;
-    Long winnerTeamId;
-    Long loserTeamId;
+    Long winnerClubId;
+    Long loserClubId;
     String clubLogId;
 }

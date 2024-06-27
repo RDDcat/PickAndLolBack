@@ -3,6 +3,7 @@ package com.pickandlol.pickandlol.Bean.Small;
 import com.pickandlol.pickandlol.Model.Enum.MatchResult;
 import com.pickandlol.pickandlol.Model.ClubLog;
 import com.pickandlol.pickandlol.Model.ClubDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -10,12 +11,23 @@ import java.util.List;
 @Component
 public class UpdateClubDAOBean {
 
+    GetMatchsByWinnerClubIdDAOBean getMatchsByWinnerClubIdDAOBean;
+    GetMatchByLoserClubIdDAOBean getMatchByLoserClubIdDAOBean;
+
+    @Autowired
+    public UpdateClubDAOBean(GetMatchsByWinnerClubIdDAOBean getMatchsByWinnerClubIdDAOBean, GetMatchByLoserClubIdDAOBean getMatchByLoserClubIdDAOBean) {
+        this.getMatchsByWinnerClubIdDAOBean = getMatchsByWinnerClubIdDAOBean;
+        this.getMatchByLoserClubIdDAOBean = getMatchByLoserClubIdDAOBean;
+    }
+
     public void exec(ClubDAO clubDAO, List<ClubLog> clubLogs) {
         int totalWinCount = 0;
         int totalLoseCount = 0;
         int totalKillCount = 0;
         int totalDeathCount = 0;
         int totalAssistCount = 0;
+        int totalMatchWinCount;
+        int totalMatchLoseCount;
         int totalGap;
         double totalKDA;
         double winRate;
@@ -42,8 +54,14 @@ public class UpdateClubDAOBean {
         }
         else winRate = 0.0;
 
+        // 매치 승/패
+        totalMatchWinCount = getMatchsByWinnerClubIdDAOBean.exec(clubDAO.getClubId()).size();
+        totalMatchLoseCount = getMatchByLoserClubIdDAOBean.exec(clubDAO.getClubId()).size();
+
 
         // Update the TeamsDAO object
+        clubDAO.setMatchWinCount(totalMatchWinCount);
+        clubDAO.setMatchLoseCount(totalMatchLoseCount);
         clubDAO.setWinCount(totalWinCount);
         clubDAO.setLoseCount(totalLoseCount);
         clubDAO.setKillCount(totalKillCount);
