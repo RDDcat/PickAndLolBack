@@ -4,6 +4,7 @@ import com.pickandlol.pickandlol.Model.Enum.MatchResult;
 import com.pickandlol.pickandlol.Model.ClubLog;
 import com.pickandlol.pickandlol.Model.ClubDAO;
 import com.pickandlol.pickandlol.Model.MatchDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -14,7 +15,11 @@ public class UpdateClubDAOBean {
     GetClubDAOBean getClubDAOBean;
     GetMatchsDAOBean getMatchsDAOBean;
 
-
+    @Autowired
+    public UpdateClubDAOBean(GetClubDAOBean getClubDAOBean, GetMatchsDAOBean getMatchsDAOBean) {
+        this.getClubDAOBean = getClubDAOBean;
+        this.getMatchsDAOBean = getMatchsDAOBean;
+    }
 
     public void exec(ClubDAO clubDAO, List<ClubLog> clubLogs) {
         int totalWinCount = 0;

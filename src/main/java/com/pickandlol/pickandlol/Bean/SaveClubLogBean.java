@@ -56,7 +56,7 @@ public class SaveClubLogBean {
         updateClubDAOBean.exec(clubDAO, clubLogs);
 
         // 팀 매치 승/패 저장
-        if (matchDAO.getWinnerClubId()!=null){
+        if (matchDAO.getWinnerClubId()!=0){
             updateClubDAOBean.exec(matchDAO);
         }
 

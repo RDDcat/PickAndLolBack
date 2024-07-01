@@ -11,14 +11,14 @@ public class ResponseMatchGetDTO {
     Long homeClubId;
     Long awayClubId;
     String stadium;
-    Long year;
-    Long month;
-    Long day;
+    Integer year;
+    Integer month;
+    Integer day;
     String dayOfTheWeek;
     String time;
     String round;
-    Long homeScore;
-    Long awayScore;
+    Integer homeScore;
+    Integer awayScore;
     String matchStatus;
     String clubLogId;
 }
