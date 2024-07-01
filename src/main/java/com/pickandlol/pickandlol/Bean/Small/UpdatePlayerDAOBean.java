@@ -11,20 +11,20 @@ import java.util.List;
 public class UpdatePlayerDAOBean {
 
     // 선수 정보 업데이트
-    // stat와추기 예정
     public void exec(PlayerDAO playerDAO, List<PlayerLog> playerLogs, ClubDAO clubDAO) {
-        int stat = 0;
         double kda;
+        int totalStat = 0;
         int totalKillCount = 0;
         int totalDeathCount = 0;
         int totalAssistCount = 0;
-        double totalKillRate = 0.0;
+        double totalKillRate;
         int totalPlayCount = playerLogs.size();
 
         for (PlayerLog playerLog : playerLogs) {
             totalKillCount += playerLog.getKillCount();
             totalDeathCount += playerLog.getDeathCount();
             totalAssistCount += playerLog.getAssistCount();
+            totalStat += playerLog.getStat();
         }
 
         kda = totalDeathCount > 0 ? (double) (totalKillCount + totalAssistCount) / totalDeathCount : 0.0;
@@ -32,6 +32,7 @@ public class UpdatePlayerDAOBean {
         totalKillRate = totalPlayCount > 0 ? (double) (totalKillCount + totalAssistCount) / clubDAO.getKillCount() : 0.0;
 
         // Update the PlayerDAO object
+        playerDAO.setStat(totalStat);
         playerDAO.setKillCount(totalKillCount);
         playerDAO.setDeathCount(totalDeathCount);
         playerDAO.setAssistCount(totalAssistCount);

@@ -1,5 +1,6 @@
 package com.pickandlol.pickandlol.Model;
 
+import com.pickandlol.pickandlol.Model.Enum.PlayerPosition;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.*;
@@ -17,6 +18,7 @@ public class PlayerLog {
     Long playerLogId;
     Long clubLogId;
     Long playerId;
+    Integer stat;
     boolean firstKill;
     boolean firstDeath;
     boolean mom;
@@ -24,7 +26,7 @@ public class PlayerLog {
     Integer killCount;
     Integer deathCount;
     Integer assistCount;
-    boolean soloKills;
-    boolean soloDeaths;
+    Integer soloKills;
+    Integer soloDeaths;
     LocalDateTime createAt;
 }

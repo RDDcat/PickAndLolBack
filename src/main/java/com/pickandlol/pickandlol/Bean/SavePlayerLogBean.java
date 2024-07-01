@@ -1,10 +1,7 @@
 package com.pickandlol.pickandlol.Bean;
 
 import com.pickandlol.pickandlol.Bean.Small.*;
-import com.pickandlol.pickandlol.Model.ClubDAO;
-import com.pickandlol.pickandlol.Model.PlayerLog;
-import com.pickandlol.pickandlol.Model.PlayerDAO;
-import com.pickandlol.pickandlol.Model.RequestPlayerLogSaveDTO;
+import com.pickandlol.pickandlol.Model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,16 +13,18 @@ public class SavePlayerLogBean {
     CreatePlayerLogDAOBean createPlayerLogDAOBean;
     GetPlayerDAOBean getPlayerDAOBean;
     GetPlayerLogsDAOBean getPlayerLogsDAOBean;
+    GetClubLogDAOBean getClubLogDAOBean;
     UpdatePlayerDAOBean updatePlayerDAOBean;
     SavePlayerLogDAOBean savePlayerLogDAOBean;
     SavePlayerDAOBean savePlayerDAOBean;
     GetClubDAOBean getClubDAOBean;
 
     @Autowired
-    public SavePlayerLogBean(CreatePlayerLogDAOBean createPlayerLogDAOBean, GetPlayerDAOBean getPlayerDAOBean, GetPlayerLogsDAOBean getPlayerLogsDAOBean, UpdatePlayerDAOBean updatePlayerDAOBean, SavePlayerLogDAOBean savePlayerLogDAOBean, SavePlayerDAOBean savePlayerDAOBean, GetClubDAOBean getClubDAOBean) {
+    public SavePlayerLogBean(CreatePlayerLogDAOBean createPlayerLogDAOBean, GetPlayerDAOBean getPlayerDAOBean, GetPlayerLogsDAOBean getPlayerLogsDAOBean, GetClubLogDAOBean getClubLogDAOBean, UpdatePlayerDAOBean updatePlayerDAOBean, SavePlayerLogDAOBean savePlayerLogDAOBean, SavePlayerDAOBean savePlayerDAOBean, GetClubDAOBean getClubDAOBean) {
         this.createPlayerLogDAOBean = createPlayerLogDAOBean;
         this.getPlayerDAOBean = getPlayerDAOBean;
         this.getPlayerLogsDAOBean = getPlayerLogsDAOBean;
+        this.getClubLogDAOBean = getClubLogDAOBean;
         this.updatePlayerDAOBean = updatePlayerDAOBean;
         this.savePlayerLogDAOBean = savePlayerLogDAOBean;
         this.savePlayerDAOBean = savePlayerDAOBean;
@@ -44,7 +43,8 @@ public class SavePlayerLogBean {
         * */
 
         // 선수 로그 DAO 생성
-        PlayerLog playerLog = createPlayerLogDAOBean.exec(requestPlayerLogSaveDTO);
+        ClubLog clubLog = getClubLogDAOBean.exec(requestPlayerLogSaveDTO.getClubLogId());
+        PlayerLog playerLog = createPlayerLogDAOBean.exec(clubLog, requestPlayerLogSaveDTO);
         savePlayerLogDAOBean.exec(playerLog);
 
         // 선수 정보 업데이트
