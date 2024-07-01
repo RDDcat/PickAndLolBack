@@ -1,9 +1,6 @@
 package com.pickandlol.pickandlol.Controller;
 
-import com.pickandlol.pickandlol.Model.MatchDAO;
-import com.pickandlol.pickandlol.Model.RequestMatchSaveDTO;
-import com.pickandlol.pickandlol.Model.RequestPlayerLogSaveDTO;
-import com.pickandlol.pickandlol.Model.RequestClubLogSaveDTO;
+import com.pickandlol.pickandlol.Model.*;
 import com.pickandlol.pickandlol.Service.MatchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -23,6 +21,12 @@ public class MatchController {
     @Autowired
     public MatchController(MatchService matchService) {
         this.matchService = matchService;
+    }
+
+    // 경기 전체 조회
+    @GetMapping("")
+    public List<ResponseMatchGetDTO> getMatchs() {
+        return matchService.getMatchs();
     }
 
     // 경기 정보 저장

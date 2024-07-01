@@ -1,27 +1,34 @@
 package com.pickandlol.pickandlol.Service;
 
+import com.pickandlol.pickandlol.Bean.GetMatchsBean;
 import com.pickandlol.pickandlol.Bean.SaveMatchBean;
 import com.pickandlol.pickandlol.Bean.SavePlayerLogBean;
 import com.pickandlol.pickandlol.Bean.SaveClubLogBean;
-import com.pickandlol.pickandlol.Model.MatchDAO;
-import com.pickandlol.pickandlol.Model.RequestMatchSaveDTO;
-import com.pickandlol.pickandlol.Model.RequestPlayerLogSaveDTO;
-import com.pickandlol.pickandlol.Model.RequestClubLogSaveDTO;
+import com.pickandlol.pickandlol.Model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class MatchService {
 
+    GetMatchsBean getMatchsBean;
     SaveMatchBean saveMatchBean;
     SaveClubLogBean saveClubLogBean;
     SavePlayerLogBean savePlayerLogBean;
 
     @Autowired
-    public MatchService(SaveMatchBean saveMatchBean, SaveClubLogBean saveClubLogBean, SavePlayerLogBean savePlayerLogBean) {
+    public MatchService(GetMatchsBean getMatchsBean, SaveMatchBean saveMatchBean, SaveClubLogBean saveClubLogBean, SavePlayerLogBean savePlayerLogBean) {
+        this.getMatchsBean = getMatchsBean;
         this.saveMatchBean = saveMatchBean;
         this.saveClubLogBean = saveClubLogBean;
         this.savePlayerLogBean = savePlayerLogBean;
+    }
+
+    // 경기 전체 조회
+    public List<ResponseMatchGetDTO> getMatchs() {
+        return getMatchsBean.exec();
     }
 
     // 경기 정보 저장
