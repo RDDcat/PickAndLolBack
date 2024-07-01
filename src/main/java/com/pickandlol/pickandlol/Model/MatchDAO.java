@@ -1,5 +1,6 @@
 package com.pickandlol.pickandlol.Model;
 
+import com.pickandlol.pickandlol.Model.Enum.MatchSeason;
 import com.pickandlol.pickandlol.Model.Enum.MatchStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -14,7 +15,7 @@ import lombok.*;
 public class MatchDAO {
     @Id
     Long matchId;
-    String matchType; // ??
+    MatchSeason matchSeason;
     String matchNum;
     Long homeClubId;
     Long awayClubId;
