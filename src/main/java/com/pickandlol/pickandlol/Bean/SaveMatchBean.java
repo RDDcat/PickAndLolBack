@@ -1,6 +1,7 @@
 package com.pickandlol.pickandlol.Bean;
 
 import com.pickandlol.pickandlol.Bean.Small.CreateUniqueIdBean;
+import com.pickandlol.pickandlol.Model.Enum.MatchSeason;
 import com.pickandlol.pickandlol.Model.Enum.MatchStatus;
 import com.pickandlol.pickandlol.Model.MatchDAO;
 import com.pickandlol.pickandlol.Model.RequestMatchSaveDTO;
@@ -40,7 +41,7 @@ public class SaveMatchBean {
 
         MatchDAO matchDAO = MatchDAO.builder()
                 .matchId(createUniqueIdBean.exec())
-                .matchType(requestMatchSaveDTO.getMatchType())
+                .matchSeason(MatchSeason.valueOf(requestMatchSaveDTO.getMatchSeason()))
                 .matchNum(requestMatchSaveDTO.getMatchNum())
                 .homeClubId(requestMatchSaveDTO.getHomeClubId())
                 .awayClubId(requestMatchSaveDTO.getAwayClubId())

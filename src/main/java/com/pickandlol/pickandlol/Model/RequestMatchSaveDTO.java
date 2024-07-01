@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class RequestMatchSaveDTO {
-    String matchType;
+    String matchSeason;
     String matchNum;
     Long homeClubId;
     Long awayClubId;
