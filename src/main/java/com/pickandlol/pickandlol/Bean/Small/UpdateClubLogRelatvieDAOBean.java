@@ -31,22 +31,22 @@ public class UpdateClubLogRelatvieDAOBean {
         else if (clubLogList.size() == TwoTeamSet){
             // 2개면 현재 들어온애를 나머지 하나로 업데이트해주고 나머지 하나의 값도 현재 들어온걸로 업데이트 해줘야해
             ClubLog clubLog1 = clubLogList.get(OneTeamSet);
+            ClubLog clubLog2 = clubLogList.get(0);
 
-            System.out.println("clubLog1 = " + clubLog1.toString());
-            clubLog1.setRelativeVoidGrubsCount(clubLog1.getVoidGrubs() - clubLog.getVoidGrubs());
-            clubLog1.setRelativeDrakesCount(clubLog1.getDrakes() - clubLog.getDrakes());
-            clubLog1.setRelativeBaronsCount(clubLog1.getBarons() - clubLog.getBarons());
-            clubLog1.setRelativeHeraldsCount(clubLog1.getHeralds() - clubLog.getHeralds());
-            clubLog1.setRelativeEldersCount(clubLog1.getElders() - clubLog.getElders());
+            clubLog1.setRelativeVoidGrubsCount(clubLog1.getVoidGrubs() - clubLog2.getVoidGrubs());
+            clubLog1.setRelativeDrakesCount(clubLog1.getDrakes() - clubLog2.getDrakes());
+            clubLog1.setRelativeBaronsCount(clubLog1.getBarons() - clubLog2.getBarons());
+            clubLog1.setRelativeHeraldsCount(clubLog1.getHeralds() - clubLog2.getHeralds());
+            clubLog1.setRelativeEldersCount(clubLog1.getElders() - clubLog2.getElders());
 
-            System.out.println("clubLog = " + clubLog.toString());
-            clubLog.setRelativeVoidGrubsCount(clubLog.getVoidGrubs() - clubLog1.getVoidGrubs());
-            clubLog.setRelativeDrakesCount(clubLog.getDrakes() - clubLog1.getDrakes());
-            clubLog.setRelativeBaronsCount(clubLog.getBarons() - clubLog1.getBarons());
-            clubLog.setRelativeHeraldsCount(clubLog.getHeralds() - clubLog1.getHeralds());
-            clubLog.setRelativeEldersCount(clubLog.getElders() - clubLog1.getElders());
+            clubLog2.setRelativeVoidGrubsCount(clubLog2.getVoidGrubs() - clubLog1.getVoidGrubs());
+            clubLog2.setRelativeDrakesCount(clubLog2.getDrakes() - clubLog1.getDrakes());
+            clubLog2.setRelativeBaronsCount(clubLog2.getBarons() - clubLog1.getBarons());
+            clubLog2.setRelativeHeraldsCount(clubLog2.getHeralds() - clubLog1.getHeralds());
+            clubLog2.setRelativeEldersCount(clubLog2.getElders() - clubLog1.getElders());
 
-            saveClubLogDAOBean.exec(clubLog);
+
+            saveClubLogDAOBean.exec(clubLog2);
             saveClubLogDAOBean.exec(clubLog1);
         }
 
