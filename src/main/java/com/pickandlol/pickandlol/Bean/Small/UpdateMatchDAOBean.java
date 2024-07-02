@@ -50,7 +50,10 @@ public class UpdateMatchDAOBean {
         // 2승을 달성한 팀이 있다면, 해당 팀을 승자로 설정
         if (homeWinCount > OneSet) {
             matchDAO.setWinnerClubId(matchDAO.getHomeClubId());
+            matchDAO.setLoserClubId(matchDAO.getAwayClubId());
+
         } else {
+            matchDAO.setWinnerClubId(matchDAO.getAwayClubId());
             matchDAO.setLoserClubId(matchDAO.getHomeClubId());
         }
 
