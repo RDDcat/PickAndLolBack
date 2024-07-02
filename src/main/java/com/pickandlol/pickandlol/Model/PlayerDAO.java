@@ -15,10 +15,10 @@ import java.time.LocalDateTime;
 public class PlayerDAO {
     @Id
     Long playerId;
+    Long clubId;
     String playerName;
     String playerImage;
     String playerPosition;
-    String playerClub;
     Integer stat;
     Double kda;
     Integer killCount;

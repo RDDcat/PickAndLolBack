@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TeamDTO {
+public class RequestTeamSaveDTO {
     String oauthId;
     String data;
 }

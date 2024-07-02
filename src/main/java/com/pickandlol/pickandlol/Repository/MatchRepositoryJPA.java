@@ -7,7 +7,5 @@ import java.util.List;
 
 public interface MatchRepositoryJPA extends JpaRepository<MatchDAO, Long> {
 
-    List<MatchDAO> findByWinnerClubId(Long clubId);
-
-    List<MatchDAO> findByLoserClubId(Long clubId);
+    List<MatchDAO> findAllByOrderByMonthAscDayAsc();
 }

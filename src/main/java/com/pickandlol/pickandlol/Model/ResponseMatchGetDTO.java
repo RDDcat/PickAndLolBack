@@ -1,10 +1,12 @@
 package com.pickandlol.pickandlol.Model;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class RequestMatchSaveDTO {
-    String matchSeason;
+@Builder
+public class ResponseMatchGetDTO {
+    Long matchId;
     String matchNum;
     Long homeClubId;
     Long awayClubId;
@@ -12,6 +14,11 @@ public class RequestMatchSaveDTO {
     Integer year;
     Integer month;
     Integer day;
+    String dayOfTheWeek;
     String time;
     String round;
+    Integer homeScore;
+    Integer awayScore;
+    String matchStatus;
+    String clubLogId;
 }

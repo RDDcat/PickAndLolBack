@@ -1,5 +1,6 @@
 package com.pickandlol.pickandlol.Bean.Small;
 
+import com.pickandlol.pickandlol.Model.ClubLog;
 import com.pickandlol.pickandlol.Model.PlayerLog;
 import com.pickandlol.pickandlol.Model.RequestPlayerLogSaveDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,17 +12,20 @@ import java.time.LocalDateTime;
 public class CreatePlayerLogDAOBean {
 
     CreateUniqueIdBean createUniqueIdBean;
+    GetClubLogPlayerStatBean getClubLogPlayerStatBean;
 
     @Autowired
-    public CreatePlayerLogDAOBean(CreateUniqueIdBean createUniqueIdBean){
+    public CreatePlayerLogDAOBean(CreateUniqueIdBean createUniqueIdBean, GetClubLogPlayerStatBean getClubLogPlayerStatBean){
         this.createUniqueIdBean = createUniqueIdBean;
+        this.getClubLogPlayerStatBean = getClubLogPlayerStatBean;
     }
 
-    public PlayerLog exec(RequestPlayerLogSaveDTO requestPlayerLogSaveDTO){
+    public PlayerLog exec(ClubLog clubLog, RequestPlayerLogSaveDTO requestPlayerLogSaveDTO){
         return PlayerLog.builder()
                 .playerLogId(createUniqueIdBean.exec())
                 .clubLogId(requestPlayerLogSaveDTO.getClubLogId())
                 .playerId(requestPlayerLogSaveDTO.getPlayerId())
+                .stat(getClubLogPlayerStatBean.exec(clubLog, requestPlayerLogSaveDTO))
                 .firstKill(requestPlayerLogSaveDTO.isFirstKill())
                 .firstDeath(requestPlayerLogSaveDTO.isFirstDeath())
                 .mom(requestPlayerLogSaveDTO.isMom())
@@ -29,8 +33,8 @@ public class CreatePlayerLogDAOBean {
                 .killCount(requestPlayerLogSaveDTO.getKillCount())
                 .deathCount(requestPlayerLogSaveDTO.getDeathCount())
                 .assistCount(requestPlayerLogSaveDTO.getAssistCount())
-                .soloKills(requestPlayerLogSaveDTO.isSoloKill())
-                .soloDeaths(requestPlayerLogSaveDTO.isSoloDeaths())
+                .soloKills(requestPlayerLogSaveDTO.getSoloKills())
+                .soloDeaths(requestPlayerLogSaveDTO.getSoloDeaths())
                 .createAt(LocalDateTime.now())
                 .build();
     }

@@ -8,16 +8,17 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class GetMatchByLoserClubIdDAOBean {
+public class GetMatchsOrderByDateDAOBean {
 
     MatchRepositoryJPA matchRepositoryJPA;
 
     @Autowired
-    public GetMatchByLoserClubIdDAOBean(MatchRepositoryJPA matchRepositoryJPA){
+    public GetMatchsOrderByDateDAOBean(MatchRepositoryJPA matchRepositoryJPA){
         this.matchRepositoryJPA = matchRepositoryJPA;
     }
 
-    public List<MatchDAO> exec(Long clubId) {
-        return matchRepositoryJPA.findByLoserClubId(clubId);
+    //
+    public List<MatchDAO> exec() {
+        return matchRepositoryJPA.findAllByOrderByMonthAscDayAsc();
     }
 }
