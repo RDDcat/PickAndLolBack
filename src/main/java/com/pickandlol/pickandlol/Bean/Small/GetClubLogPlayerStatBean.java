@@ -36,6 +36,13 @@ public class GetClubLogPlayerStatBean {
             stat += playerLog.getKillCount() * 10; // 킬 수
             stat += playerLog.getAssistCount() * 10; // 어시스트 수
             stat += playerLog.getDeathCount() * -10; // 데스 수
+
+            // 오브젝트 관련 점수
+            stat += clubLog.getRelativeDrakesCount() * 10; // 드래곤 수
+            stat += clubLog.getRelativeEldersCount() * 20; // 장로 수
+            stat += (clubLog.getRelativeVoidGrubsCount()) / 2 * 10; // 유충 수
+            stat += clubLog.getRelativeHeraldsCount() * 10; // 전령 수
+            stat += clubLog.getRelativeBaronsCount() * 20; // 바론 수
         } else if (playerId.equals(midId)) {
             stat += playerLog.isFirstKill() ? 30 : 0; // 퍼스트 킬
             stat += playerLog.getKillCount() * 20; // 킬 수
@@ -55,6 +62,7 @@ public class GetClubLogPlayerStatBean {
             stat += (playerLog.getDeathCount()/2) * -15; // 데스 수
         }
 
-        return stat;
+        return Math.max(stat, 0);
+
     }
 }
