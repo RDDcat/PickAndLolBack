@@ -15,23 +15,23 @@ import java.util.List;
 public class SaveClubLogBean {
 
     CreateClubLogDAOBean createClubLogDAOBean;
+    UpdateClubLogRelatvieDAOBean updateClubLogRelatvieDAOBean;
     SaveClubLogDAOBean saveClubLogDAOBean;
     GetClubDAOBean getClubDAOBean;
     GetClubLogsDAOBean getClubLogsDAOBean;
     UpdateClubDAOBean updateClubDAOBean;
-    SaveClubDAOBean saveClubDAOBean;
     GetClubLogsByMatchIdDAOBean getClubLogsByMatchIdDAOBean;
     GetMatchDAOBean getMatchDAOBean;
     UpdateMatchDAOBean updateMatchDAOBean;
 
     @Autowired
-    public SaveClubLogBean(CreateClubLogDAOBean createClubLogDAOBean, SaveClubLogDAOBean saveClubLogDAOBean, GetClubDAOBean getClubDAOBean, GetClubLogsDAOBean getClubLogsDAOBean, UpdateClubDAOBean updateClubDAOBean, SaveClubDAOBean saveClubDAOBean, GetClubLogsByMatchIdDAOBean getClubLogsByMatchIdDAOBean, GetMatchDAOBean getMatchDAOBean, UpdateMatchDAOBean updateMatchDAOBean) {
+    public SaveClubLogBean(CreateClubLogDAOBean createClubLogDAOBean, UpdateClubLogRelatvieDAOBean updateClubLogRelatvieDAOBean, SaveClubLogDAOBean saveClubLogDAOBean, GetClubDAOBean getClubDAOBean, GetClubLogsDAOBean getClubLogsDAOBean, UpdateClubDAOBean updateClubDAOBean, GetClubLogsByMatchIdDAOBean getClubLogsByMatchIdDAOBean, GetMatchDAOBean getMatchDAOBean, UpdateMatchDAOBean updateMatchDAOBean) {
         this.createClubLogDAOBean = createClubLogDAOBean;
+        this.updateClubLogRelatvieDAOBean = updateClubLogRelatvieDAOBean;
         this.saveClubLogDAOBean = saveClubLogDAOBean;
         this.getClubDAOBean = getClubDAOBean;
         this.getClubLogsDAOBean = getClubLogsDAOBean;
         this.updateClubDAOBean = updateClubDAOBean;
-        this.saveClubDAOBean = saveClubDAOBean;
         this.getClubLogsByMatchIdDAOBean = getClubLogsByMatchIdDAOBean;
         this.getMatchDAOBean = getMatchDAOBean;
         this.updateMatchDAOBean = updateMatchDAOBean;
@@ -42,8 +42,10 @@ public class SaveClubLogBean {
     public Long saveMatchTeam(RequestClubLogSaveDTO requestClubLogSaveDTO) {
 
         ClubLog clubLog = createClubLogDAOBean.exec(requestClubLogSaveDTO);
-
         saveClubLogDAOBean.exec(clubLog);
+
+        // ClubLog 전체 오브젝트 관련 정보 수정
+        updateClubLogRelatvieDAOBean.exec(clubLog);
 
         // 매치 정보 업데이트
         List<ClubLog> clubLogList = getClubLogsByMatchIdDAOBean.exec(requestClubLogSaveDTO.getMatchId());

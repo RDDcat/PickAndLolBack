@@ -25,6 +25,7 @@ public class CreateClubLogDAOBean {
                 .clubLogId(createUniqueIdBean.exec())
                 .matchType(requestClubLogSaveDTO.getMatchType())
                 .matchResult(requestClubLogSaveDTO.getMatchResult())
+                .orderSet(requestClubLogSaveDTO.getOrderSet())
                 .playTime(requestClubLogSaveDTO.getPlayTime())
                 .voidGrubs(requestClubLogSaveDTO.getVoidGrubs())
                 .heralds(requestClubLogSaveDTO.getHeralds())
