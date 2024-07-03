@@ -14,6 +14,8 @@ public class CreateClubDTOBean {
                 .clubId(clubDAO.getClubId())
                 .clubLogo(clubDAO.getClubLogo())
                 .clubName(clubDAO.getClubName())
+                .matchWinCount(clubDAO.getMatchWinCount())
+                .matchLoseCount(clubDAO.getMatchLoseCount())
                 .winCount(clubDAO.getWinCount())
                 .loseCount(clubDAO.getLoseCount())
                 .totalGap(clubDAO.getTotalGap())
