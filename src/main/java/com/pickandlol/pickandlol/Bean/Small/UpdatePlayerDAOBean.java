@@ -18,6 +18,9 @@ public class UpdatePlayerDAOBean {
         int totalDeathCount = 0;
         int totalAssistCount = 0;
         double totalKillRate;
+        int totalCs = 0;
+        int totalDamage = 0;
+        int totalPlayTime = 0;
         int totalPlayCount = playerLogs.size();
 
         for (PlayerLog playerLog : playerLogs) {
@@ -25,6 +28,9 @@ public class UpdatePlayerDAOBean {
             totalDeathCount += playerLog.getDeathCount();
             totalAssistCount += playerLog.getAssistCount();
             totalStat += playerLog.getStat();
+            totalCs += playerLog.getCs();
+            totalDamage += playerLog.getDamage();
+            totalPlayTime += playerLog.getPlayTime();
         }
 
         kda = totalDeathCount > 0 ? (double) (totalKillCount + totalAssistCount) / totalDeathCount : 0.0;
@@ -39,5 +45,8 @@ public class UpdatePlayerDAOBean {
         playerDAO.setKda(kda);
         playerDAO.setKillRate(totalKillRate);
         playerDAO.setPlayCount(totalPlayCount);
+        playerDAO.setCs(totalCs);
+        playerDAO.setDamage(totalDamage);
+        playerDAO.setPlayTime(totalPlayTime);
     }
 }

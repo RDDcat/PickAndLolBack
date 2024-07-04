@@ -28,5 +28,8 @@ public class PlayerLog {
     Integer assistCount;
     Integer soloKills;
     Integer soloDeaths;
+    Integer damage;
+    Integer cs;
+    Integer playTime;
     LocalDateTime createAt;
 }

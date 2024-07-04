@@ -18,4 +18,6 @@ public class RequestPlayerLogSaveDTO {
     Integer assistCount; // 어시스트
     Integer soloKills; // 솔로킬
     Integer soloDeaths; // 솔로데스
+    Integer damage; // 데미지
+    Integer cs; // CS
 }

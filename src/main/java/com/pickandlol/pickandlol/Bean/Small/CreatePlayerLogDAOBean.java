@@ -21,6 +21,17 @@ public class CreatePlayerLogDAOBean {
     }
 
     public PlayerLog exec(ClubLog clubLog, RequestPlayerLogSaveDTO requestPlayerLogSaveDTO){
+
+        String playTime = clubLog.getPlayTime();
+
+        // 분과 초를 분리
+        String[] parts = playTime.split(":");
+        int minutes = Integer.parseInt(parts[0]);
+        int seconds = Integer.parseInt(parts[1]);
+
+        // 총 초 계산
+        int totalSeconds = (minutes * 60) + seconds;
+
         return PlayerLog.builder()
                 .playerLogId(createUniqueIdBean.exec())
                 .clubLogId(requestPlayerLogSaveDTO.getClubLogId())
@@ -35,6 +46,9 @@ public class CreatePlayerLogDAOBean {
                 .assistCount(requestPlayerLogSaveDTO.getAssistCount())
                 .soloKills(requestPlayerLogSaveDTO.getSoloKills())
                 .soloDeaths(requestPlayerLogSaveDTO.getSoloDeaths())
+                .damage(requestPlayerLogSaveDTO.getDamage())
+                .cs(requestPlayerLogSaveDTO.getCs())
+                .playTime(totalSeconds)
                 .createAt(LocalDateTime.now())
                 .build();
     }
