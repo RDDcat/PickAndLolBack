@@ -24,7 +24,7 @@ public class CreateTeamLogDAOBean {
         LocalDateTime now = LocalDateTime.now();
 
         // 원하는 형식 정의
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd:HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
 
         // 형식에 맞춰 문자열로 변환
         String formattedDateTime = now.format(formatter);
