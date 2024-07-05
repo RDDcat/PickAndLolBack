@@ -18,9 +18,10 @@ public class SavePlayerLogBean {
     SavePlayerLogDAOBean savePlayerLogDAOBean;
     SavePlayerDAOBean savePlayerDAOBean;
     GetClubDAOBean getClubDAOBean;
+    GetMatchDAOBean getMatchDAOBean;
 
     @Autowired
-    public SavePlayerLogBean(CreatePlayerLogDAOBean createPlayerLogDAOBean, GetPlayerDAOBean getPlayerDAOBean, GetPlayerLogsDAOBean getPlayerLogsDAOBean, GetClubLogDAOBean getClubLogDAOBean, UpdatePlayerDAOBean updatePlayerDAOBean, SavePlayerLogDAOBean savePlayerLogDAOBean, SavePlayerDAOBean savePlayerDAOBean, GetClubDAOBean getClubDAOBean) {
+    public SavePlayerLogBean(CreatePlayerLogDAOBean createPlayerLogDAOBean, GetPlayerDAOBean getPlayerDAOBean, GetPlayerLogsDAOBean getPlayerLogsDAOBean, GetClubLogDAOBean getClubLogDAOBean, UpdatePlayerDAOBean updatePlayerDAOBean, SavePlayerLogDAOBean savePlayerLogDAOBean, SavePlayerDAOBean savePlayerDAOBean, GetClubDAOBean getClubDAOBean, GetMatchDAOBean getMatchDAOBean) {
         this.createPlayerLogDAOBean = createPlayerLogDAOBean;
         this.getPlayerDAOBean = getPlayerDAOBean;
         this.getPlayerLogsDAOBean = getPlayerLogsDAOBean;
@@ -29,6 +30,7 @@ public class SavePlayerLogBean {
         this.savePlayerLogDAOBean = savePlayerLogDAOBean;
         this.savePlayerDAOBean = savePlayerDAOBean;
         this.getClubDAOBean = getClubDAOBean;
+        this.getMatchDAOBean = getMatchDAOBean;
     }
 
 
@@ -44,7 +46,8 @@ public class SavePlayerLogBean {
 
         // 선수 로그 DAO 생성
         ClubLog clubLog = getClubLogDAOBean.exec(requestPlayerLogSaveDTO.getClubLogId());
-        PlayerLog playerLog = createPlayerLogDAOBean.exec(clubLog, requestPlayerLogSaveDTO);
+        MatchDAO matchDAO = getMatchDAOBean.exec(clubLog.getMatchId());
+        PlayerLog playerLog = createPlayerLogDAOBean.exec(clubLog, requestPlayerLogSaveDTO, matchDAO);
         savePlayerLogDAOBean.exec(playerLog);
 
         // 선수 정보 업데이트

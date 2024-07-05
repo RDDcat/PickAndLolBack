@@ -31,5 +31,6 @@ public class PlayerLog {
     Integer damage;
     Integer cs;
     Integer playTime;
+    String date;
     LocalDateTime createAt;
 }

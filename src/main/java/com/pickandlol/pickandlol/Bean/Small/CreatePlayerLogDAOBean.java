@@ -1,6 +1,7 @@
 package com.pickandlol.pickandlol.Bean.Small;
 
 import com.pickandlol.pickandlol.Model.ClubLog;
+import com.pickandlol.pickandlol.Model.MatchDAO;
 import com.pickandlol.pickandlol.Model.PlayerLog;
 import com.pickandlol.pickandlol.Model.RequestPlayerLogSaveDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class CreatePlayerLogDAOBean {
         this.getClubLogPlayerStatBean = getClubLogPlayerStatBean;
     }
 
-    public PlayerLog exec(ClubLog clubLog, RequestPlayerLogSaveDTO requestPlayerLogSaveDTO){
+    public PlayerLog exec(ClubLog clubLog, RequestPlayerLogSaveDTO requestPlayerLogSaveDTO, MatchDAO matchDAO){
 
         String playTime = clubLog.getPlayTime();
 
@@ -31,6 +32,15 @@ public class CreatePlayerLogDAOBean {
 
         // 총 초 계산
         int totalSeconds = (minutes * 60) + seconds;
+
+        Integer year = matchDAO.getYear();
+        Integer month = matchDAO.getMonth();
+        Integer day = matchDAO.getDay();
+
+        String formattedMonth = String.format("%02d", month);
+        String formattedDay = String.format("%02d", day);
+
+        String date = year + formattedMonth+ formattedDay;
 
         return PlayerLog.builder()
                 .playerLogId(createUniqueIdBean.exec())
@@ -49,6 +59,7 @@ public class CreatePlayerLogDAOBean {
                 .damage(requestPlayerLogSaveDTO.getDamage())
                 .cs(requestPlayerLogSaveDTO.getCs())
                 .playTime(totalSeconds)
+                .date(date)
                 .createAt(LocalDateTime.now())
                 .build();
     }
