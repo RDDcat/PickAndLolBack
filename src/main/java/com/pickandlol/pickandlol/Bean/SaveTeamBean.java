@@ -21,9 +21,13 @@ public class SaveTeamBean {
 
     public String exec(RequestTeamSaveDTO requestTeamSaveDTO){
 
-        // 중복 제거
+        // update
         TeamDAO teamDAO1 = getTeamByOauthIdDAOBean.exec(requestTeamSaveDTO.getOauthId());
-        if (teamDAO1 != null) return "already exist";
+        if (teamDAO1 != null) {
+            teamDAO1.setData(requestTeamSaveDTO.getData());
+            saveTeamDAOBean.exec(teamDAO1);
+            return "server update";
+        };
 
         TeamDAO teamDAO = TeamDAO.builder()
                 .data(requestTeamSaveDTO.getData())
