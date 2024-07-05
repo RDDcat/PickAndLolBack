@@ -1,6 +1,7 @@
 package com.pickandlol.pickandlol.Controller;
 
 import com.pickandlol.pickandlol.Aspect.TimeRestricted;
+import com.pickandlol.pickandlol.Model.RequestTeamLogSaveDTO;
 import com.pickandlol.pickandlol.Model.ResponseTeamGetDTO;
 import com.pickandlol.pickandlol.Model.RequestTeamSaveDTO;
 import com.pickandlol.pickandlol.Service.TeamService;
@@ -30,6 +31,13 @@ public class TeamController {
     @PostMapping("/save")
     public String save(@RequestBody RequestTeamSaveDTO requestTeamSaveDTO){
         return teamService.saveTeam(requestTeamSaveDTO);
+    }
+
+    // 팀 로그 저장
+    @TimeRestricted
+    @PostMapping("/team/log")
+    public String saveTeamLog(@RequestBody RequestTeamLogSaveDTO requestTeamLogSaveDTO){
+        return teamService.saveTeamLog(requestTeamLogSaveDTO);
     }
 
     // 랭킹
