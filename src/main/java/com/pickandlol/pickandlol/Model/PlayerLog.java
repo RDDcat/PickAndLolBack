@@ -1,6 +1,6 @@
 package com.pickandlol.pickandlol.Model;
 
-import com.pickandlol.pickandlol.Model.Enum.PlayerPosition;
+import com.pickandlol.pickandlol.Model.Enum.Week;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.*;
@@ -32,5 +32,6 @@ public class PlayerLog {
     Integer cs;
     Integer playTime;
     String date;
+    Week week;
     LocalDateTime createAt;
 }

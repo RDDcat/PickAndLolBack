@@ -2,6 +2,7 @@ package com.pickandlol.pickandlol.Bean;
 
 import com.pickandlol.pickandlol.Bean.Small.*;
 import com.pickandlol.pickandlol.Model.ClubLog;
+import com.pickandlol.pickandlol.Model.Enum.MatchStatus;
 import com.pickandlol.pickandlol.Model.MatchDAO;
 import com.pickandlol.pickandlol.Model.RequestClubLogSaveDTO;
 import com.pickandlol.pickandlol.Model.ClubDAO;
@@ -60,6 +61,11 @@ public class SaveClubLogBean {
         // 팀 매치 승/패 저장
         if (matchDAO.getWinnerClubId()!=0){
             updateClubDAOBean.exec(matchDAO);
+        }
+
+        // 매치 상태가 END 일때
+        if (matchDAO.getMatchStatus().equals(MatchStatus.END)){
+            // 통계 정보 업데이트
         }
 
         return clubLog.getClubLogId();

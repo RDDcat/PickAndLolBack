@@ -1,6 +1,7 @@
 package com.pickandlol.pickandlol.Bean.Small;
 
 import com.pickandlol.pickandlol.Model.ClubLog;
+import com.pickandlol.pickandlol.Model.Enum.Week;
 import com.pickandlol.pickandlol.Model.MatchDAO;
 import com.pickandlol.pickandlol.Model.PlayerLog;
 import com.pickandlol.pickandlol.Model.RequestPlayerLogSaveDTO;
@@ -8,17 +9,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Component
 public class CreatePlayerLogDAOBean {
 
     CreateUniqueIdBean createUniqueIdBean;
     GetClubLogPlayerStatBean getClubLogPlayerStatBean;
+    GetWeekEnum getWeekEnum;
 
     @Autowired
-    public CreatePlayerLogDAOBean(CreateUniqueIdBean createUniqueIdBean, GetClubLogPlayerStatBean getClubLogPlayerStatBean){
+    public CreatePlayerLogDAOBean(CreateUniqueIdBean createUniqueIdBean, GetClubLogPlayerStatBean getClubLogPlayerStatBean, GetWeekEnum getWeekEnum){
         this.createUniqueIdBean = createUniqueIdBean;
         this.getClubLogPlayerStatBean = getClubLogPlayerStatBean;
+        this.getWeekEnum = getWeekEnum;
     }
 
     public PlayerLog exec(ClubLog clubLog, RequestPlayerLogSaveDTO requestPlayerLogSaveDTO, MatchDAO matchDAO){
@@ -36,11 +40,21 @@ public class CreatePlayerLogDAOBean {
         Integer year = matchDAO.getYear();
         Integer month = matchDAO.getMonth();
         Integer day = matchDAO.getDay();
-
+        String[] time = matchDAO.getTime().split(":");
         String formattedMonth = String.format("%02d", month);
         String formattedDay = String.format("%02d", day);
 
-        String date = year + formattedMonth+ formattedDay;
+        String date = year + formattedMonth+ formattedDay + time[0] + time[1];
+
+        // 시작 기준 날짜 설정
+        LocalDateTime startReferenceDate = LocalDateTime.of(2024, 6, 9, 19, 0);
+
+        // 날짜 형식 지정
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
+
+        LocalDateTime createDate = LocalDateTime.parse(date, formatter);
+
+        Week week = getWeekEnum.exec(startReferenceDate, createDate);
 
         return PlayerLog.builder()
                 .playerLogId(createUniqueIdBean.exec())
@@ -60,6 +74,7 @@ public class CreatePlayerLogDAOBean {
                 .cs(requestPlayerLogSaveDTO.getCs())
                 .playTime(totalSeconds)
                 .date(date)
+                .week(week)
                 .createAt(LocalDateTime.now())
                 .build();
     }

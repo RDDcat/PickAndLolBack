@@ -1,5 +1,6 @@
 package com.pickandlol.pickandlol.Bean.Small;
 
+import com.pickandlol.pickandlol.Model.Enum.Week;
 import com.pickandlol.pickandlol.Model.PlayerLog;
 import com.pickandlol.pickandlol.Repository.PlayerLogRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +20,10 @@ public class GetPlayerLogsDAOBean {
 
     public List<PlayerLog> exec(Long playerId) {
         return playerLogRepositoryJPA.findByPlayerId(playerId);
+    }
+
+    public List<PlayerLog> exec(Long playerId, Week week) {
+
+        return playerLogRepositoryJPA.findByPlayerIdAndWeek(playerId, week);
     }
 }
