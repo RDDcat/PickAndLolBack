@@ -1,11 +1,11 @@
 package com.pickandlol.pickandlol.Controller;
 
+import com.pickandlol.pickandlol.Model.ResponseTeamStatisticGetDTO;
 import com.pickandlol.pickandlol.Service.TeamStatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin("*")
@@ -23,5 +23,11 @@ public class TeamStatisticController {
     @PostMapping("")
     public void saveTeamStatistic(){
         teamStatisticService.saveTeamStatistic();
+    }
+
+    // 팀 통계 조회
+    @GetMapping("")
+    public List<ResponseTeamStatisticGetDTO> getTeamStatistics(){
+        return teamStatisticService.getTeamStatistics();
     }
 }
