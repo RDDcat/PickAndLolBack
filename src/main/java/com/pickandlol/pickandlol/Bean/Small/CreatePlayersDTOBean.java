@@ -1,15 +1,28 @@
 package com.pickandlol.pickandlol.Bean.Small;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pickandlol.pickandlol.Model.PlayerDAO;
 import com.pickandlol.pickandlol.Model.ResponsePlayerGetDTO;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class CreatePlayersDTOBean {
 
-    public ResponsePlayerGetDTO exec(PlayerDAO playerDAO){
+    public ResponsePlayerGetDTO exec(PlayerDAO playerDAO) {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String playerInfo = playerDAO.getPlayerInfo();
+        List<String> playerInfoS = new ArrayList<>();
+        try {
+            playerInfoS = objectMapper.readValue(playerInfo, new TypeReference<List<String>>() {
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         // 총 분 계산 (소수점 반영)
         double totalMinutes = playerDAO.getPlayTime() / 60.0;
@@ -36,10 +49,11 @@ public class CreatePlayersDTOBean {
                 .playCount(playerDAO.getPlayCount())
                 .cs(csPerMinute)
                 .damage(damagePerMinute)
+                .vp(playerDAO.getVp())
+                .playerInfo(playerInfoS)
                 .build();
-    }
-
-    public List<ResponsePlayerGetDTO> exec(List<PlayerDAO> playerDAOS){
-        return playerDAOS.stream().map(this::exec).toList();
+        }
+    public List<ResponsePlayerGetDTO> exec (List < PlayerDAO > playerInfoS) {
+        return playerInfoS.stream().map(this::exec).toList();
     }
 }

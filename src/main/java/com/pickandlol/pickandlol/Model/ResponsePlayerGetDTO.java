@@ -3,6 +3,8 @@ package com.pickandlol.pickandlol.Model;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Builder
 public class ResponsePlayerGetDTO {
@@ -10,6 +12,7 @@ public class ResponsePlayerGetDTO {
     String playerName;
     String playerImage;
     String playerPosition;
+    List<String> playerInfo;
     Long clubId;
     Integer stat;
     Double kda;
@@ -20,4 +23,5 @@ public class ResponsePlayerGetDTO {
     Double damage;
     Double cs;
     Integer playCount;
+    Integer vp;
 }

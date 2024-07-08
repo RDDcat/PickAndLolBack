@@ -21,6 +21,7 @@ public class PlayerDAO {
     String playerName;
     String playerImage;
     String playerPosition;
+    String playerInfo;
     Integer stat;
     Double kda;
     Integer killCount;
