@@ -31,5 +31,6 @@ public class PlayerDAO {
     Integer playTime;
     Double killRate;
     Integer playCount;
+    Integer vp;
     LocalDateTime createAt;
 }
