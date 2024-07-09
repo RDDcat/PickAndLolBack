@@ -48,10 +48,8 @@ public class UpdateClubDAOBean {
         totalGap = totalWinCount - totalLoseCount;
 
         // 승률
-        if (totalWinCount + totalLoseCount > 0 && totalWinCount - totalLoseCount >= 0) {
-            winRate = (double) totalWinCount / (totalWinCount + totalLoseCount);
-        }
-        else winRate = 0.0;
+        winRate = (double) totalWinCount / (totalWinCount + totalLoseCount);
+
 
         // Update the TeamsDAO object
         clubDAO.setWinCount(totalWinCount);
