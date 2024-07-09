@@ -20,5 +20,6 @@ public class TeamDAO {
     Long teamId;
     String oauthId;
     String data;
+    boolean isChanged;
 
 }

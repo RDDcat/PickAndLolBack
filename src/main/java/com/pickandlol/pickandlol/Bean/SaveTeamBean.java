@@ -32,6 +32,7 @@ public class SaveTeamBean {
         TeamDAO teamDAO = TeamDAO.builder()
                 .data(requestTeamSaveDTO.getData())
                 .oauthId(requestTeamSaveDTO.getOauthId())
+                .isChanged(false)
                 .build();
 
         saveTeamDAOBean.exec(teamDAO);
