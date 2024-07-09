@@ -13,7 +13,7 @@ import lombok.*;
 public class TeamLog {
     @Id
     Long teamLogId;
-    Long userId;
+    String oauthId;
     Long topId;
     Long jglId;
     Long midId;

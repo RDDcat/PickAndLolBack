@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class RequestTeamLogSaveDTO {
 
-    Long userId;
+    String oauthId;
     Long topId;
     Long jglId;
     Long midId;

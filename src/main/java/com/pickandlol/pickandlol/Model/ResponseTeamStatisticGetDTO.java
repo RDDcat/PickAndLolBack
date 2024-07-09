@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @Builder
 public class ResponseTeamStatisticGetDTO {
-    Long userId;
+    String oauthId;
     Integer weekStat;
     Integer totalStat;
 }

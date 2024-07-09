@@ -58,15 +58,13 @@ public class SaveTeamStatisticBean {
 
             // 주차 계산
             int weekNumber = calculateWeekNumber(startReferenceDate, createDate);
-            System.out.println("weekNumber = " + weekNumber);
 
             // 주차를 Week enum 타입으로 변환
             Week week = getWeekEnum(weekNumber);
             String weekEnum = week.name();
 
             // 유저 ID
-            String userId = teamLog.getUserId().toString();
-            System.out.println("userId = " + userId);
+            String oauthId = teamLog.getOauthId().toString();
 
             List<PlayerLog> topPlayers = getPlayerLogsDAOBean.exec(teamLog.getTopId(), week);
             List<PlayerLog> jglPlayers = getPlayerLogsDAOBean.exec(teamLog.getJglId(), week);
@@ -83,7 +81,7 @@ public class SaveTeamStatisticBean {
                 if ((teamLog.getUpdateDate() == null) && playerLogDate.isAfter(createDate)){
                     total += playerLog.getStat();
                     // 결과 맵에 데이터 추가
-                    resultMap.computeIfAbsent(userId, k -> new HashMap<>())
+                    resultMap.computeIfAbsent(oauthId, k -> new HashMap<>())
                             .computeIfAbsent(weekEnum, k -> new HashMap<>())
                             .merge("top", playerLog.getStat(), Integer::sum);
                 }
@@ -93,13 +91,12 @@ public class SaveTeamStatisticBean {
 
                         total += playerLog.getStat();
                         // 결과 맵에 데이터 추가
-                        resultMap.computeIfAbsent(userId, k -> new HashMap<>())
+                        resultMap.computeIfAbsent(oauthId, k -> new HashMap<>())
                                 .computeIfAbsent(weekEnum, k -> new HashMap<>())
                                 .merge("top", playerLog.getStat(), Integer::sum);
                     }
                 }
             }
-            System.out.println("total = " + total);
 
             // 정글선수 stat 누적 구하기
             for (PlayerLog playerLog : jglPlayers){
@@ -108,7 +105,7 @@ public class SaveTeamStatisticBean {
                 if ((teamLog.getUpdateDate() == null) && playerLogDate.isAfter(createDate)){
                     total += playerLog.getStat();
                     // 결과 맵에 데이터 추가
-                    resultMap.computeIfAbsent(userId, k -> new HashMap<>())
+                    resultMap.computeIfAbsent(oauthId, k -> new HashMap<>())
                             .computeIfAbsent(weekEnum, k -> new HashMap<>())
                             .merge("jgl", playerLog.getStat(), Integer::sum);
                 }
@@ -118,13 +115,12 @@ public class SaveTeamStatisticBean {
 
                         total += playerLog.getStat();
                         // 결과 맵에 데이터 추가
-                        resultMap.computeIfAbsent(userId, k -> new HashMap<>())
+                        resultMap.computeIfAbsent(oauthId, k -> new HashMap<>())
                                 .computeIfAbsent(weekEnum, k -> new HashMap<>())
                                 .merge("jgl", playerLog.getStat(), Integer::sum);
                     }
                 }
             }
-            System.out.println("total = " + total);
 
             // 미드선수 stat 누적 구하기
             for (PlayerLog playerLog : midPlayers){
@@ -133,7 +129,7 @@ public class SaveTeamStatisticBean {
                 if ((teamLog.getUpdateDate() == null) && playerLogDate.isAfter(createDate)){
                     total += playerLog.getStat();
                     // 결과 맵에 데이터 추가
-                    resultMap.computeIfAbsent(userId, k -> new HashMap<>())
+                    resultMap.computeIfAbsent(oauthId, k -> new HashMap<>())
                             .computeIfAbsent(weekEnum, k -> new HashMap<>())
                             .merge("mid", playerLog.getStat(), Integer::sum);
                 }
@@ -143,13 +139,12 @@ public class SaveTeamStatisticBean {
 
                         total += playerLog.getStat();
                         // 결과 맵에 데이터 추가
-                        resultMap.computeIfAbsent(userId, k -> new HashMap<>())
+                        resultMap.computeIfAbsent(oauthId, k -> new HashMap<>())
                                 .computeIfAbsent(weekEnum, k -> new HashMap<>())
                                 .merge("mid", playerLog.getStat(), Integer::sum);
                     }
                 }
             }
-            System.out.println("total = " + total);
 
             // 원딜선수 stat 누적 구하기
             for (PlayerLog playerLog : adcPlayers){
@@ -158,7 +153,7 @@ public class SaveTeamStatisticBean {
                 if ((teamLog.getUpdateDate() == null) && playerLogDate.isAfter(createDate)){
                     total += playerLog.getStat();
                     // 결과 맵에 데이터 추가
-                    resultMap.computeIfAbsent(userId, k -> new HashMap<>())
+                    resultMap.computeIfAbsent(oauthId, k -> new HashMap<>())
                             .computeIfAbsent(weekEnum, k -> new HashMap<>())
                             .merge("adc", playerLog.getStat(), Integer::sum);
                 }
@@ -168,13 +163,12 @@ public class SaveTeamStatisticBean {
 
                         total += playerLog.getStat();
                         // 결과 맵에 데이터 추가
-                        resultMap.computeIfAbsent(userId, k -> new HashMap<>())
+                        resultMap.computeIfAbsent(oauthId, k -> new HashMap<>())
                                 .computeIfAbsent(weekEnum, k -> new HashMap<>())
                                 .merge("adc", playerLog.getStat(), Integer::sum);
                     }
                 }
             }
-            System.out.println("total = " + total);
 
             // 서폿선수 stat 누적 구하기
             for (PlayerLog playerLog : supPlayers){
@@ -183,7 +177,7 @@ public class SaveTeamStatisticBean {
                 if ((teamLog.getUpdateDate() == null) && playerLogDate.isAfter(createDate)){
                     total += playerLog.getStat();
                     // 결과 맵에 데이터 추가
-                    resultMap.computeIfAbsent(userId, k -> new HashMap<>())
+                    resultMap.computeIfAbsent(oauthId, k -> new HashMap<>())
                             .computeIfAbsent(weekEnum, k -> new HashMap<>())
                             .merge("sup", playerLog.getStat(), Integer::sum);
                 }
@@ -193,17 +187,15 @@ public class SaveTeamStatisticBean {
 
                         total += playerLog.getStat();
                         // 결과 맵에 데이터 추가
-                        resultMap.computeIfAbsent(userId, k -> new HashMap<>())
+                        resultMap.computeIfAbsent(oauthId, k -> new HashMap<>())
                                 .computeIfAbsent(weekEnum, k -> new HashMap<>())
                                 .merge("sup", playerLog.getStat(), Integer::sum);
                     }
                 }
             }
-            System.out.println("total = " + total);
 
-            System.out.println("resultMap = " + resultMap);
             // 팀 전체 stat 누적 구하기
-            resultMap.computeIfAbsent(userId, k -> new HashMap<>())
+            resultMap.computeIfAbsent(oauthId, k -> new HashMap<>())
                     .computeIfAbsent(weekEnum, k -> new HashMap<>())
                     .merge("total", total, Integer::sum);
 

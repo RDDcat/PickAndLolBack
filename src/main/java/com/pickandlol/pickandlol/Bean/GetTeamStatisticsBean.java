@@ -46,20 +46,20 @@ public class GetTeamStatisticsBean {
 
         // week 가 다르더라도 userId가 겹치는 것 끼리 score 합산
         // 만약 week가 일치한다면 다른곳에 해당 내용만 추가로 저장
-        Map<Long, Integer> map = new HashMap<>();
-        Map<Long, Integer> weekMap = new HashMap<>();
+        Map<String, Integer> map = new HashMap<>();
+        Map<String, Integer> weekMap = new HashMap<>();
         for (TeamStatisticDAO teamStatisticDAO : teamStatisticDAOList) {
-            map.merge(teamStatisticDAO.getUserId(), teamStatisticDAO.getScore(), Integer::sum);
+            map.merge(teamStatisticDAO.getOauthId(), teamStatisticDAO.getScore(), Integer::sum);
             if (teamStatisticDAO.getWeek() == week) {
-                weekMap.put(teamStatisticDAO.getUserId(), teamStatisticDAO.getScore());
+                weekMap.put(teamStatisticDAO.getOauthId(), teamStatisticDAO.getScore());
             }
         }
 
         // 합산된 데이터를 저장
         List<ResponseTeamStatisticGetDTO> responseTeamStatisticGetDTOList = new ArrayList<>();
-        for (Map.Entry<Long, Integer> entry : map.entrySet()) {
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
             responseTeamStatisticGetDTOList.add(ResponseTeamStatisticGetDTO.builder()
-                    .userId(entry.getKey())
+                    .oauthId(entry.getKey())
                     .weekStat(weekMap.get(entry.getKey()))
                     .totalStat(entry.getValue())
                     .build());

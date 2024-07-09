@@ -15,7 +15,7 @@ public class GetTeamLogDAOBean {
         this.teamLogRepositoryJPA = teamLogRepositoryJPA;
     }
 
-    public TeamLog exec(Long userId){
-        return teamLogRepositoryJPA.findTopByUserIdOrderByCreateDateDesc(userId);
+    public TeamLog exec(String oauthId){
+        return teamLogRepositoryJPA.findTopByOauthIdOrderByCreateDateDesc(oauthId);
     }
 }

@@ -31,7 +31,7 @@ public class CreateTeamLogDAOBean {
 
         return TeamLog.builder()
                 .teamLogId(createUniqueIdBean.exec())
-                .userId(requestTeamLogSaveDTO.getUserId())
+                .oauthId(requestTeamLogSaveDTO.getOauthId())
                 .topId(requestTeamLogSaveDTO.getTopId())
                 .jglId(requestTeamLogSaveDTO.getJglId())
                 .midId(requestTeamLogSaveDTO.getMidId())

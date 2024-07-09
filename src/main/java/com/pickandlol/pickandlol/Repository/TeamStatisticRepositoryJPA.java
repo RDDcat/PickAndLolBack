@@ -5,5 +5,5 @@ import com.pickandlol.pickandlol.Model.TeamStatisticDAO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TeamStatisticRepositoryJPA extends JpaRepository<TeamStatisticDAO, Long> {
-    TeamStatisticDAO findByUserIdAndWeek(Long userId, Week week);
+    TeamStatisticDAO findByOauthIdAndWeek(String oauthId, Week week);
 }

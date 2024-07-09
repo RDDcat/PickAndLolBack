@@ -26,7 +26,7 @@ public class SaveTeamLogBean {
 
         TeamLog teamLog = createTeamLogDAOBean.exec(requestTeamLogSaveDTO);
 
-        TeamLog teamLog1 = getTeamLogDAOBean.exec(requestTeamLogSaveDTO.getUserId());
+        TeamLog teamLog1 = getTeamLogDAOBean.exec(requestTeamLogSaveDTO.getOauthId());
         if (teamLog1 != null){
             teamLog1.setUpdateDate(teamLog.getCreateDate());
             saveTeamLogDAOBean.exec(teamLog1);

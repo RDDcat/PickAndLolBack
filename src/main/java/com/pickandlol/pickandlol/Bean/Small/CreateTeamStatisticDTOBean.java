@@ -25,13 +25,13 @@ public class CreateTeamStatisticDTOBean {
     @Transactional
     public void exec(Map<String, Map<String, Map<String, Integer>>> map){
 
-        for (String userId : map.keySet()){
-            for (String week : map.get(userId).keySet()){
-                int total = map.get(userId).get(week).get("total");
-                TeamStatisticDAO teamStatisticDAO = getTeamStatisticDAOBean.exec(Long.parseLong(userId), Week.valueOf(week));
+        for (String oauthId : map.keySet()){
+            for (String week : map.get(oauthId).keySet()){
+                int total = map.get(oauthId).get(week).get("total");
+                TeamStatisticDAO teamStatisticDAO = getTeamStatisticDAOBean.exec(oauthId, Week.valueOf(week));
                 if (teamStatisticDAO == null){
                     teamStatisticDAO = new TeamStatisticDAO();
-                    teamStatisticDAO.setUserId(Long.parseLong(userId));
+                    teamStatisticDAO.setOauthId(oauthId);
                     teamStatisticDAO.setWeek(Week.valueOf(week));
                     teamStatisticDAO.setScore(total);
                     teamStatisticDAO.setTeamStatisticId(createUniqueIdBean.exec());

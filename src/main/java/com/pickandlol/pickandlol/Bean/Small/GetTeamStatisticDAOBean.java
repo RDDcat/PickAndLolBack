@@ -16,7 +16,7 @@ public class GetTeamStatisticDAOBean {
         this.teamStatisticRepositoryJPA = teamStatisticRepositoryJPA;
     }
 
-    public TeamStatisticDAO exec(Long userId, Week week){
-        return teamStatisticRepositoryJPA.findByUserIdAndWeek(userId, week);
+    public TeamStatisticDAO exec(String oauthId, Week week){
+        return teamStatisticRepositoryJPA.findByOauthIdAndWeek(oauthId, week);
     }
 }
