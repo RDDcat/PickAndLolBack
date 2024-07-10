@@ -25,6 +25,7 @@ public class SaveTeamBean {
         TeamDAO teamDAO1 = getTeamByOauthIdDAOBean.exec(requestTeamSaveDTO.getOauthId());
         if (teamDAO1 != null) {
             teamDAO1.setData(requestTeamSaveDTO.getData());
+            teamDAO1.setCanChange(requestTeamSaveDTO.isCanChange());
             saveTeamDAOBean.exec(teamDAO1);
             return "server update";
         };
@@ -32,7 +33,7 @@ public class SaveTeamBean {
         TeamDAO teamDAO = TeamDAO.builder()
                 .data(requestTeamSaveDTO.getData())
                 .oauthId(requestTeamSaveDTO.getOauthId())
-                .isChanged(false)
+                .canChange(false)
                 .build();
 
         saveTeamDAOBean.exec(teamDAO);

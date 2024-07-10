@@ -24,6 +24,7 @@ public class GetTeamBean {
         return ResponseTeamGetDTO.builder()
                 .data(teamDAO.getData())
                 .oauthId(teamDAO.getOauthId())
+                .canChange(teamDAO.isCanChange())
                 .build();
     }
 }

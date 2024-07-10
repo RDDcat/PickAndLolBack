@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class RequestTeamSaveDTO {
     String oauthId;
     String data;
+    boolean canChange;
 }

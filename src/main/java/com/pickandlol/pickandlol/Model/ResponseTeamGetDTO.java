@@ -8,4 +8,5 @@ import lombok.Data;
 public class ResponseTeamGetDTO {
     String oauthId;
     String data;
+    boolean canChange;
 }

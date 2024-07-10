@@ -25,6 +25,7 @@ public class GetTeamRankBean {
                 .map(teamDAO -> ResponseTeamGetDTO.builder()
                         .data(teamDAO.getData())
                         .oauthId(teamDAO.getOauthId())
+                        .canChange(teamDAO.isCanChange())
                         .build())
                 .toList();
     }
