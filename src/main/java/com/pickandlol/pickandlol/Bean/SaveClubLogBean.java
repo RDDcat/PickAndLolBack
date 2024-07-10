@@ -24,9 +24,10 @@ public class SaveClubLogBean {
     GetClubLogsByMatchIdDAOBean getClubLogsByMatchIdDAOBean;
     GetMatchDAOBean getMatchDAOBean;
     UpdateMatchDAOBean updateMatchDAOBean;
+    SaveTeamStatisticBean saveTeamStatisticBean;
 
     @Autowired
-    public SaveClubLogBean(CreateClubLogDAOBean createClubLogDAOBean, UpdateClubLogRelatvieDAOBean updateClubLogRelatvieDAOBean, SaveClubLogDAOBean saveClubLogDAOBean, GetClubDAOBean getClubDAOBean, GetClubLogsDAOBean getClubLogsDAOBean, UpdateClubDAOBean updateClubDAOBean, GetClubLogsByMatchIdDAOBean getClubLogsByMatchIdDAOBean, GetMatchDAOBean getMatchDAOBean, UpdateMatchDAOBean updateMatchDAOBean) {
+    public SaveClubLogBean(CreateClubLogDAOBean createClubLogDAOBean, UpdateClubLogRelatvieDAOBean updateClubLogRelatvieDAOBean, SaveClubLogDAOBean saveClubLogDAOBean, GetClubDAOBean getClubDAOBean, GetClubLogsDAOBean getClubLogsDAOBean, UpdateClubDAOBean updateClubDAOBean, GetClubLogsByMatchIdDAOBean getClubLogsByMatchIdDAOBean, GetMatchDAOBean getMatchDAOBean, UpdateMatchDAOBean updateMatchDAOBean, SaveTeamStatisticBean saveTeamStatisticBean) {
         this.createClubLogDAOBean = createClubLogDAOBean;
         this.updateClubLogRelatvieDAOBean = updateClubLogRelatvieDAOBean;
         this.saveClubLogDAOBean = saveClubLogDAOBean;
@@ -36,6 +37,7 @@ public class SaveClubLogBean {
         this.getClubLogsByMatchIdDAOBean = getClubLogsByMatchIdDAOBean;
         this.getMatchDAOBean = getMatchDAOBean;
         this.updateMatchDAOBean = updateMatchDAOBean;
+        this.saveTeamStatisticBean = saveTeamStatisticBean;
     }
 
     // 경기 - 팀 정보 저장
@@ -66,6 +68,7 @@ public class SaveClubLogBean {
         // 매치 상태가 END 일때
         if (matchDAO.getMatchStatus().equals(MatchStatus.END)){
             // 통계 정보 업데이트
+            saveTeamStatisticBean.exec();
         }
 
         return clubLog.getClubLogId();
