@@ -17,18 +17,18 @@ public class GetWeekEnum {
             weekNumber++;
         }
 
-        switch (weekNumber) {
-            case 1: return Week.WEEK1;
-            case 2: return Week.WEEK2;
-            case 3: return Week.WEEK3;
-            case 4: return Week.WEEK4;
-            case 5: return Week.WEEK5;
-            case 6: return Week.WEEK6;
-            case 7: return Week.WEEK7;
-            case 8: return Week.WEEK8;
-            case 9: return Week.WEEK9;
-            case 10: return Week.WEEK10;
-            default: throw new IllegalArgumentException("Invalid week number: " + weekNumber);
-        }
+        return switch (weekNumber) {
+            case 1 -> Week.WEEK1;
+            case 2 -> Week.WEEK2;
+            case 3, 4 -> Week.WEEK3;
+            case 5 -> Week.WEEK4;
+            case 6 -> Week.WEEK5;
+            case 7 -> Week.WEEK6;
+            case 8 -> Week.WEEK7;
+            case 9 -> Week.WEEK8;
+            case 10 -> Week.WEEK9;
+            case 11 -> Week.WEEK10;
+            default -> throw new IllegalArgumentException("Invalid week number: " + weekNumber);
+        };
     }
 }
