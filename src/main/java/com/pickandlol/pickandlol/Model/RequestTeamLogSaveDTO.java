@@ -11,4 +11,5 @@ public class RequestTeamLogSaveDTO {
     Long midId;
     Long adcId;
     Long supId;
+    Long mvpId;
 }

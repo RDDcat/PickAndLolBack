@@ -37,6 +37,7 @@ public class CreateTeamLogDAOBean {
                 .midId(requestTeamLogSaveDTO.getMidId())
                 .adcId(requestTeamLogSaveDTO.getAdcId())
                 .supId(requestTeamLogSaveDTO.getSupId())
+                .mvpId(requestTeamLogSaveDTO.getMvpId())
                 .createDate(formattedDateTime)
                 .build();
     }

@@ -43,12 +43,16 @@ public class CalculateTeamStatisticDAOBean {
         List<PlayerLog> supPlayers = getPlayerLogsDAOBean.exec(teamLog.getSupId(), week);
         int total=0;
 
+        boolean flag = teamLog.getTopId().equals(teamLog.getMidId());
         // 탑선수 playerLog.getStat()를 통한 누적 구하기
         for (PlayerLog playerLog : topPlayers){
             LocalDateTime playerLogDate = timeFormatter.exec(playerLog.getDate());
 
             if ((teamLog.getUpdateDate() == null) && playerLogDate.isAfter(createDate)){
                 total += playerLog.getStat();
+                if (flag){
+                    total += playerLog.getStat();
+                }
                 // 결과 맵에 데이터 추가
                 resultMap.computeIfAbsent(oauthId, k -> new HashMap<>())
                         .computeIfAbsent(weekEnum, k -> new HashMap<>())
@@ -59,6 +63,9 @@ public class CalculateTeamStatisticDAOBean {
                 if (playerLogDate.isAfter(createDate) && playerLogDate.isBefore(updateAt)){
 
                     total += playerLog.getStat();
+                    if (flag){
+                        total += playerLog.getStat();
+                    }
                     // 결과 맵에 데이터 추가
                     resultMap.computeIfAbsent(oauthId, k -> new HashMap<>())
                             .computeIfAbsent(weekEnum, k -> new HashMap<>())
@@ -66,13 +73,16 @@ public class CalculateTeamStatisticDAOBean {
                 }
             }
         }
-
+        flag = teamLog.getJglId().equals(teamLog.getMvpId());
         // 정글선수 stat 누적 구하기
         for (PlayerLog playerLog : jglPlayers){
             LocalDateTime playerLogDate = timeFormatter.exec(playerLog.getDate());
 
             if ((teamLog.getUpdateDate() == null) && playerLogDate.isAfter(createDate)){
                 total += playerLog.getStat();
+                if (flag){
+                    total += playerLog.getStat();
+                }
                 // 결과 맵에 데이터 추가
                 resultMap.computeIfAbsent(oauthId, k -> new HashMap<>())
                         .computeIfAbsent(weekEnum, k -> new HashMap<>())
@@ -83,6 +93,9 @@ public class CalculateTeamStatisticDAOBean {
                 if (playerLogDate.isAfter(createDate) && playerLogDate.isBefore(updateAt)){
 
                     total += playerLog.getStat();
+                    if (flag){
+                        total += playerLog.getStat();
+                    }
                     // 결과 맵에 데이터 추가
                     resultMap.computeIfAbsent(oauthId, k -> new HashMap<>())
                             .computeIfAbsent(weekEnum, k -> new HashMap<>())
@@ -91,12 +104,16 @@ public class CalculateTeamStatisticDAOBean {
             }
         }
 
+        flag = teamLog.getMidId().equals(teamLog.getMvpId());
         // 미드선수 stat 누적 구하기
         for (PlayerLog playerLog : midPlayers){
             LocalDateTime playerLogDate = timeFormatter.exec(playerLog.getDate());
 
             if ((teamLog.getUpdateDate() == null) && playerLogDate.isAfter(createDate)){
                 total += playerLog.getStat();
+                if (flag){
+                    total += playerLog.getStat();
+                }
                 // 결과 맵에 데이터 추가
                 resultMap.computeIfAbsent(oauthId, k -> new HashMap<>())
                         .computeIfAbsent(weekEnum, k -> new HashMap<>())
@@ -107,6 +124,9 @@ public class CalculateTeamStatisticDAOBean {
                 if (playerLogDate.isAfter(createDate) && playerLogDate.isBefore(updateAt)){
 
                     total += playerLog.getStat();
+                    if (flag){
+                        total += playerLog.getStat();
+                    }
                     // 결과 맵에 데이터 추가
                     resultMap.computeIfAbsent(oauthId, k -> new HashMap<>())
                             .computeIfAbsent(weekEnum, k -> new HashMap<>())
@@ -115,12 +135,16 @@ public class CalculateTeamStatisticDAOBean {
             }
         }
 
+        flag = teamLog.getAdcId().equals(teamLog.getMvpId());
         // 원딜선수 stat 누적 구하기
         for (PlayerLog playerLog : adcPlayers){
             LocalDateTime playerLogDate = timeFormatter.exec(playerLog.getDate());
 
             if ((teamLog.getUpdateDate() == null) && playerLogDate.isAfter(createDate)){
                 total += playerLog.getStat();
+                if (flag){
+                    total += playerLog.getStat();
+                }
                 // 결과 맵에 데이터 추가
                 resultMap.computeIfAbsent(oauthId, k -> new HashMap<>())
                         .computeIfAbsent(weekEnum, k -> new HashMap<>())
@@ -131,6 +155,9 @@ public class CalculateTeamStatisticDAOBean {
                 if (playerLogDate.isAfter(createDate) && playerLogDate.isBefore(updateAt)){
 
                     total += playerLog.getStat();
+                    if (flag){
+                        total += playerLog.getStat();
+                    }
                     // 결과 맵에 데이터 추가
                     resultMap.computeIfAbsent(oauthId, k -> new HashMap<>())
                             .computeIfAbsent(weekEnum, k -> new HashMap<>())
@@ -139,12 +166,16 @@ public class CalculateTeamStatisticDAOBean {
             }
         }
 
+        flag = teamLog.getSupId().equals(teamLog.getMvpId());
         // 서폿선수 stat 누적 구하기
         for (PlayerLog playerLog : supPlayers){
             LocalDateTime playerLogDate = timeFormatter.exec(playerLog.getDate());
 
             if ((teamLog.getUpdateDate() == null) && playerLogDate.isAfter(createDate)){
                 total += playerLog.getStat();
+                if (flag){
+                    total += playerLog.getStat();
+                }
                 // 결과 맵에 데이터 추가
                 resultMap.computeIfAbsent(oauthId, k -> new HashMap<>())
                         .computeIfAbsent(weekEnum, k -> new HashMap<>())
@@ -155,6 +186,9 @@ public class CalculateTeamStatisticDAOBean {
                 if (playerLogDate.isAfter(createDate) && playerLogDate.isBefore(updateAt)){
 
                     total += playerLog.getStat();
+                    if (flag){
+                        total += playerLog.getStat();
+                    }
                     // 결과 맵에 데이터 추가
                     resultMap.computeIfAbsent(oauthId, k -> new HashMap<>())
                             .computeIfAbsent(weekEnum, k -> new HashMap<>())

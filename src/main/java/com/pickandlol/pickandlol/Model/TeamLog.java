@@ -19,6 +19,7 @@ public class TeamLog {
     Long midId;
     Long adcId;
     Long supId;
+    Long mvpId;
     String createDate;
     String updateDate;
 }
