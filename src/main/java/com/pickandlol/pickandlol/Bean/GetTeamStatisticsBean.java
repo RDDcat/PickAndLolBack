@@ -5,9 +5,11 @@ import com.pickandlol.pickandlol.Bean.Small.GetWeekEnum;
 import com.pickandlol.pickandlol.Model.Enum.Week;
 import com.pickandlol.pickandlol.Model.ResponseTeamStatisticGetDTO;
 import com.pickandlol.pickandlol.Model.TeamStatisticDAO;
+import com.pickandlol.pickandlol.Others.TimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -18,11 +20,13 @@ import java.util.Map;
 @Component
 public class GetTeamStatisticsBean {
 
+    TimeFormatter timeFormatter;
     GetWeekEnum getWeekEnum;
     GetTeamStatisticsDAOBean getTeamStatisticsDAOBean;
 
     @Autowired
-    public GetTeamStatisticsBean(GetWeekEnum getWeekEnum, GetTeamStatisticsDAOBean getTeamStatisticsDAOBean){
+    public GetTeamStatisticsBean(TimeFormatter timeFormatter, GetWeekEnum getWeekEnum, GetTeamStatisticsDAOBean getTeamStatisticsDAOBean){
+        this.timeFormatter = timeFormatter;
         this.getWeekEnum = getWeekEnum;
         this.getTeamStatisticsDAOBean = getTeamStatisticsDAOBean;
     }
@@ -31,15 +35,8 @@ public class GetTeamStatisticsBean {
     public List<ResponseTeamStatisticGetDTO> exec(){
 
         // 오늘 날짜 기반으로 몇 주차인지 판단
-        // 시작 기준 날짜 설정
-        LocalDateTime startReferenceDate = LocalDateTime.of(2024, 6, 9, 19, 0);
-
-        // 날짜 형식 지정
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
-
-        LocalDateTime nowDate = LocalDateTime.now();
-
-        Week week = getWeekEnum.exec(startReferenceDate, nowDate);
+        // 주차를 Week enum 타입으로 변환
+        Week week = getWeekEnum.exec(LocalDateTime.now());
 
         // 팀 통계 전체 가져오기
         List<TeamStatisticDAO> teamStatisticDAOList = getTeamStatisticsDAOBean.exec();

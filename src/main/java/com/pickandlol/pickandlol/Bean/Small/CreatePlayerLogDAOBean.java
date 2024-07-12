@@ -5,6 +5,7 @@ import com.pickandlol.pickandlol.Model.Enum.Week;
 import com.pickandlol.pickandlol.Model.MatchDAO;
 import com.pickandlol.pickandlol.Model.PlayerLog;
 import com.pickandlol.pickandlol.Model.RequestPlayerLogSaveDTO;
+import com.pickandlol.pickandlol.Others.TimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,12 +18,14 @@ public class CreatePlayerLogDAOBean {
     CreateUniqueIdBean createUniqueIdBean;
     GetClubLogPlayerStatBean getClubLogPlayerStatBean;
     GetWeekEnum getWeekEnum;
+    TimeFormatter timeFormatter;
 
     @Autowired
-    public CreatePlayerLogDAOBean(CreateUniqueIdBean createUniqueIdBean, GetClubLogPlayerStatBean getClubLogPlayerStatBean, GetWeekEnum getWeekEnum){
+    public CreatePlayerLogDAOBean(CreateUniqueIdBean createUniqueIdBean, GetClubLogPlayerStatBean getClubLogPlayerStatBean, GetWeekEnum getWeekEnum, TimeFormatter timeFormatter){
         this.createUniqueIdBean = createUniqueIdBean;
         this.getClubLogPlayerStatBean = getClubLogPlayerStatBean;
         this.getWeekEnum = getWeekEnum;
+        this.timeFormatter = timeFormatter;
     }
 
     public PlayerLog exec(ClubLog clubLog, RequestPlayerLogSaveDTO requestPlayerLogSaveDTO, MatchDAO matchDAO){
@@ -46,15 +49,10 @@ public class CreatePlayerLogDAOBean {
 
         String date = year + formattedMonth+ formattedDay + time[0] + time[1];
 
-        // 시작 기준 날짜 설정
-        LocalDateTime startReferenceDate = LocalDateTime.of(2024, 6, 9, 19, 0);
 
-        // 날짜 형식 지정
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
+        LocalDateTime createDate = timeFormatter.exec(date);
 
-        LocalDateTime createDate = LocalDateTime.parse(date, formatter);
-
-        Week week = getWeekEnum.exec(startReferenceDate, createDate);
+        Week week = getWeekEnum.exec(createDate);
 
         return PlayerLog.builder()
                 .playerLogId(createUniqueIdBean.exec())
