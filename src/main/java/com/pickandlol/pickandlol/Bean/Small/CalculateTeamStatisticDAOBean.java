@@ -4,6 +4,7 @@ import com.pickandlol.pickandlol.Model.Enum.Week;
 import com.pickandlol.pickandlol.Model.PlayerLog;
 import com.pickandlol.pickandlol.Model.TeamLog;
 import com.pickandlol.pickandlol.Others.TimeFormatter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -17,6 +18,13 @@ public class CalculateTeamStatisticDAOBean {
     TimeFormatter timeFormatter;
     GetWeekEnum getWeekEnum;
     GetPlayerLogsDAOBean getPlayerLogsDAOBean;
+
+    @Autowired
+    public CalculateTeamStatisticDAOBean(TimeFormatter timeFormatter, GetWeekEnum getWeekEnum, GetPlayerLogsDAOBean getPlayerLogsDAOBean){
+        this.timeFormatter = timeFormatter;
+        this.getWeekEnum = getWeekEnum;
+        this.getPlayerLogsDAOBean = getPlayerLogsDAOBean;
+    }
 
     public Map<String, Map<String, Map<String, Integer>>> exec(TeamLog teamLog, Map<String, Map<String, Map<String, Integer>>> resultMap){
 
@@ -33,6 +41,7 @@ public class CalculateTeamStatisticDAOBean {
         Week week = getWeekEnum.exec(createDate);
         String weekEnum = week.name();
 
+
         // 유저 ID
         String oauthId = teamLog.getOauthId();
 
@@ -43,7 +52,7 @@ public class CalculateTeamStatisticDAOBean {
         List<PlayerLog> supPlayers = getPlayerLogsDAOBean.exec(teamLog.getSupId(), week);
         int total=0;
 
-        boolean flag = teamLog.getTopId().equals(teamLog.getMidId());
+        boolean flag = teamLog.getTopId().equals(teamLog.getMvpId());
         // 탑선수 playerLog.getStat()를 통한 누적 구하기
         for (PlayerLog playerLog : topPlayers){
             LocalDateTime playerLogDate = timeFormatter.exec(playerLog.getDate());
@@ -105,6 +114,7 @@ public class CalculateTeamStatisticDAOBean {
         }
 
         flag = teamLog.getMidId().equals(teamLog.getMvpId());
+
         // 미드선수 stat 누적 구하기
         for (PlayerLog playerLog : midPlayers){
             LocalDateTime playerLogDate = timeFormatter.exec(playerLog.getDate());

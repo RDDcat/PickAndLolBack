@@ -46,12 +46,12 @@ public class MatchController {
     // 경기 - 팀 정보 저장
     @PostMapping("/club")
     public ResponseEntity<Map<String, Object>> saveMatchTeam(@RequestBody RequestClubLogSaveDTO requestClubLogSaveDTO) {
-        Long matchClubId = matchService.saveMatchTeam(requestClubLogSaveDTO);
+        Long clubLogId = matchService.saveMatchTeam(requestClubLogSaveDTO);
 
         // 메시지와 id 값 json 데이터로 반환
         Map<String, Object> requestMap = new HashMap<>();
-        requestMap.put("message", (matchClubId == null) ? "팀 정보 저장 실패" : "팀 정보 저장 성공");
-        requestMap.put("matchClubId", matchClubId);
+        requestMap.put("message", (clubLogId == null) ? "팀 정보 저장 실패" : "팀 정보 저장 성공");
+        requestMap.put("clubLogId", clubLogId);
 
         return ResponseEntity.status(HttpStatus.OK).body(requestMap);
     }
@@ -59,12 +59,12 @@ public class MatchController {
     // 경기 - 선수 정보 저장
     @PostMapping("/player")
     public ResponseEntity<Map<String, Object>> saveMatchPlayer(@RequestBody RequestPlayerLogSaveDTO requestPlayerLogSaveDTO) {
-        Long matchPlayerId = matchService.saveMatchPlayer(requestPlayerLogSaveDTO);
+        Long playerLogId = matchService.saveMatchPlayer(requestPlayerLogSaveDTO);
 
         // 메시지와 id 값 json 데이터로 반환
         Map<String, Object> requestMap = new HashMap<>();
-        requestMap.put("message", (matchPlayerId == null) ? "선수 정보 저장 실패" : "선수 정보 저장 성공");
-        requestMap.put("matchPlayerId", matchPlayerId);
+        requestMap.put("message", (playerLogId == null) ? "선수 정보 저장 실패" : "선수 정보 저장 성공");
+        requestMap.put("playerLogId", playerLogId);
 
         return ResponseEntity.status(HttpStatus.OK).body(requestMap);
     }
