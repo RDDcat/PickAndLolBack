@@ -19,9 +19,9 @@ public class PlayerLog {
     Long clubLogId;
     Long playerId;
     Integer stat;
-    boolean firstKill;
-    boolean firstDeath;
-    boolean mom;
+    boolean isFirstKill;
+    boolean isFirstDeath;
+    boolean isPog;
     Integer heraldDriveFail;
     Integer killCount;
     Integer deathCount;

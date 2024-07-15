@@ -9,9 +9,9 @@ import lombok.Data;
 public class RequestPlayerLogSaveDTO {
     Long clubLogId;
     Long playerId;
-    boolean firstKill;  // 퍼스트 킬
-    boolean firstDeath; // 퍼스트 데스
-    boolean mom; // MOM 선정
+    boolean isFirstKill;  // 퍼스트 킬
+    boolean isFirstDeath; // 퍼스트 데스
+    boolean isPog; // MOM 선정
     Integer heraldDriveFail; // 전령 드라이브 실패 횟수
     Integer killCount; // 킬
     Integer deathCount; // 데스

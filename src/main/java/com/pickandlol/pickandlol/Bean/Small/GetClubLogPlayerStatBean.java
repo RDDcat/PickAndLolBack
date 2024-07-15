@@ -20,7 +20,7 @@ public class GetClubLogPlayerStatBean {
         Long supId = clubLog.getSupId();
 
         // stat 선정
-        stat += playerLog.isMom() ? 40 : 0; // MOM 선정
+        stat += playerLog.isPog() ? 40 : 0; // MOM 선정
         stat += playerLog.getHeraldDriveFail() * -20; // 전령 드라이브 실패
 
         if (playerId.equals(topId)) {
