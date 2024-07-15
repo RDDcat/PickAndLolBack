@@ -18,11 +18,11 @@ public class GetPlayerLogsDAOBean {
         this.playerLogRepositoryJPA = playerLogRepositoryJPA;
     }
 
-    public List<PlayerLog> exec(Long playerId) {
+    public List<PlayerLog> exec(String playerId) {
         return playerLogRepositoryJPA.findByPlayerId(playerId);
     }
 
-    public List<PlayerLog> exec(Long playerId, Week week) {
+    public List<PlayerLog> exec(String playerId, Week week) {
 
         return playerLogRepositoryJPA.findByPlayerIdAndWeek(playerId, week);
     }

@@ -15,7 +15,7 @@ public class GetPlayerDAOBean {
         this.playerRepositoryJPA = playerRepositoryJPA;
     }
 
-    public PlayerDAO exec(Long playerId){
+    public PlayerDAO exec(String playerId){
         return playerRepositoryJPA.findById(playerId).orElse(null);
     }
 

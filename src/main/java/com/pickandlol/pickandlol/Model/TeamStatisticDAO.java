@@ -13,7 +13,7 @@ import lombok.*;
 @Builder
 public class TeamStatisticDAO {
     @Id
-    Long teamStatisticId;
+    String teamStatisticId;
     String oauthId;
     Week week;
     Integer score;

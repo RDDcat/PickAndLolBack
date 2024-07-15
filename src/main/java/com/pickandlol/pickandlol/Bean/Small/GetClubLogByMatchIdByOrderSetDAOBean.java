@@ -18,7 +18,7 @@ public class GetClubLogByMatchIdByOrderSetDAOBean {
         this.clubLogRepositoryJPA = clubLogRepositoryJPA;
     }
 
-    public List<ClubLog> exec(Long matchId, OrderSet orderSet){
+    public List<ClubLog> exec(String matchId, OrderSet orderSet){
         return clubLogRepositoryJPA.findByMatchIdAndOrderSet(matchId, orderSet);
     }
 }

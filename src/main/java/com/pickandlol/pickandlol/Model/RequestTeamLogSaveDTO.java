@@ -6,10 +6,10 @@ import lombok.Data;
 public class RequestTeamLogSaveDTO {
 
     String oauthId;
-    Long topId;
-    Long jglId;
-    Long midId;
-    Long adcId;
-    Long supId;
-    Long mvpId;
+    String topId;
+    String jglId;
+    String midId;
+    String adcId;
+    String supId;
+    String mvpId;
 }

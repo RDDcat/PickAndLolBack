@@ -14,11 +14,11 @@ import lombok.*;
 @Builder
 public class MatchDAO {
     @Id
-    Long matchId;
+    String matchId;
     MatchSeason matchSeason;
     String matchNum;
-    Long homeClubId;
-    Long awayClubId;
+    String homeClubId;
+    String awayClubId;
     String stadium;
     Integer year;
     Integer month;
@@ -29,7 +29,7 @@ public class MatchDAO {
     Integer homeScore;
     Integer awayScore;
     MatchStatus matchStatus;
-    Long winnerClubId;
-    Long loserClubId;
+    String winnerClubId;
+    String loserClubId;
     String clubLogId; // list
 }

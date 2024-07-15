@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class SaveClubLogBean {
@@ -42,7 +43,7 @@ public class SaveClubLogBean {
 
     // 경기 - 팀 정보 저장
     @Transactional
-    public Long saveMatchTeam(RequestClubLogSaveDTO requestClubLogSaveDTO) {
+    public String saveMatchTeam(RequestClubLogSaveDTO requestClubLogSaveDTO) {
 
         ClubLog clubLog = createClubLogDAOBean.exec(requestClubLogSaveDTO);
         saveClubLogDAOBean.exec(clubLog);
@@ -61,7 +62,7 @@ public class SaveClubLogBean {
         updateClubDAOBean.exec(clubDAO, clubLogs);
 
         // 팀 매치 승/패 저장
-        if (matchDAO.getWinnerClubId()!=0){
+        if (!Objects.equals(matchDAO.getWinnerClubId(), "0")){
             updateClubDAOBean.exec(matchDAO);
         }
 

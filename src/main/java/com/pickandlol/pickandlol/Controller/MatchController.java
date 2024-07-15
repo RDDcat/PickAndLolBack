@@ -46,7 +46,7 @@ public class MatchController {
     // 경기 - 팀 정보 저장
     @PostMapping("/club")
     public ResponseEntity<Map<String, Object>> saveMatchTeam(@RequestBody RequestClubLogSaveDTO requestClubLogSaveDTO) {
-        Long clubLogId = matchService.saveMatchTeam(requestClubLogSaveDTO);
+        String clubLogId = matchService.saveMatchTeam(requestClubLogSaveDTO);
 
         // 메시지와 id 값 json 데이터로 반환
         Map<String, Object> requestMap = new HashMap<>();
@@ -59,7 +59,7 @@ public class MatchController {
     // 경기 - 선수 정보 저장
     @PostMapping("/player")
     public ResponseEntity<Map<String, Object>> saveMatchPlayer(@RequestBody RequestPlayerLogSaveDTO requestPlayerLogSaveDTO) {
-        Long playerLogId = matchService.saveMatchPlayer(requestPlayerLogSaveDTO);
+        String playerLogId = matchService.saveMatchPlayer(requestPlayerLogSaveDTO);
 
         // 메시지와 id 값 json 데이터로 반환
         Map<String, Object> requestMap = new HashMap<>();

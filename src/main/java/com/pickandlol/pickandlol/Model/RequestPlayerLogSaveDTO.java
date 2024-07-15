@@ -7,8 +7,8 @@ import lombok.Data;
 @Data
 @Builder
 public class RequestPlayerLogSaveDTO {
-    Long clubLogId;
-    Long playerId;
+    String clubLogId;
+    String playerId;
     boolean isFirstKill;  // 퍼스트 킬
     boolean isFirstDeath; // 퍼스트 데스
     boolean isPog; // MOM 선정

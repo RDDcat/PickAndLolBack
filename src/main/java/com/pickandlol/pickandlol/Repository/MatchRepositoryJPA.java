@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface MatchRepositoryJPA extends JpaRepository<MatchDAO, Long> {
+public interface MatchRepositoryJPA extends JpaRepository<MatchDAO, String> {
 
     List<MatchDAO> findAllByOrderByMonthAscDayAsc();
 }

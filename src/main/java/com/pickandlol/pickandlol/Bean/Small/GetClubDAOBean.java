@@ -15,7 +15,7 @@ public class GetClubDAOBean {
         this.clubRepositoryJPA = clubRepositoryJPA;
     }
 
-    public ClubDAO exec(Long clubId) {
+    public ClubDAO exec(String clubId) {
         return clubRepositoryJPA.findById(clubId).orElse(null);
     }
 }

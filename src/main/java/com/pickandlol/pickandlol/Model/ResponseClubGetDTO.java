@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @Builder
 public class ResponseClubGetDTO {
-    Long clubId;
+    String clubId;
     String clubLogo;
     String clubName;
     Integer matchWinCount;

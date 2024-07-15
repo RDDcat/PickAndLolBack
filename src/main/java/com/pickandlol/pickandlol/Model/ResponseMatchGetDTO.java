@@ -6,10 +6,10 @@ import lombok.Data;
 @Data
 @Builder
 public class ResponseMatchGetDTO {
-    Long matchId;
+    String matchId;
     String matchNum;
-    Long homeClubId;
-    Long awayClubId;
+    String homeClubId;
+    String awayClubId;
     String stadium;
     Integer year;
     Integer month;

@@ -23,7 +23,6 @@ public class SecurityConfig {
     @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .csrf().disable()
             .oauth2Login(oauth2 -> oauth2
                     .successHandler(successHandler) // 커스텀 성공 핸들러 사용
                     .userInfoEndpoint(userInfo -> userInfo

@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface ClubRepositoryJPA extends JpaRepository<ClubDAO, Long> {
+public interface ClubRepositoryJPA extends JpaRepository<ClubDAO, String> {
 
     List<ClubDAO> findAllByOrderByWinCountDescTotalGapDesc();
 }

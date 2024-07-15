@@ -15,9 +15,9 @@ import java.time.LocalDateTime;
 @Builder
 public class PlayerLog {
     @Id
-    Long playerLogId;
-    Long clubLogId;
-    Long playerId;
+    String playerLogId;
+    String clubLogId;
+    String playerId;
     Integer stat;
     boolean isFirstKill;
     boolean isFirstDeath;

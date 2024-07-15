@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface PlayerRepositoryJPA extends JpaRepository<PlayerDAO, Long>{
+public interface PlayerRepositoryJPA extends JpaRepository<PlayerDAO, String>{
 
     List<PlayerDAO> findAllByOrderByStatDesc();
 }

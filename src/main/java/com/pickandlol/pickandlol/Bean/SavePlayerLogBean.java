@@ -35,7 +35,7 @@ public class SavePlayerLogBean {
 
 
     // 경기 - 선수 정보 저장
-    public Long saveMatchPlayer(RequestPlayerLogSaveDTO requestPlayerLogSaveDTO) {
+    public String saveMatchPlayer(RequestPlayerLogSaveDTO requestPlayerLogSaveDTO) {
 
         /*
         * 매치 정보 두개랑 선수 정보 5개씩 10개를 받음

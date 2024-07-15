@@ -8,12 +8,12 @@ import java.util.List;
 @Data
 @Builder
 public class ResponsePlayerGetDTO {
-    Long playerId;
+    String playerId;
     String playerName;
     String playerImage;
     String playerPosition;
     List<String> playerInfo;
-    Long clubId;
+    String clubId;
     Integer stat;
     Double kda;
     Integer killCount;

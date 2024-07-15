@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Builder
 public class ClubDAO {
     @Id
-    Long clubId;
+    String clubId;
     String clubLogo;
     String clubName;
     Integer matchWinCount;

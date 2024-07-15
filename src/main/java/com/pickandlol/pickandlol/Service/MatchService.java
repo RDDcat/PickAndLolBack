@@ -37,12 +37,12 @@ public class MatchService {
     }
 
     // 경기 - 팀 정보 저장
-    public Long saveMatchTeam(RequestClubLogSaveDTO requestClubLogSaveDTO) {
+    public String saveMatchTeam(RequestClubLogSaveDTO requestClubLogSaveDTO) {
         return saveClubLogBean.saveMatchTeam(requestClubLogSaveDTO);
     }
 
     // 경기 - 선수 정보 저장
-    public Long saveMatchPlayer(RequestPlayerLogSaveDTO requestPlayerLogSaveDTO) {
+    public String saveMatchPlayer(RequestPlayerLogSaveDTO requestPlayerLogSaveDTO) {
         return savePlayerLogBean.saveMatchPlayer(requestPlayerLogSaveDTO);
     }
 }

@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface PlayerLogRepositoryJPA extends JpaRepository<PlayerLog, Long>{
-    List<PlayerLog> findByPlayerId(Long playerId);
+public interface PlayerLogRepositoryJPA extends JpaRepository<PlayerLog, String>{
+    List<PlayerLog> findByPlayerId(String playerId);
 
-    List<PlayerLog> findByPlayerIdAndWeek(Long playerId, Week week);
+    List<PlayerLog> findByPlayerIdAndWeek(String playerId, Week week);
 }

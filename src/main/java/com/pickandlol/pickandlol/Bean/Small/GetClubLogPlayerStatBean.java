@@ -9,15 +9,15 @@ public class GetClubLogPlayerStatBean {
 
     public Integer exec(ClubLog clubLog, RequestPlayerLogSaveDTO playerLog) {
 
-        Long playerId = playerLog.getPlayerId();
+        String playerId = playerLog.getPlayerId();
 
         int stat = 10;  // 출전 점수
 
-        Long topId = clubLog.getTopId();
-        Long jglId = clubLog.getJglId();
-        Long midId = clubLog.getMidId();
-        Long adcId = clubLog.getAdcId();
-        Long supId = clubLog.getSupId();
+        String topId = clubLog.getTopId();
+        String jglId = clubLog.getJglId();
+        String midId = clubLog.getMidId();
+        String adcId = clubLog.getAdcId();
+        String supId = clubLog.getSupId();
 
         // stat 선정
         stat += playerLog.isPog() ? 40 : 0; // MOM 선정

@@ -15,8 +15,8 @@ import java.time.LocalDateTime;
 @Builder
 public class PlayerDAO {
     @Id
-    Long playerId;
-    Long clubId;
+    String playerId;
+    String clubId;
     MatchSeason matchSeason;
     String playerName;
     String playerImage;

@@ -55,8 +55,8 @@ public class SaveMatchBean {
                 .homeScore(0)
                 .awayScore(0)
                 .matchStatus(MatchStatus.READY)
-                .winnerClubId(0L)
-                .loserClubId(0L)
+                .winnerClubId("0")
+                .loserClubId("0")
                 .clubLogId("[]")
                 .build();
 

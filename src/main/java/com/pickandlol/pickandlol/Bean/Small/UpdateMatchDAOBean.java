@@ -27,7 +27,7 @@ public class UpdateMatchDAOBean {
 
         int homeWinCount = 0;
         int awayWinCount = 0;
-        List<Long> clubLogIdList = new ArrayList<>();
+        List<String> clubLogIdList = new ArrayList<>();
 
         // 2경기 이상 진행되었을 때, 2승을 달성한 팀이 있는지 확인
         for (ClubLog clubLog : clubLogList) {

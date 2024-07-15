@@ -15,7 +15,7 @@ public class GetMatchDAOBean {
         this.matchRepositoryJPA = matchRepositoryJPA;
     }
 
-    public MatchDAO exec(Long matchId) {
+    public MatchDAO exec(String matchId) {
         return matchRepositoryJPA.findById(matchId).orElse(null);
     }
 }

@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 public class RequestClubLogSaveDTO {
-    Long matchId;
+    String matchId;
     MatchType matchType;
     MatchResult matchResult;
     OrderSet orderSet;
@@ -20,10 +20,10 @@ public class RequestClubLogSaveDTO {
     Integer killCount;
     Integer deathCount;
     Integer assistCount;
-    Long clubId;
-    Long topId;
-    Long jglId;
-    Long midId;
-    Long adcId;
-    Long supId;
+    String clubId;
+    String topId;
+    String jglId;
+    String midId;
+    String adcId;
+    String supId;
 }

@@ -17,8 +17,8 @@ import java.time.LocalDateTime;
 @Builder
 public class ClubLog {
     @Id
-    Long clubLogId;
-    Long matchId;
+    String clubLogId;
+    String matchId;
     MatchType matchType;
     MatchResult matchResult;
     OrderSet orderSet;
@@ -36,11 +36,11 @@ public class ClubLog {
     Integer relativeBaronsCount;
     Integer relativeHeraldsCount;
     Integer relativeEldersCount;
-    Long clubId;
-    Long topId;
-    Long jglId;
-    Long midId;
-    Long adcId;
-    Long supId;
+    String clubId;
+    String topId;
+    String jglId;
+    String midId;
+    String adcId;
+    String supId;
     LocalDateTime createdAt;
 }

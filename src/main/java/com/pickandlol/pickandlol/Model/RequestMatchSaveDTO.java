@@ -6,8 +6,8 @@ import lombok.Data;
 public class RequestMatchSaveDTO {
     String matchSeason;
     String matchNum;
-    Long homeClubId;
-    Long awayClubId;
+    String homeClubId;
+    String awayClubId;
     String stadium;
     Integer year;
     Integer month;
