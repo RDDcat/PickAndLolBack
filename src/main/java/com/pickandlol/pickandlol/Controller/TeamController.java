@@ -45,4 +45,10 @@ public class TeamController {
     public List<ResponseTeamGetDTO> rank(){
         return teamService.getRank();
     }
+
+    // 팁 변동 가능 전체 수정
+    @PutMapping("/team/change")
+    public boolean updateTeamCanChange(){
+        return teamService.updateTeamCanChange();
+    }
 }

@@ -1,9 +1,6 @@
 package com.pickandlol.pickandlol.Service;
 
-import com.pickandlol.pickandlol.Bean.GetTeamBean;
-import com.pickandlol.pickandlol.Bean.GetTeamRankBean;
-import com.pickandlol.pickandlol.Bean.SaveTeamBean;
-import com.pickandlol.pickandlol.Bean.SaveTeamLogBean;
+import com.pickandlol.pickandlol.Bean.*;
 import com.pickandlol.pickandlol.Model.RequestTeamLogSaveDTO;
 import com.pickandlol.pickandlol.Model.RequestTeamSaveDTO;
 import com.pickandlol.pickandlol.Model.ResponseTeamGetDTO;
@@ -19,13 +16,15 @@ public class TeamService {
     SaveTeamBean saveTeamBean;
     SaveTeamLogBean saveTeamLogBean;
     GetTeamRankBean getTeamRankBean;
+    UpdateTeamCanChangeBean updateTeamCanChangeBean;
 
     @Autowired
-    public TeamService(GetTeamBean getTeamBean, SaveTeamBean saveTeamBean, SaveTeamLogBean saveTeamLogBean, GetTeamRankBean getTeamRankBean) {
+    public TeamService(GetTeamBean getTeamBean, SaveTeamBean saveTeamBean, SaveTeamLogBean saveTeamLogBean, GetTeamRankBean getTeamRankBean, UpdateTeamCanChangeBean updateTeamCanChangeBean) {
         this.getTeamBean = getTeamBean;
         this.saveTeamBean = saveTeamBean;
         this.saveTeamLogBean = saveTeamLogBean;
         this.getTeamRankBean = getTeamRankBean;
+        this.updateTeamCanChangeBean = updateTeamCanChangeBean;
     }
 
     // 팀 정보 조회
@@ -46,5 +45,10 @@ public class TeamService {
     // 랭킹 조회
     public List<ResponseTeamGetDTO> getRank(){
         return getTeamRankBean.exec();
+    }
+
+    // 팀 변동 가능 전체 수정
+    public boolean updateTeamCanChange(){
+        return updateTeamCanChangeBean.exec();
     }
 }
