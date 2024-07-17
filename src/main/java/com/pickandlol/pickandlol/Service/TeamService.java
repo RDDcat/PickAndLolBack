@@ -17,14 +17,16 @@ public class TeamService {
     SaveTeamLogBean saveTeamLogBean;
     GetTeamRankBean getTeamRankBean;
     UpdateTeamCanChangeBean updateTeamCanChangeBean;
+    UpdateTeamCanChangeImpossibleBean updateTeamCanChangeImpossibleBean;
 
     @Autowired
-    public TeamService(GetTeamBean getTeamBean, SaveTeamBean saveTeamBean, SaveTeamLogBean saveTeamLogBean, GetTeamRankBean getTeamRankBean, UpdateTeamCanChangeBean updateTeamCanChangeBean) {
+    public TeamService(GetTeamBean getTeamBean, SaveTeamBean saveTeamBean, SaveTeamLogBean saveTeamLogBean, GetTeamRankBean getTeamRankBean, UpdateTeamCanChangeBean updateTeamCanChangeBean, UpdateTeamCanChangeImpossibleBean updateTeamCanChangeImpossibleBean){
         this.getTeamBean = getTeamBean;
         this.saveTeamBean = saveTeamBean;
         this.saveTeamLogBean = saveTeamLogBean;
         this.getTeamRankBean = getTeamRankBean;
         this.updateTeamCanChangeBean = updateTeamCanChangeBean;
+        this.updateTeamCanChangeImpossibleBean = updateTeamCanChangeImpossibleBean;
     }
 
     // 팀 정보 조회
@@ -50,5 +52,10 @@ public class TeamService {
     // 팀 변동 가능 전체 수정
     public boolean updateTeamCanChange(){
         return updateTeamCanChangeBean.exec();
+    }
+
+    // 팀 변동 가능 전체 수정
+    public boolean updateTeamCanChangeImpossible(){
+        return updateTeamCanChangeImpossibleBean.exec();
     }
 }

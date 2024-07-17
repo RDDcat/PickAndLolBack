@@ -47,8 +47,14 @@ public class TeamController {
     }
 
     // 팁 변동 가능 전체 수정
-    @PutMapping("/team/change")
+    @PutMapping("/team/change/possible")
     public boolean updateTeamCanChange(){
         return teamService.updateTeamCanChange();
+    }
+
+    // 팁 변동 가능 전체 수정
+    @PutMapping("/team/change/impossible")
+    public boolean updateTeamCanChangeImpossible(){
+        return teamService.updateTeamCanChangeImpossible();
     }
 }
