@@ -24,4 +24,5 @@ public class ResponsePlayerGetDTO {
     Double cs;
     Integer playCount;
     Integer vp;
+    Integer rank;
 }

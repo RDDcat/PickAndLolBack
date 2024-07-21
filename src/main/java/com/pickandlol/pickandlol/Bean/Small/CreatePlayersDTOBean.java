@@ -12,7 +12,7 @@ import java.util.List;
 @Component
 public class CreatePlayersDTOBean {
 
-    public ResponsePlayerGetDTO exec(PlayerDAO playerDAO) {
+    public ResponsePlayerGetDTO exec(PlayerDAO playerDAO, int rank) {
 
         ObjectMapper objectMapper = new ObjectMapper();
         String playerInfo = playerDAO.getPlayerInfo();
@@ -51,9 +51,19 @@ public class CreatePlayersDTOBean {
                 .damage(damagePerMinute)
                 .vp(playerDAO.getVp())
                 .playerInfo(playerInfoS)
+                .rank(rank)
                 .build();
         }
     public List<ResponsePlayerGetDTO> exec (List < PlayerDAO > playerInfoS) {
-        return playerInfoS.stream().map(this::exec).toList();
+
+        List<ResponsePlayerGetDTO> responsePlayerGetDTOS = new ArrayList<>();
+
+        int rank = 1;
+
+        for(PlayerDAO playerDAO : playerInfoS){
+            responsePlayerGetDTOS.add(exec(playerDAO, rank++));
+        }
+
+        return responsePlayerGetDTOS;
     }
 }
