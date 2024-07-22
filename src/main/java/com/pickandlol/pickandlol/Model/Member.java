@@ -36,9 +36,15 @@ public class Member {
     }
 
     public Member update(String name, String email, String imageUrl) {
-        this.name = name;
-        this.email = email;
-        this.imageUrl = imageUrl;
+        if (name != null) {
+            this.name = name;
+        }
+        if (email != null) {
+            this.email = email;
+        }
+        if (imageUrl != null) {
+            this.imageUrl = imageUrl;
+        }
         return this;
     }
 
