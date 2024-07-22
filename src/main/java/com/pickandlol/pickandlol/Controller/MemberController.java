@@ -1,5 +1,6 @@
 package com.pickandlol.pickandlol.Controller;
 
+import com.pickandlol.pickandlol.Model.RequestMemberImageUpdateDTO;
 import com.pickandlol.pickandlol.Model.RequestMemberNameUpdateDTO;
 import com.pickandlol.pickandlol.Service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,11 @@ public class MemberController {
     @PutMapping("/name")
     public String updateMemberName(@RequestBody RequestMemberNameUpdateDTO requestMemberNameUpdateDTO){
         return memberService.updateMemberName(requestMemberNameUpdateDTO);
+    }
+
+    // 유저 이미지 변경
+    @PutMapping("/image")
+    public String updateUserImage(@RequestBody RequestMemberImageUpdateDTO requestMemberImageUpdateDTO){
+        return memberService.updateUserImage(requestMemberImageUpdateDTO);
     }
 }
