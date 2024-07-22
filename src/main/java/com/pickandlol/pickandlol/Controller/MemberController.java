@@ -1,5 +1,6 @@
 package com.pickandlol.pickandlol.Controller;
 
+import com.pickandlol.pickandlol.Model.RequestMemberDeleteDTO;
 import com.pickandlol.pickandlol.Model.RequestMemberImageUpdateDTO;
 import com.pickandlol.pickandlol.Model.RequestMemberNameUpdateDTO;
 import com.pickandlol.pickandlol.Service.MemberService;
@@ -28,5 +29,11 @@ public class MemberController {
     @PutMapping("/image")
     public String updateUserImage(@RequestBody RequestMemberImageUpdateDTO requestMemberImageUpdateDTO){
         return memberService.updateUserImage(requestMemberImageUpdateDTO);
+    }
+
+    // 유저 삭제
+    @DeleteMapping
+    public String deleteMember(@RequestBody RequestMemberDeleteDTO requestMemberDeleteDTO){
+        return memberService.deleteMember(requestMemberDeleteDTO);
     }
 }

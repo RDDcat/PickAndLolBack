@@ -1,8 +1,10 @@
 package com.pickandlol.pickandlol.Model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
+@Getter
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +20,8 @@ public class Member {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    private boolean isDeleted;
 
     protected Member() {
     }
@@ -48,31 +52,12 @@ public class Member {
         return this;
     }
 
+    public Member delete() {
+        this.isDeleted = true;
+        return this;
+    }
+
     public String getRoleKey() {
         return this.role.getKey();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getOauthId() {
-        return oauthId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public Role getRole() {
-        return role;
     }
 }
