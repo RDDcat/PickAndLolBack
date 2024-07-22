@@ -46,6 +46,7 @@ public class CreatePlayersDTOBean {
                 .deathCount(playerDAO.getDeathCount())
                 .assistCount(playerDAO.getAssistCount())
                 .killRate(playerDAO.getKillRate())
+                .soloKillCount(playerDAO.getSoloKillCount())
                 .playCount(playerDAO.getPlayCount())
                 .cs(csPerMinute)
                 .damage(damagePerMinute)

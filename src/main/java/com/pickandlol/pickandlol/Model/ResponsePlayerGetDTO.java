@@ -19,6 +19,7 @@ public class ResponsePlayerGetDTO {
     Integer killCount;
     Integer deathCount;
     Integer assistCount;
+    Integer soloKillCount;
     Double killRate;
     Double damage;
     Double cs;

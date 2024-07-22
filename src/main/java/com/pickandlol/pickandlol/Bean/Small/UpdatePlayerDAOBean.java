@@ -21,6 +21,7 @@ public class UpdatePlayerDAOBean {
         int totalCs = 0;
         int totalDamage = 0;
         int totalPlayTime = 0;
+        int soloKillCount = 0;
         int totalPlayCount = playerLogs.size();
 
         for (PlayerLog playerLog : playerLogs) {
@@ -31,6 +32,7 @@ public class UpdatePlayerDAOBean {
             totalCs += playerLog.getCs();
             totalDamage += playerLog.getDamage();
             totalPlayTime += playerLog.getPlayTime();
+            soloKillCount += playerLog.getSoloKills();
         }
 
         kda = totalDeathCount > 0 ? (double) (totalKillCount + totalAssistCount) / totalDeathCount : 0.0;
@@ -48,5 +50,6 @@ public class UpdatePlayerDAOBean {
         playerDAO.setCs(totalCs);
         playerDAO.setDamage(totalDamage);
         playerDAO.setPlayTime(totalPlayTime);
+        playerDAO.setSoloKillCount(soloKillCount);
     }
 }

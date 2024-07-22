@@ -27,6 +27,7 @@ public class PlayerDAO {
     Integer killCount;
     Integer deathCount;
     Integer assistCount;
+    Integer soloKillCount;
     Integer damage;
     Integer cs;
     Integer playTime;
