@@ -14,7 +14,7 @@ public class MainController {
 
     @GetMapping("/")
     public String health(){
-        return "server on health check";
+        return "server on health check - git action test";
     }
 
     // 로그인

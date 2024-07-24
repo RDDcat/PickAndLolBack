@@ -9,7 +9,7 @@
          sleep 3
  fi
 
- JAR_PATH="/home/ec2-user/cicd/*.jar"
+ JAR_PATH="/home/ec2-user/cicd/build/libs/*SNAPSHOT.jar"
  echo "jar path : $JAR_PATH"
  chmod +x $JAR_PATH
  nohup java -jar $JAR_PATH >> /home/ec2-user/cicd/deploy.log 2>> /home/ec2-user/cicd/deploy_err.log &
