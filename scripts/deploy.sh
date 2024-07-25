@@ -13,12 +13,11 @@ CURRENT_PID=$(pgrep -f pickandlol-0.0.1-SNAPSHOT.jar)
  echo "jar path : $JAR_PATH"
  chmod +x $JAR_PATH
 
-# Ensure application-secret is in the right place
 SECRET_PATH="/home/ec2-user/cicd/src/main/resources/application-secret.properties"
 if [ ! -f "$SECRET_PATH" ]; then
     echo "application-secret.properties not found!"
     exit 1
 fi
 
-nohup java -jar $JAR_PATH --spring.config.additional-location=file:$SECRET_PATH >> /home/ec2-user/cicd/deploy.log 2>> /home/ec2-user/cicd/deploy_err.log &
+nohup java -jar $JAR_PATH --spring.config.additional-location=file:$SECRET_PATH &
 echo "jar file deploy success"
