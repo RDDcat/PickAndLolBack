@@ -37,6 +37,10 @@ jobs:
       - name: Build with Gradle Build
         run: ./gradlew build -x test
 
+      # Create application-secret file
+      - name: Create application-secret file
+        run: echo "${{ secrets.APPLICATION_SECRET }}" > src/main/resources/application-secret.properties
+
       - name: Make Zip File
         run: zip -qq -r ./$GITHUB_SHA.zip .
         shell: bash
