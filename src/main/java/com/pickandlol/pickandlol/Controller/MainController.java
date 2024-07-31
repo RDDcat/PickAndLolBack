@@ -31,4 +31,10 @@ public class MainController {
         return "login successful";
     }
 
+    // 로그인
+    @PostMapping("/test")
+    public String login(@RequestBody String data){
+        return "test successful"+data;
+    }
+
 }
