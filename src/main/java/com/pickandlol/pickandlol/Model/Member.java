@@ -2,6 +2,7 @@ package com.pickandlol.pickandlol.Model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Getter
@@ -20,6 +21,11 @@ public class Member {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @Setter
+    private String accessToken;
+
+    private String refreshToken;
 
     private boolean isDeleted;
 
@@ -49,6 +55,12 @@ public class Member {
         if (imageUrl != null) {
             this.imageUrl = imageUrl;
         }
+        return this;
+    }
+
+    public Member updateToken(String accessToken, String refreshToken) {
+        this.accessToken = accessToken;
+        this.refreshToken = refreshToken;
         return this;
     }
 
