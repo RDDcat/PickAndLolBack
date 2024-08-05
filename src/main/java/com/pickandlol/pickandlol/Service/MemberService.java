@@ -1,6 +1,7 @@
 package com.pickandlol.pickandlol.Service;
 
 import com.pickandlol.pickandlol.Bean.DeleteMemberBean;
+import com.pickandlol.pickandlol.Bean.GetAccessTokenBean;
 import com.pickandlol.pickandlol.Bean.UpdateMemberNameBean;
 import com.pickandlol.pickandlol.Bean.UpdateUserImageBean;
 import com.pickandlol.pickandlol.Model.RequestMemberDeleteDTO;
@@ -12,15 +13,22 @@ import org.springframework.stereotype.Service;
 @Service
 public class MemberService {
 
+    GetAccessTokenBean getAccessTokenBean;
     UpdateMemberNameBean updateMemberNameBean;
     UpdateUserImageBean updateUserImageBean;
     DeleteMemberBean deleteMemberBean;
 
     @Autowired
-    public MemberService(UpdateMemberNameBean updateMemberNameBean, UpdateUserImageBean updateUserImageBean, DeleteMemberBean deleteMemberBean) {
+    public MemberService(GetAccessTokenBean getAccessTokenBean, UpdateMemberNameBean updateMemberNameBean, UpdateUserImageBean updateUserImageBean, DeleteMemberBean deleteMemberBean) {
+        this.getAccessTokenBean = getAccessTokenBean;
         this.updateMemberNameBean = updateMemberNameBean;
         this.updateUserImageBean = updateUserImageBean;
         this.deleteMemberBean = deleteMemberBean;
+    }
+
+    // 토큰 체크
+    public String getAccessToken(String token) {
+        return getAccessTokenBean.exec(token);
     }
 
     // 맴버 이름 변경
