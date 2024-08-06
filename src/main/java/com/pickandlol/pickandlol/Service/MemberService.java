@@ -30,6 +30,7 @@ public class MemberService {
 
     // 토큰 체크
     public Map<String, String> getAccessToken(String token) {
+        System.out.println("token = " + token);
         return getAccessTokenBean.exec(token);
     }
 

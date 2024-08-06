@@ -36,31 +36,28 @@ public class MainController {
     }
 
     @GetMapping("/token/{token}")
-    public void token(@PathVariable(value = "token") String token, HttpServletResponse response) throws IOException {
+    public ResponseEntity<?> token(@PathVariable(value = "token") String token, HttpServletResponse response) throws IOException {
+
+        System.out.println("token = " + token);
         Map<String, String> map = memberService.getAccessToken(token);
 
         if (map.get("accessToken") == null || map.get("refreshToken") == null) {
-            response.sendError(HttpStatus.NOT_FOUND.value(), "token not found");
-            return;
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("token not found");
         }
 
-        // HTTP response header에 access-token 설정
-        response.setHeader("access-token", map.get("accessToken"));
-        response.setHeader("refresh-token", map.get("refreshToken"));
+        return ResponseEntity.ok(map);
     }
 
     @PostMapping("/refresh")
-    public void refreshToken(@RequestBody RequestMemberRefreshTokenDTO requestMemberRefreshTokenDTO, HttpServletResponse response) throws IOException {
+    public ResponseEntity<?> refreshToken(@RequestBody RequestMemberRefreshTokenDTO requestMemberRefreshTokenDTO, HttpServletResponse response) throws IOException {
 
         String accessToken = memberService.reissueAccessToken(requestMemberRefreshTokenDTO);
 
         if (accessToken == null) {
-            response.sendError(HttpStatus.NOT_FOUND.value(), "Access token not found");
-            return;
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("token not found");
         }
 
-        // HTTP response header에 access-token 설정
-        response.setHeader("access-token", accessToken);
+        return ResponseEntity.ok(Map.of("accessToken", accessToken));
     }
 
     // 로그인

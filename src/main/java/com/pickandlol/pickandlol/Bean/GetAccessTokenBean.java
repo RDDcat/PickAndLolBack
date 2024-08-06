@@ -27,6 +27,10 @@ public class GetAccessTokenBean {
         String accessToken = jwtUtil.getAccessToken(token);
         String refreshToken = jwtUtil.getRefreshToken(token);
 
+        System.out.println("accessToken = " + accessToken);
+        System.out.println("refreshToken = " + refreshToken);
+
+
         // 액세스, 리프레쉬 토큰 Map에 담아 반환
         return Map.of("accessToken", accessToken, "refreshToken", refreshToken);
     }

@@ -69,6 +69,9 @@ public class JwtUtil {
             Claims claims = claimsJws.getPayload();
             Date expiration = claims.getExpiration();
 
+            System.out.println("expiration = " + expiration);
+            System.out.println("new Date() = " + new Date());
+
             // 만료 시간 확인 후, 만료되었으면 false 반환
             return expiration.after(new Date());
         } catch (Exception e) {
