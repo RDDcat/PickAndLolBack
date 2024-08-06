@@ -36,8 +36,26 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(authorizeRequests ->
                     authorizeRequests
+                            .requestMatchers(HttpMethod.GET, "/health").permitAll()
                             .requestMatchers("/error").permitAll()
                             .requestMatchers("/favicon.ico").permitAll()
+
+                            .requestMatchers(HttpMethod.GET,"/match").permitAll()
+                            .requestMatchers(HttpMethod.POST,"/match").permitAll()
+                            .requestMatchers(HttpMethod.POST,"/match/**").permitAll()
+
+                            .requestMatchers(HttpMethod.GET, "/club/all").permitAll()
+
+                            .requestMatchers(HttpMethod.GET, "/player/all").permitAll()
+
+                            .requestMatchers("/team/statistic").permitAll()
+
+                            .requestMatchers(HttpMethod.GET, "/rank").permitAll()
+                            .requestMatchers(HttpMethod.POST, "/save").permitAll()
+                            .requestMatchers(HttpMethod.POST, "/team/log").permitAll()
+                            .requestMatchers(HttpMethod.PUT, "/team/change/**").permitAll()
+
+
                             .requestMatchers(HttpMethod.GET, "/token/**").permitAll()
                             .requestMatchers(HttpMethod.POST, "/refresh").permitAll()
                             .anyRequest().authenticated()
