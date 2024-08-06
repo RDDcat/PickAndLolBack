@@ -13,13 +13,12 @@ import org.springframework.security.web.authentication.preauth.PreAuthenticatedA
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-import java.util.List;
 
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtUtil jwtUtil;
     private final MemberTokenRepositoryJPA memberTokenRepositoryJPA;
-    private static final List<String> EXCLUDE_URLS = List.of("/club/all", "/health", "/error", "/favicon.ico", "/match", "/match/**", "/player/all", "/team/statistic", "/rank", "/team/log", "/team/change/**", "/token/**", "/refresh");
+
     public JwtAuthenticationFilter(JwtUtil jwtUtil, MemberTokenRepositoryJPA memberTokenRepositoryJPA) {
         this.jwtUtil = jwtUtil;
         this.memberTokenRepositoryJPA = memberTokenRepositoryJPA;
@@ -30,8 +29,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         String path = request.getRequestURI();
 
-        // 예외 경로 필터링하지 않도록 설정
-        if (EXCLUDE_URLS.stream().anyMatch(path::matches)) {
+        System.out.println("path = " + path);
+
+        // 로그인 경로는 필터링하지 않도록 설정
+        if ("/login".equals(path)) {
             filterChain.doFilter(request, response);
             return;
         }

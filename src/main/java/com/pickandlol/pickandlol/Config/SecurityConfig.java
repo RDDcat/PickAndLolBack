@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -32,40 +33,43 @@ public class SecurityConfig {
     }
 
     @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() { // security를 적용하지 않을 리소스
+        return web -> web.ignoring()
+                // error endpoint를 열어줘야 함, favicon.ico 추가!
+                .requestMatchers("/error", "/favicon.ico")
+                .requestMatchers(HttpMethod.GET, "/health")
+                .requestMatchers("/error")
+                .requestMatchers("/favicon.ico")
+
+                .requestMatchers(HttpMethod.GET, "/match")
+                .requestMatchers(HttpMethod.POST, "/match")
+                .requestMatchers(HttpMethod.POST, "/match/**")
+
+                .requestMatchers(HttpMethod.GET, "/club/all")
+
+                .requestMatchers(HttpMethod.GET, "/player/all")
+
+                .requestMatchers("/team/statistic")
+
+                .requestMatchers(HttpMethod.GET, "/rank")
+                .requestMatchers(HttpMethod.POST, "/team/log")
+                .requestMatchers(HttpMethod.PUT, "/team/change/**")
+
+
+                .requestMatchers(HttpMethod.GET, "/token/**")
+                .requestMatchers(HttpMethod.POST, "/refresh");
+    }
+
+    @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
-            .authorizeHttpRequests(authorizeRequests ->
-                    authorizeRequests
-                            .requestMatchers(HttpMethod.GET, "/health").permitAll()
-                            .requestMatchers("/error").permitAll()
-                            .requestMatchers("/favicon.ico").permitAll()
-
-                            .requestMatchers(HttpMethod.GET,"/match").permitAll()
-                            .requestMatchers(HttpMethod.POST,"/match").permitAll()
-                            .requestMatchers(HttpMethod.POST,"/match/**").permitAll()
-
-                            .requestMatchers(HttpMethod.GET, "/club/all").permitAll()
-
-                            .requestMatchers(HttpMethod.GET, "/player/all").permitAll()
-
-                            .requestMatchers("/team/statistic").permitAll()
-
-                            .requestMatchers(HttpMethod.GET, "/rank").permitAll()
-                            .requestMatchers(HttpMethod.POST, "/team/log").permitAll()
-                            .requestMatchers(HttpMethod.PUT, "/team/change/**").permitAll()
-
-
-                            .requestMatchers(HttpMethod.GET, "/token/**").permitAll()
-                            .requestMatchers(HttpMethod.POST, "/refresh").permitAll()
-                            .anyRequest().authenticated()
-            )
-            .oauth2Login(oauth2 -> oauth2
-                    .successHandler(successHandler) // 커스텀 성공 핸들러 사용
-                    .userInfoEndpoint(userInfo -> userInfo
-                            .userService(oAuthService) // OAuth2 로그인 성공 이후 사용자 정보를 가져올 때 설정 담당
-                    )
-            )
-            .addFilterBefore(new JwtAuthenticationFilter(jwtUtil, memberTokenRepositoryJPA), UsernamePasswordAuthenticationFilter.class);
+                .oauth2Login(oauth2 -> oauth2
+                        .successHandler(successHandler) // 커스텀 성공 핸들러 사용
+                        .userInfoEndpoint(userInfo -> userInfo
+                                .userService(oAuthService) // OAuth2 로그인 성공 이후 사용자 정보를 가져올 때 설정 담당
+                        )
+                )
+                .addFilterBefore(new JwtAuthenticationFilter(jwtUtil, memberTokenRepositoryJPA), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
