@@ -21,6 +21,9 @@ public class MainController {
     MemberService memberService;
 
     @Autowired
+    public MainController(MemberService memberService) {
+        this.memberService = memberService;
+    }
 
     @GetMapping("/")
     public String health(){
