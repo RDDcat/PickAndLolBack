@@ -1,6 +1,7 @@
 package com.pickandlol.pickandlol.Controller;
 
 import com.pickandlol.pickandlol.Model.Member;
+import com.pickandlol.pickandlol.Model.RequestMemberRefreshTokenDTO;
 import com.pickandlol.pickandlol.Service.MemberService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,19 @@ public class MainController {
         response.setHeader("access-token", accessToken);
     }
 
+    @PostMapping("/refresh")
+    public void refreshToken(@RequestBody RequestMemberRefreshTokenDTO requestMemberRefreshTokenDTO, HttpServletResponse response) throws IOException {
+
+        String accessToken = memberService.reissueAccessToken(requestMemberRefreshTokenDTO);
+
+        if (accessToken == null) {
+            response.sendError(HttpStatus.NOT_FOUND.value(), "Access token not found");
+            return;
+        }
+
+        // HTTP response header에 access-token 설정
+        response.setHeader("access-token", accessToken);
+    }
 
     // 로그인
     @PostMapping("/login")

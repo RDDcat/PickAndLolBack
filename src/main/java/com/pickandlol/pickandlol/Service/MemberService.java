@@ -1,12 +1,10 @@
 package com.pickandlol.pickandlol.Service;
 
-import com.pickandlol.pickandlol.Bean.DeleteMemberBean;
-import com.pickandlol.pickandlol.Bean.GetAccessTokenBean;
-import com.pickandlol.pickandlol.Bean.UpdateMemberNameBean;
-import com.pickandlol.pickandlol.Bean.UpdateUserImageBean;
+import com.pickandlol.pickandlol.Bean.*;
 import com.pickandlol.pickandlol.Model.RequestMemberDeleteDTO;
 import com.pickandlol.pickandlol.Model.RequestMemberImageUpdateDTO;
 import com.pickandlol.pickandlol.Model.RequestMemberNameUpdateDTO;
+import com.pickandlol.pickandlol.Model.RequestMemberRefreshTokenDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +12,15 @@ import org.springframework.stereotype.Service;
 public class MemberService {
 
     GetAccessTokenBean getAccessTokenBean;
+    ReissueAccessTokenBean reissueAccessTokenBean;
     UpdateMemberNameBean updateMemberNameBean;
     UpdateUserImageBean updateUserImageBean;
     DeleteMemberBean deleteMemberBean;
 
     @Autowired
-    public MemberService(GetAccessTokenBean getAccessTokenBean, UpdateMemberNameBean updateMemberNameBean, UpdateUserImageBean updateUserImageBean, DeleteMemberBean deleteMemberBean) {
+    public MemberService(GetAccessTokenBean getAccessTokenBean, ReissueAccessTokenBean reissueAccessTokenBean, UpdateMemberNameBean updateMemberNameBean, UpdateUserImageBean updateUserImageBean, DeleteMemberBean deleteMemberBean) {
         this.getAccessTokenBean = getAccessTokenBean;
+        this.reissueAccessTokenBean = reissueAccessTokenBean;
         this.updateMemberNameBean = updateMemberNameBean;
         this.updateUserImageBean = updateUserImageBean;
         this.deleteMemberBean = deleteMemberBean;
@@ -29,6 +29,11 @@ public class MemberService {
     // 토큰 체크
     public String getAccessToken(String token) {
         return getAccessTokenBean.exec(token);
+    }
+
+    // 액세스 토큰 재발급
+    public String reissueAccessToken(RequestMemberRefreshTokenDTO requestMemberRefreshTokenDTO) {
+        return reissueAccessTokenBean.exec(requestMemberRefreshTokenDTO);
     }
 
     // 맴버 이름 변경

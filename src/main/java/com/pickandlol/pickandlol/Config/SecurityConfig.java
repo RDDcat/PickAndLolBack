@@ -36,8 +36,10 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(authorizeRequests ->
                     authorizeRequests
-                            .requestMatchers("/login/oauth2/code/google").permitAll()
+                            .requestMatchers("/error").permitAll()
                             .requestMatchers("/favicon.ico").permitAll()
+                            .requestMatchers(HttpMethod.GET, "/token/**").permitAll()
+                            .requestMatchers(HttpMethod.POST, "/refresh").permitAll()
                             .anyRequest().authenticated()
             )
             .oauth2Login(oauth2 -> oauth2

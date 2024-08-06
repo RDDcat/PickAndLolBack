@@ -6,4 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface MemberTokenRepositoryJPA extends JpaRepository<MemberTokenDAO, Long> {
 
     MemberTokenDAO findByAccessToken(String accessToken);
+
+    MemberTokenDAO findByRefreshToken(String refreshToken);
 }
