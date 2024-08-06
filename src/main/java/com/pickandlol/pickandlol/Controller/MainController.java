@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.Map;
 
 
 @RestController
@@ -33,15 +34,16 @@ public class MainController {
 
     @GetMapping("/token/{token}")
     public void token(@PathVariable(value = "token") String token, HttpServletResponse response) throws IOException {
-        String accessToken = memberService.getAccessToken(token);
+        Map<String, String> map = memberService.getAccessToken(token);
 
-        if (accessToken == null) {
-            response.sendError(HttpStatus.NOT_FOUND.value(), "Access token not found");
+        if (map.get("accessToken") == null || map.get("refreshToken") == null) {
+            response.sendError(HttpStatus.NOT_FOUND.value(), "token not found");
             return;
         }
 
         // HTTP response header에 access-token 설정
-        response.setHeader("access-token", accessToken);
+        response.setHeader("access-token", map.get("accessToken"));
+        response.setHeader("refresh-token", map.get("refreshToken"));
     }
 
     @PostMapping("/refresh")

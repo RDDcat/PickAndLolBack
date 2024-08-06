@@ -51,7 +51,6 @@ public class SecurityConfig {
                             .requestMatchers("/team/statistic").permitAll()
 
                             .requestMatchers(HttpMethod.GET, "/rank").permitAll()
-                            .requestMatchers(HttpMethod.POST, "/save").permitAll()
                             .requestMatchers(HttpMethod.POST, "/team/log").permitAll()
                             .requestMatchers(HttpMethod.PUT, "/team/change/**").permitAll()
 

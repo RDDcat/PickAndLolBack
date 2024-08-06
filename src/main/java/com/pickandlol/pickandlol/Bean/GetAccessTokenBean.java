@@ -4,6 +4,8 @@ import com.pickandlol.pickandlol.jose.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
+
 @Component
 public class GetAccessTokenBean {
 
@@ -14,7 +16,7 @@ public class GetAccessTokenBean {
         this.jwtUtil = jwtUtil;
     }
 
-    public String exec(String token) {
+    public Map<String, String> exec(String token) {
 
         boolean validatedToken = jwtUtil.validateToken(token);
 
@@ -22,6 +24,10 @@ public class GetAccessTokenBean {
             return null;
         }
 
-        return jwtUtil.getAccessToken(token);
+        String accessToken = jwtUtil.getAccessToken(token);
+        String refreshToken = jwtUtil.getRefreshToken(token);
+
+        // 액세스, 리프레쉬 토큰 Map에 담아 반환
+        return Map.of("accessToken", accessToken, "refreshToken", refreshToken);
     }
 }

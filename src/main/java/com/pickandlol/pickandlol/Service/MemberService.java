@@ -8,6 +8,8 @@ import com.pickandlol.pickandlol.Model.RequestMemberRefreshTokenDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service
 public class MemberService {
 
@@ -27,7 +29,7 @@ public class MemberService {
     }
 
     // 토큰 체크
-    public String getAccessToken(String token) {
+    public Map<String, String> getAccessToken(String token) {
         return getAccessTokenBean.exec(token);
     }
 

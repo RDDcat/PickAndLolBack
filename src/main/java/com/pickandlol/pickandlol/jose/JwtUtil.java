@@ -85,4 +85,13 @@ public class JwtUtil {
                 .getPayload()
                 .get("accessToken", String.class);
     }
+
+    public String getRefreshToken(String token) {
+        return Jwts.parser()
+                .verifyWith((SecretKey) key)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload()
+                .get("refreshToken", String.class);
+    }
 }
