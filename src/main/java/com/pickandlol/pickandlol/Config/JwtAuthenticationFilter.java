@@ -1,17 +1,15 @@
 package com.pickandlol.pickandlol.Config;
 
-import com.pickandlol.pickandlol.Model.Member;
-import com.pickandlol.pickandlol.Repository.MemberRepositoryJPA;
+import com.pickandlol.pickandlol.Model.MemberTokenDAO;
+import com.pickandlol.pickandlol.Repository.MemberTokenRepositoryJPA;
 import com.pickandlol.pickandlol.jose.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
-import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
@@ -19,40 +17,44 @@ import java.io.IOException;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtUtil jwtUtil;
-    MemberRepositoryJPA memberRepositoryJPA;
+    private final MemberTokenRepositoryJPA memberTokenRepositoryJPA;
 
-    public JwtAuthenticationFilter(JwtUtil jwtUtil, MemberRepositoryJPA memberRepositoryJPA) {
+    public JwtAuthenticationFilter(JwtUtil jwtUtil, MemberTokenRepositoryJPA memberTokenRepositoryJPA) {
         this.jwtUtil = jwtUtil;
-        this.memberRepositoryJPA = memberRepositoryJPA;
+        this.memberTokenRepositoryJPA = memberTokenRepositoryJPA;
     }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+
+        String path = request.getRequestURI();
+
+        System.out.println("path = " + path);
+
+        // 로그인 경로는 필터링하지 않도록 설정
+        if ("/login".equals(path)) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         String accessToken = request.getHeader("access-token");
 
         // 토큰으로 멤버 찾기
-        Member member = memberRepositoryJPA.findByAccessToken(accessToken);
-        if (member != null) {
+        MemberTokenDAO memberTokenDAO = memberTokenRepositoryJPA.findByAccessToken(accessToken);
+        if (memberTokenDAO == null) {
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
+        }
+        else {
             // Access Token 유효성 검사
             if (!jwtUtil.validateToken(accessToken)) {
-                // Access Token이 만료된 경우 Refresh Token 유효성 검사
-                if (jwtUtil.validateToken(member.getRefreshToken())) {
-                    // Refresh Token이 유효한 경우 새로운 Access Token 발급
-                    String newAccessToken = jwtUtil.generateAccessToken(member);
-
-                    // 멤버 객체 업데이트 및 저장
-                    member.setAccessToken(newAccessToken);
-                    memberRepositoryJPA.save(member);
-
-                } else {
-                    // Refresh Token도 만료된 경우 응답 설정
-                    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                    return;
-                }
+                // Access Token이 만료된 경우
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                return;
             }
 
             // 인증 설정
-            PreAuthenticatedAuthenticationToken authentication = new PreAuthenticatedAuthenticationToken(member.getOauthId(), null, null);
+            PreAuthenticatedAuthenticationToken authentication = new PreAuthenticatedAuthenticationToken(memberTokenDAO.getOauthId(), null, null);
             authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }

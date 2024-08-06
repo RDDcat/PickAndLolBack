@@ -1,6 +1,7 @@
 package com.pickandlol.pickandlol.jose;
 
 import com.pickandlol.pickandlol.Model.Member;
+import com.pickandlol.pickandlol.Model.MemberTokenDAO;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
@@ -39,11 +40,8 @@ public class JwtUtil {
         return generateOauthToken(member.getOauthId(), ACCESS_TOKEN_EXPIRE_TIME);
     }
 
-    public String generateRefreshToken(Member member, String accessToken) {
-        String refreshToken = generateOauthToken(member.getOauthId(), REFRESH_TOKEN_EXPIRE_TIME);
-        member.updateToken(refreshToken, accessToken);
-
-        return refreshToken;
+    public String generateRefreshToken(Member member) {
+        return generateOauthToken(member.getOauthId(), REFRESH_TOKEN_EXPIRE_TIME);
     }
 
     private String generateOauthToken(String oauthId, long expireTime) {
