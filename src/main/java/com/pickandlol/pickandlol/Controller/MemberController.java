@@ -1,11 +1,10 @@
 package com.pickandlol.pickandlol.Controller;
 
-import com.pickandlol.pickandlol.Model.RequestMemberDeleteDTO;
-import com.pickandlol.pickandlol.Model.RequestMemberImageUpdateDTO;
-import com.pickandlol.pickandlol.Model.RequestMemberNameUpdateDTO;
+import com.pickandlol.pickandlol.Model.*;
 import com.pickandlol.pickandlol.Service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 
 @RestController
 @CrossOrigin("*")
@@ -17,6 +16,12 @@ public class MemberController {
     @Autowired
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
+    }
+
+    // 유저 조회
+    @PostMapping("")
+    public ResponseMemberGetDTO getMember(@RequestBody RequestMemberGetDTO requestMemberGetDTO){
+        return memberService.getMember(requestMemberGetDTO);
     }
 
     // 유저 이름 변경

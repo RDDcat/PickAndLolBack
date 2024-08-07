@@ -63,6 +63,11 @@ public class SecurityConfig {
     @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
+                .authorizeHttpRequests(authorizeRequests ->
+                        authorizeRequests
+                                .requestMatchers(HttpMethod.GET, "/member").permitAll()
+                                .anyRequest().authenticated()
+                )
                 .oauth2Login(oauth2 -> oauth2
                         .successHandler(successHandler) // 커스텀 성공 핸들러 사용
                         .userInfoEndpoint(userInfo -> userInfo
