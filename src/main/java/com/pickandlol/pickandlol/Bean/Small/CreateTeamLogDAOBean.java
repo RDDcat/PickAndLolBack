@@ -18,7 +18,7 @@ public class CreateTeamLogDAOBean {
         this.createUniqueIdBean = createUniqueIdBean;
     }
 
-    public TeamLog exec(RequestTeamLogSaveDTO requestTeamLogSaveDTO){
+    public TeamLog exec(Integer updateDate, RequestTeamLogSaveDTO requestTeamLogSaveDTO){
 
         // 현재 날짜와 시간 가져오기
         LocalDateTime now = LocalDateTime.now();
@@ -39,6 +39,7 @@ public class CreateTeamLogDAOBean {
                 .supId(requestTeamLogSaveDTO.getSupId())
                 .mvpId(requestTeamLogSaveDTO.getMvpId())
                 .createDate(formattedDateTime)
+                .vpUpdateDate(updateDate)
                 .build();
     }
 }

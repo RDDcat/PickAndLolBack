@@ -17,6 +17,10 @@ public class GetPlayersDAOBean {
         this.playerRepositoryJPA = playerRepositoryJPA;
     }
 
+    public List<PlayerDAO> exec(String check){
+        return playerRepositoryJPA.findAll();
+    }
+
     public List<PlayerDAO> exec(){
         return playerRepositoryJPA.findAllByOrderByStatDesc();
     }
