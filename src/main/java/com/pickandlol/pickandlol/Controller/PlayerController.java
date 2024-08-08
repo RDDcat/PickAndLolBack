@@ -3,10 +3,7 @@ package com.pickandlol.pickandlol.Controller;
 import com.pickandlol.pickandlol.Model.DTO.ResponsePlayerGetDTO;
 import com.pickandlol.pickandlol.Service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,6 +23,12 @@ public class PlayerController {
     @GetMapping("/all")
     public List<ResponsePlayerGetDTO> getPlayers(){
         return playerService.getPlayers();
+    }
+
+    // 선수 VP 로그 저장
+    @PostMapping("/log")
+    public String savePlayerVPLogs(){
+        return playerService.savePlayerVPLogs();
     }
 
 }

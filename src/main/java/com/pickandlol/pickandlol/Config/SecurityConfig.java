@@ -48,6 +48,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/club/all")
 
                 .requestMatchers(HttpMethod.GET, "/player/all")
+                .requestMatchers(HttpMethod.POST, "/player/log")
 
                 .requestMatchers("/team/statistic")
 

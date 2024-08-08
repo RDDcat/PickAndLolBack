@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @Builder
 public class MemberTokenDAO {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long memberTokenId;
     String oauthId;
     String accessToken;

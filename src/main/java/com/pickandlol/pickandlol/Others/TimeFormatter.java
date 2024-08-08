@@ -14,4 +14,14 @@ public class TimeFormatter {
 
         return LocalDateTime.parse(time, formatter);
     }
+
+    public Integer exec(LocalDateTime time){
+
+        // 날짜 형식 지정
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+
+        String format = time.format(formatter);
+
+        return Integer.parseInt(format);
+    }
 }
