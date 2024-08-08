@@ -1,7 +1,7 @@
 package com.pickandlol.pickandlol.Bean.Small;
 
-import com.pickandlol.pickandlol.Model.ClubLog;
-import com.pickandlol.pickandlol.Model.RequestPlayerLogSaveDTO;
+import com.pickandlol.pickandlol.Model.DAO.ClubLog;
+import com.pickandlol.pickandlol.Model.DTO.RequestPlayerLogSaveDTO;
 import org.springframework.stereotype.Component;
 
 @Component

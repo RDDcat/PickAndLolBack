@@ -2,8 +2,8 @@ package com.pickandlol.pickandlol.Bean.Small;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pickandlol.pickandlol.Model.PlayerDAO;
-import com.pickandlol.pickandlol.Model.ResponsePlayerGetDTO;
+import com.pickandlol.pickandlol.Model.DAO.PlayerDAO;
+import com.pickandlol.pickandlol.Model.DTO.ResponsePlayerGetDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

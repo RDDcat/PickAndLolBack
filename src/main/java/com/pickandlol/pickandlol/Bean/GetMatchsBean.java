@@ -2,8 +2,8 @@ package com.pickandlol.pickandlol.Bean;
 
 import com.pickandlol.pickandlol.Bean.Small.CreateMatchDTOBean;
 import com.pickandlol.pickandlol.Bean.Small.GetMatchsOrderByDateDAOBean;
-import com.pickandlol.pickandlol.Model.MatchDAO;
-import com.pickandlol.pickandlol.Model.ResponseMatchGetDTO;
+import com.pickandlol.pickandlol.Model.DAO.MatchDAO;
+import com.pickandlol.pickandlol.Model.DTO.ResponseMatchGetDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

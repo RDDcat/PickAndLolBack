@@ -1,4 +1,4 @@
-package com.pickandlol.pickandlol.Model;
+package com.pickandlol.pickandlol.Model.DAO;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

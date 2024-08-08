@@ -1,6 +1,6 @@
 package com.pickandlol.pickandlol.Controller;
 
-import com.pickandlol.pickandlol.Model.ResponseClubGetDTO;
+import com.pickandlol.pickandlol.Model.DTO.ResponseClubGetDTO;
 import com.pickandlol.pickandlol.Service.ClubService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;

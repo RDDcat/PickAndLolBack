@@ -4,7 +4,11 @@ import com.pickandlol.pickandlol.Bean.GetMatchsBean;
 import com.pickandlol.pickandlol.Bean.SaveMatchBean;
 import com.pickandlol.pickandlol.Bean.SavePlayerLogBean;
 import com.pickandlol.pickandlol.Bean.SaveClubLogBean;
-import com.pickandlol.pickandlol.Model.*;
+import com.pickandlol.pickandlol.Model.DAO.MatchDAO;
+import com.pickandlol.pickandlol.Model.DTO.RequestClubLogSaveDTO;
+import com.pickandlol.pickandlol.Model.DTO.RequestMatchSaveDTO;
+import com.pickandlol.pickandlol.Model.DTO.RequestPlayerLogSaveDTO;
+import com.pickandlol.pickandlol.Model.DTO.ResponseMatchGetDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.pickandlol.pickandlol.Model;
+package com.pickandlol.pickandlol.Model.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -2,7 +2,7 @@ package com.pickandlol.pickandlol.Service;
 
 import com.pickandlol.pickandlol.Bean.GetTeamStatisticsBean;
 import com.pickandlol.pickandlol.Bean.SaveTeamStatisticBean;
-import com.pickandlol.pickandlol.Model.ResponseTeamStatisticGetDTO;
+import com.pickandlol.pickandlol.Model.DTO.ResponseTeamStatisticGetDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

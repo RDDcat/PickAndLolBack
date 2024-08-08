@@ -1,6 +1,6 @@
 package com.pickandlol.pickandlol.Repository;
 
-import com.pickandlol.pickandlol.Model.MatchDAO;
+import com.pickandlol.pickandlol.Model.DAO.MatchDAO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

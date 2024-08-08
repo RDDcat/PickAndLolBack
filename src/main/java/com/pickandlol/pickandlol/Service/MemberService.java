@@ -1,7 +1,7 @@
 package com.pickandlol.pickandlol.Service;
 
 import com.pickandlol.pickandlol.Bean.*;
-import com.pickandlol.pickandlol.Model.*;
+import com.pickandlol.pickandlol.Model.DTO.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

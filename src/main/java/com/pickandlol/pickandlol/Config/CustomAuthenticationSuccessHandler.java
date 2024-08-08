@@ -1,7 +1,7 @@
 package com.pickandlol.pickandlol.Config;
 
-import com.pickandlol.pickandlol.Model.Member;
-import com.pickandlol.pickandlol.Model.MemberTokenDAO;
+import com.pickandlol.pickandlol.Model.DAO.Member;
+import com.pickandlol.pickandlol.Model.DAO.MemberTokenDAO;
 import com.pickandlol.pickandlol.Repository.MemberTokenRepositoryJPA;
 import com.pickandlol.pickandlol.Service.OAuthService;
 import com.pickandlol.pickandlol.jose.JwtUtil;

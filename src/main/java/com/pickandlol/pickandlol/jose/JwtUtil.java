@@ -1,7 +1,7 @@
 package com.pickandlol.pickandlol.jose;
 
-import com.pickandlol.pickandlol.Model.Member;
-import com.pickandlol.pickandlol.Model.MemberTokenDAO;
+import com.pickandlol.pickandlol.Model.DAO.Member;
+import com.pickandlol.pickandlol.Model.DAO.MemberTokenDAO;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;

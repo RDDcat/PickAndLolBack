@@ -1,7 +1,7 @@
 package com.pickandlol.pickandlol.Bean.Small;
 
 import com.pickandlol.pickandlol.Model.Enum.Week;
-import com.pickandlol.pickandlol.Model.PlayerLog;
+import com.pickandlol.pickandlol.Model.DAO.PlayerLog;
 import com.pickandlol.pickandlol.Repository.PlayerLogRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,16 +1,15 @@
 package com.pickandlol.pickandlol.Bean.Small;
 
-import com.pickandlol.pickandlol.Model.ClubLog;
+import com.pickandlol.pickandlol.Model.DAO.ClubLog;
 import com.pickandlol.pickandlol.Model.Enum.Week;
-import com.pickandlol.pickandlol.Model.MatchDAO;
-import com.pickandlol.pickandlol.Model.PlayerLog;
-import com.pickandlol.pickandlol.Model.RequestPlayerLogSaveDTO;
+import com.pickandlol.pickandlol.Model.DAO.MatchDAO;
+import com.pickandlol.pickandlol.Model.DAO.PlayerLog;
+import com.pickandlol.pickandlol.Model.DTO.RequestPlayerLogSaveDTO;
 import com.pickandlol.pickandlol.Others.TimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @Component
 public class CreatePlayerLogDAOBean {

@@ -1,7 +1,7 @@
 package com.pickandlol.pickandlol.Repository;
 
 import com.pickandlol.pickandlol.Model.Enum.Week;
-import com.pickandlol.pickandlol.Model.PlayerLog;
+import com.pickandlol.pickandlol.Model.DAO.PlayerLog;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

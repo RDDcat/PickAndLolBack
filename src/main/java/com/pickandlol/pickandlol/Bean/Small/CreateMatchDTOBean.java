@@ -1,7 +1,7 @@
 package com.pickandlol.pickandlol.Bean.Small;
 
-import com.pickandlol.pickandlol.Model.MatchDAO;
-import com.pickandlol.pickandlol.Model.ResponseMatchGetDTO;
+import com.pickandlol.pickandlol.Model.DAO.MatchDAO;
+import com.pickandlol.pickandlol.Model.DTO.ResponseMatchGetDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

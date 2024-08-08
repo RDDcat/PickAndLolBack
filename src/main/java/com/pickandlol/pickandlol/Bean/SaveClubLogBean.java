@@ -1,11 +1,11 @@
 package com.pickandlol.pickandlol.Bean;
 
 import com.pickandlol.pickandlol.Bean.Small.*;
-import com.pickandlol.pickandlol.Model.ClubLog;
+import com.pickandlol.pickandlol.Model.DAO.ClubLog;
 import com.pickandlol.pickandlol.Model.Enum.MatchStatus;
-import com.pickandlol.pickandlol.Model.MatchDAO;
-import com.pickandlol.pickandlol.Model.RequestClubLogSaveDTO;
-import com.pickandlol.pickandlol.Model.ClubDAO;
+import com.pickandlol.pickandlol.Model.DAO.MatchDAO;
+import com.pickandlol.pickandlol.Model.DTO.RequestClubLogSaveDTO;
+import com.pickandlol.pickandlol.Model.DAO.ClubDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

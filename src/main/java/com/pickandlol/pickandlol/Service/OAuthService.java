@@ -1,6 +1,6 @@
 package com.pickandlol.pickandlol.Service;
 
-import com.pickandlol.pickandlol.Model.Member;
+import com.pickandlol.pickandlol.Model.DAO.Member;
 import com.pickandlol.pickandlol.Model.OAuthAttributes;
 import com.pickandlol.pickandlol.Model.UserProfile;
 import com.pickandlol.pickandlol.Repository.MemberRepository;

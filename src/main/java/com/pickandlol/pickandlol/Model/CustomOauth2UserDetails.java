@@ -1,5 +1,6 @@
 package com.pickandlol.pickandlol.Model;
 
+import com.pickandlol.pickandlol.Model.DAO.UserDAO;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;

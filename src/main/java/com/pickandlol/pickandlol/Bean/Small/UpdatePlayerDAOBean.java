@@ -1,8 +1,8 @@
 package com.pickandlol.pickandlol.Bean.Small;
 
-import com.pickandlol.pickandlol.Model.ClubDAO;
-import com.pickandlol.pickandlol.Model.PlayerLog;
-import com.pickandlol.pickandlol.Model.PlayerDAO;
+import com.pickandlol.pickandlol.Model.DAO.ClubDAO;
+import com.pickandlol.pickandlol.Model.DAO.PlayerLog;
+import com.pickandlol.pickandlol.Model.DAO.PlayerDAO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

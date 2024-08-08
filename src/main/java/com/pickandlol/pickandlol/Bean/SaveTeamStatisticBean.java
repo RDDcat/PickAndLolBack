@@ -1,16 +1,10 @@
 package com.pickandlol.pickandlol.Bean;
 
 import com.pickandlol.pickandlol.Bean.Small.*;
-import com.pickandlol.pickandlol.Model.Enum.Week;
-import com.pickandlol.pickandlol.Model.PlayerLog;
-import com.pickandlol.pickandlol.Model.TeamLog;
-import com.pickandlol.pickandlol.Model.TeamStatisticDAO;
-import com.pickandlol.pickandlol.Others.TimeFormatter;
+import com.pickandlol.pickandlol.Model.DAO.TeamLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

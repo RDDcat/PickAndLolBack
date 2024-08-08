@@ -1,7 +1,7 @@
 package com.pickandlol.pickandlol.Bean.Small;
 
 import com.pickandlol.pickandlol.Model.Enum.Week;
-import com.pickandlol.pickandlol.Model.TeamStatisticDAO;
+import com.pickandlol.pickandlol.Model.DAO.TeamStatisticDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

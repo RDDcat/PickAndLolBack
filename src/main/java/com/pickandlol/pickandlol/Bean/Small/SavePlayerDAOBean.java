@@ -1,6 +1,6 @@
 package com.pickandlol.pickandlol.Bean.Small;
 
-import com.pickandlol.pickandlol.Model.PlayerDAO;
+import com.pickandlol.pickandlol.Model.DAO.PlayerDAO;
 import com.pickandlol.pickandlol.Repository.PlayerRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

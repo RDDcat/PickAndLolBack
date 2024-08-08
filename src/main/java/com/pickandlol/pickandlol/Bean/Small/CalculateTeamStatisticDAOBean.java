@@ -1,8 +1,8 @@
 package com.pickandlol.pickandlol.Bean.Small;
 
 import com.pickandlol.pickandlol.Model.Enum.Week;
-import com.pickandlol.pickandlol.Model.PlayerLog;
-import com.pickandlol.pickandlol.Model.TeamLog;
+import com.pickandlol.pickandlol.Model.DAO.PlayerLog;
+import com.pickandlol.pickandlol.Model.DAO.TeamLog;
 import com.pickandlol.pickandlol.Others.TimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

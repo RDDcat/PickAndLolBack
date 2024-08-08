@@ -2,10 +2,10 @@ package com.pickandlol.pickandlol.Bean.Small;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pickandlol.pickandlol.Model.ClubLog;
+import com.pickandlol.pickandlol.Model.DAO.ClubLog;
 import com.pickandlol.pickandlol.Model.Enum.MatchResult;
 import com.pickandlol.pickandlol.Model.Enum.MatchStatus;
-import com.pickandlol.pickandlol.Model.MatchDAO;
+import com.pickandlol.pickandlol.Model.DAO.MatchDAO;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

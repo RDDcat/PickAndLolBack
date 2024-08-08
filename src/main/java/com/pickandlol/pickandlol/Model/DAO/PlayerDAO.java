@@ -1,4 +1,4 @@
-package com.pickandlol.pickandlol.Model;
+package com.pickandlol.pickandlol.Model.DAO;
 
 import com.pickandlol.pickandlol.Model.Enum.MatchSeason;
 import jakarta.persistence.Entity;

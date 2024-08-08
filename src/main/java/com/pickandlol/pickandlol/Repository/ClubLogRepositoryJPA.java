@@ -1,6 +1,6 @@
 package com.pickandlol.pickandlol.Repository;
 
-import com.pickandlol.pickandlol.Model.ClubLog;
+import com.pickandlol.pickandlol.Model.DAO.ClubLog;
 import com.pickandlol.pickandlol.Model.Enum.OrderSet;
 import org.springframework.data.jpa.repository.JpaRepository;
 

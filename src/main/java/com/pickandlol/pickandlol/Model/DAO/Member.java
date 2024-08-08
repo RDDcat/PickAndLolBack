@@ -1,5 +1,6 @@
-package com.pickandlol.pickandlol.Model;
+package com.pickandlol.pickandlol.Model.DAO;
 
+import com.pickandlol.pickandlol.Model.Role;
 import jakarta.persistence.*;
 import lombok.Getter;
 

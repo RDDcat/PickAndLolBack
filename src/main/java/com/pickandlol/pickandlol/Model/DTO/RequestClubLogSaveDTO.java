@@ -1,4 +1,4 @@
-package com.pickandlol.pickandlol.Model;
+package com.pickandlol.pickandlol.Model.DTO;
 
 import com.pickandlol.pickandlol.Model.Enum.MatchResult;
 import com.pickandlol.pickandlol.Model.Enum.MatchType;

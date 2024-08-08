@@ -1,6 +1,6 @@
 package com.pickandlol.pickandlol.Bean.Small;
 
-import com.pickandlol.pickandlol.Model.MatchDAO;
+import com.pickandlol.pickandlol.Model.DAO.MatchDAO;
 import com.pickandlol.pickandlol.Repository.MatchRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

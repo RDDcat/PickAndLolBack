@@ -2,10 +2,10 @@ package com.pickandlol.pickandlol.Bean;
 
 import com.pickandlol.pickandlol.Bean.Small.GetMemberDAOBean;
 import com.pickandlol.pickandlol.Bean.Small.GetMemberTokenDAOBean;
-import com.pickandlol.pickandlol.Model.Member;
-import com.pickandlol.pickandlol.Model.MemberTokenDAO;
-import com.pickandlol.pickandlol.Model.RequestMemberGetDTO;
-import com.pickandlol.pickandlol.Model.ResponseMemberGetDTO;
+import com.pickandlol.pickandlol.Model.DAO.Member;
+import com.pickandlol.pickandlol.Model.DAO.MemberTokenDAO;
+import com.pickandlol.pickandlol.Model.DTO.RequestMemberGetDTO;
+import com.pickandlol.pickandlol.Model.DTO.ResponseMemberGetDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

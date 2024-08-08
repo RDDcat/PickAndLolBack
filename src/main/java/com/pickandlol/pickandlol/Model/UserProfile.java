@@ -1,5 +1,7 @@
 package com.pickandlol.pickandlol.Model;
 
+import com.pickandlol.pickandlol.Model.DAO.Member;
+
 public class UserProfile {
     private final String oauthId;
     private final String name;

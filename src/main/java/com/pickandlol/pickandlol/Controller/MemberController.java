@@ -1,6 +1,6 @@
 package com.pickandlol.pickandlol.Controller;
 
-import com.pickandlol.pickandlol.Model.*;
+import com.pickandlol.pickandlol.Model.DTO.*;
 import com.pickandlol.pickandlol.Service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -1,6 +1,6 @@
 package com.pickandlol.pickandlol.Controller;
 
-import com.pickandlol.pickandlol.Model.ResponseTeamStatisticGetDTO;
+import com.pickandlol.pickandlol.Model.DTO.ResponseTeamStatisticGetDTO;
 import com.pickandlol.pickandlol.Service.TeamStatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

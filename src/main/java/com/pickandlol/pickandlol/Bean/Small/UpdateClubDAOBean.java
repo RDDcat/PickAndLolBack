@@ -1,9 +1,9 @@
 package com.pickandlol.pickandlol.Bean.Small;
 
 import com.pickandlol.pickandlol.Model.Enum.MatchResult;
-import com.pickandlol.pickandlol.Model.ClubLog;
-import com.pickandlol.pickandlol.Model.ClubDAO;
-import com.pickandlol.pickandlol.Model.MatchDAO;
+import com.pickandlol.pickandlol.Model.DAO.ClubLog;
+import com.pickandlol.pickandlol.Model.DAO.ClubDAO;
+import com.pickandlol.pickandlol.Model.DAO.MatchDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

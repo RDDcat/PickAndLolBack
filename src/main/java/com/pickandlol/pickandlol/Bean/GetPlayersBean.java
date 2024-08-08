@@ -2,8 +2,8 @@ package com.pickandlol.pickandlol.Bean;
 
 import com.pickandlol.pickandlol.Bean.Small.CreatePlayersDTOBean;
 import com.pickandlol.pickandlol.Bean.Small.GetPlayersDAOBean;
-import com.pickandlol.pickandlol.Model.PlayerDAO;
-import com.pickandlol.pickandlol.Model.ResponsePlayerGetDTO;
+import com.pickandlol.pickandlol.Model.DAO.PlayerDAO;
+import com.pickandlol.pickandlol.Model.DTO.ResponsePlayerGetDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -2,8 +2,8 @@ package com.pickandlol.pickandlol.Bean;
 
 import com.pickandlol.pickandlol.Bean.Small.GetMemberDAOBean;
 import com.pickandlol.pickandlol.Bean.Small.SaveMemberDAOBean;
-import com.pickandlol.pickandlol.Model.Member;
-import com.pickandlol.pickandlol.Model.RequestMemberImageUpdateDTO;
+import com.pickandlol.pickandlol.Model.DAO.Member;
+import com.pickandlol.pickandlol.Model.DTO.RequestMemberImageUpdateDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,8 +1,8 @@
 package com.pickandlol.pickandlol.Bean;
 
 import com.pickandlol.pickandlol.Bean.Small.GetTeamByOauthIdDAOBean;
-import com.pickandlol.pickandlol.Model.ResponseTeamGetDTO;
-import com.pickandlol.pickandlol.Model.TeamDAO;
+import com.pickandlol.pickandlol.Model.DTO.ResponseTeamGetDTO;
+import com.pickandlol.pickandlol.Model.DAO.TeamDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

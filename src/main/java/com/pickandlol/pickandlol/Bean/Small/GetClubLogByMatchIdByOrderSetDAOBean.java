@@ -1,6 +1,6 @@
 package com.pickandlol.pickandlol.Bean.Small;
 
-import com.pickandlol.pickandlol.Model.ClubLog;
+import com.pickandlol.pickandlol.Model.DAO.ClubLog;
 import com.pickandlol.pickandlol.Model.Enum.OrderSet;
 import com.pickandlol.pickandlol.Repository.ClubLogRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;

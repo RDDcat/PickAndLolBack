@@ -1,6 +1,6 @@
 package com.pickandlol.pickandlol.Controller;
 
-import com.pickandlol.pickandlol.Model.ResponsePlayerGetDTO;
+import com.pickandlol.pickandlol.Model.DTO.ResponsePlayerGetDTO;
 import com.pickandlol.pickandlol.Service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;

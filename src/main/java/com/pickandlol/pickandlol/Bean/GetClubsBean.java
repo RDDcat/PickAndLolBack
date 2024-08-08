@@ -2,8 +2,8 @@ package com.pickandlol.pickandlol.Bean;
 
 import com.pickandlol.pickandlol.Bean.Small.CreateClubDTOBean;
 import com.pickandlol.pickandlol.Bean.Small.GetClubsDAOBean;
-import com.pickandlol.pickandlol.Model.ResponseClubGetDTO;
-import com.pickandlol.pickandlol.Model.ClubDAO;
+import com.pickandlol.pickandlol.Model.DTO.ResponseClubGetDTO;
+import com.pickandlol.pickandlol.Model.DAO.ClubDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,7 +1,7 @@
 package com.pickandlol.pickandlol.Bean.Small;
 
-import com.pickandlol.pickandlol.Model.RequestTeamLogSaveDTO;
-import com.pickandlol.pickandlol.Model.TeamLog;
+import com.pickandlol.pickandlol.Model.DTO.RequestTeamLogSaveDTO;
+import com.pickandlol.pickandlol.Model.DAO.TeamLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

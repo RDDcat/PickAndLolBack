@@ -1,7 +1,7 @@
 package com.pickandlol.pickandlol.Service;
 
 import com.pickandlol.pickandlol.Bean.GetClubsBean;
-import com.pickandlol.pickandlol.Model.ResponseClubGetDTO;
+import com.pickandlol.pickandlol.Model.DTO.ResponseClubGetDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,10 @@
 package com.pickandlol.pickandlol.Controller;
 
-import com.pickandlol.pickandlol.Model.*;
+import com.pickandlol.pickandlol.Model.DAO.MatchDAO;
+import com.pickandlol.pickandlol.Model.DTO.RequestClubLogSaveDTO;
+import com.pickandlol.pickandlol.Model.DTO.RequestMatchSaveDTO;
+import com.pickandlol.pickandlol.Model.DTO.RequestPlayerLogSaveDTO;
+import com.pickandlol.pickandlol.Model.DTO.ResponseMatchGetDTO;
 import com.pickandlol.pickandlol.Service.MatchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package com.pickandlol.pickandlol.Model;
+package com.pickandlol.pickandlol.Model.DTO;
 
 import com.pickandlol.pickandlol.Model.Enum.PlayerPosition;
 import lombok.Builder;

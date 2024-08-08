@@ -1,7 +1,7 @@
 package com.pickandlol.pickandlol.Controller;
 
-import com.pickandlol.pickandlol.Model.Member;
-import com.pickandlol.pickandlol.Model.RequestMemberRefreshTokenDTO;
+import com.pickandlol.pickandlol.Model.DAO.Member;
+import com.pickandlol.pickandlol.Model.DTO.RequestMemberRefreshTokenDTO;
 import com.pickandlol.pickandlol.Service.MemberService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
