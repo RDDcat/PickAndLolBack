@@ -5,21 +5,33 @@ import com.pickandlol.pickandlol.Model.DAO.MemberTokenDAO;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
-import java.security.Key;
+import java.util.Base64;
 import java.util.Date;
 
 @Component
 public class JwtUtil {
 
-    private static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    private SecretKey key;
+
+    @Value("${JWT_SECRET_KEY}")
+    String secretKey;
+
     private static final long JWT_EXPIRE_TIME = 1000 * 60 * 10L;
-    private static final long ACCESS_TOKEN_EXPIRE_TIME = 1000 * 60 * 30L;
+    private static final long ACCESS_TOKEN_EXPIRE_TIME = 1000 * 60 * 30L*24*7;
     private static final long REFRESH_TOKEN_EXPIRE_TIME = 1000 * 60 * 60L * 24 * 7;
+
+    @PostConstruct
+    public void init() {
+        // Base64로 인코딩된 secretKey를 디코딩하여 SecretKey 객체 생성
+        byte[] decodedKey = Base64.getDecoder().decode(secretKey);
+        this.key = Keys.hmacShaKeyFor(decodedKey);
+    }
 
     public String generateToken(String accessToken, String refreshToken) {
         Date now = new Date();
@@ -36,6 +48,10 @@ public class JwtUtil {
 
     public String generateAccessToken(Member member) {
         return generateOauthToken(member.getOauthId(), ACCESS_TOKEN_EXPIRE_TIME);
+    }
+
+    public String generateAccessToken(String oauthId) {
+        return generateOauthToken(oauthId, ACCESS_TOKEN_EXPIRE_TIME);
     }
 
     public String generateAccessToken(MemberTokenDAO memberTokenDAO) {
