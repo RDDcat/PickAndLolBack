@@ -15,7 +15,7 @@ public class UpdateTeamDAOBean {
         teamDAO.setTotalVP((int) map.get("totalVP"));
         teamDAO.setTeamLogo((String) map.get("teamLogo"));
         teamDAO.setWeekStat((int) map.get("weekStat"));
-        teamDAO.setAllowd((boolean) map.get("allowed"));
+        teamDAO.setAllowed((boolean) map.get("allowed"));
         teamDAO.setPlayers(players);
         teamDAO.setCanChange(canChange);
     }

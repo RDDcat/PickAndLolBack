@@ -27,7 +27,7 @@ public class TeamDAO {
     Integer weekStat;
     String players;
     String mvpId;
-    boolean allowd;
+    boolean allowed;
     boolean canChange;
 
 }

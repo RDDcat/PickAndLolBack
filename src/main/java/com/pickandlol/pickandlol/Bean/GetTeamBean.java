@@ -35,7 +35,7 @@ public class GetTeamBean {
         dataMap.put("totalStat", teamDAO.getTotalStat());
         dataMap.put("weekStat", teamDAO.getWeekStat());
         dataMap.put("players", teamDAO.getPlayers());
-        dataMap.put("allowed", teamDAO.isAllowd());
+        dataMap.put("allowed", teamDAO.isAllowed());
 
         String data = objectMapper.writeValueAsString(dataMap);
         return ResponseTeamGetDTO.builder()
