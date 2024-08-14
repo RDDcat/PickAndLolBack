@@ -16,7 +16,6 @@ public class CreateTeamDAOBean {
                 .totalVP((int) map.get("totalVP"))
                 .teamLogo((String) map.get("teamLogo"))
                 .weekStat((int) map.get("weekStat"))
-                .allowed((boolean) map.get("allowed"))
                 .oauthId(oauthId)
                 .mvpId(mvpId)
                 .players(players)
