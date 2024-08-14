@@ -29,8 +29,17 @@ public class GetTeamBean {
         TeamDAO teamDAO = getTeamByOauthIdDAOBean.exec(oauthId);
         if (teamDAO == null) return null;
 
-        Map<String, PlayerDTO> stringPlayerDTOMap = objectMapper.convertValue(teamDAO.getPlayers(), new TypeReference<Map<String, PlayerDTO>>() {
-        });
+        Map<String, PlayerDTO> stringPlayerDTOMap = new HashMap<>();
+
+        try {
+            // JSON 문자열을 Map<String, PlayerDTO>로 변환
+            stringPlayerDTOMap = objectMapper.readValue(teamDAO.getPlayers(), new TypeReference<Map<String, PlayerDTO>>() {});
+
+            // 변환된 Map 사용
+            System.out.println(stringPlayerDTOMap);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         Map<String, Object> dataMap = new HashMap<>();
         dataMap.put("name", teamDAO.getName());
