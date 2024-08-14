@@ -19,7 +19,15 @@ public class TeamDAO {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long teamId;
     String oauthId;
-    String data;
+    String name;
+    Integer totalVP;
+    String teamName;
+    String teamLogo;
+    Integer totalStat;
+    Integer weekStat;
+    String players;
+    String mvpId;
+    boolean allowd;
     boolean canChange;
 
 }

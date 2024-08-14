@@ -1,5 +1,6 @@
 package com.pickandlol.pickandlol.Controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.pickandlol.pickandlol.Aspect.TimeRestricted;
 import com.pickandlol.pickandlol.Model.DTO.RequestTeamLogSaveDTO;
 import com.pickandlol.pickandlol.Model.DTO.ResponseTeamGetDTO;
@@ -29,7 +30,7 @@ public class TeamController {
     // 팀 저장
     @TimeRestricted
     @PostMapping("/save")
-    public String save(@RequestBody RequestTeamSaveDTO requestTeamSaveDTO){
+    public String save(@RequestBody RequestTeamSaveDTO requestTeamSaveDTO) throws JsonProcessingException {
         return teamService.saveTeam(requestTeamSaveDTO);
     }
 

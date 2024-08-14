@@ -23,7 +23,7 @@ public class GetTeamRankBean {
 
         return teamDAOS.stream()
                 .map(teamDAO -> ResponseTeamGetDTO.builder()
-                        .data(teamDAO.getData())
+                        .data(teamDAO.getTeamLogo())
                         .oauthId(teamDAO.getOauthId())
                         .canChange(teamDAO.isCanChange())
                         .build())

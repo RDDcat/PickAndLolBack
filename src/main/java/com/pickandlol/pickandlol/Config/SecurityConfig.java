@@ -57,6 +57,8 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.PUT, "/team/change/**")
 
 
+                .requestMatchers(HttpMethod.POST, "/save")
+
                 .requestMatchers(HttpMethod.GET, "/token/**")
                 .requestMatchers(HttpMethod.POST, "/refresh");
     }

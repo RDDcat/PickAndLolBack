@@ -22,7 +22,7 @@ public class GetTeamBean {
         if (teamDAO == null) return null;
 
         return ResponseTeamGetDTO.builder()
-                .data(teamDAO.getData())
+                .data(teamDAO.getTeamLogo())
                 .oauthId(teamDAO.getOauthId())
                 .canChange(teamDAO.isCanChange())
                 .build();

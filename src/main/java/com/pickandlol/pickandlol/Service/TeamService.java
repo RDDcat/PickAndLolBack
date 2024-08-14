@@ -1,5 +1,6 @@
 package com.pickandlol.pickandlol.Service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.pickandlol.pickandlol.Bean.*;
 import com.pickandlol.pickandlol.Model.DTO.RequestTeamLogSaveDTO;
 import com.pickandlol.pickandlol.Model.DTO.RequestTeamSaveDTO;
@@ -35,7 +36,7 @@ public class TeamService {
     }
 
     // 팀 정보 저장
-    public String saveTeam(RequestTeamSaveDTO requestTeamSaveDTO){
+    public String saveTeam(RequestTeamSaveDTO requestTeamSaveDTO) throws JsonProcessingException {
         return saveTeamBean.exec(requestTeamSaveDTO);
     }
 

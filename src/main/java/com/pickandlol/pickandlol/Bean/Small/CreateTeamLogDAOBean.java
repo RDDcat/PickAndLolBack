@@ -42,4 +42,19 @@ public class CreateTeamLogDAOBean {
                 .vpUpdateDate(updateDate)
                 .build();
     }
+
+    public TeamLog exec(String createDate, Integer vpUpdateDate, String oauthId, String topId, String jglId, String midId, String adcId, String supId, String mvpId){
+        return TeamLog.builder()
+                .teamLogId(createUniqueIdBean.exec())
+                .oauthId(oauthId)
+                .topId(topId)
+                .jglId(jglId)
+                .midId(midId)
+                .adcId(adcId)
+                .supId(supId)
+                .mvpId(mvpId)
+                .createDate(createDate)
+                .vpUpdateDate(vpUpdateDate)
+                .build();
+    }
 }
