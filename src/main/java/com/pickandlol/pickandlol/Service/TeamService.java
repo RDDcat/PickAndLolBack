@@ -46,7 +46,7 @@ public class TeamService {
     }
 
     // 랭킹 조회
-    public List<ResponseTeamGetDTO> getRank(){
+    public List<ResponseTeamGetDTO> getRank() throws JsonProcessingException {
         return getTeamRankBean.exec();
     }
 

@@ -43,7 +43,7 @@ public class TeamController {
 
     // 랭킹
     @GetMapping("/rank")
-    public List<ResponseTeamGetDTO> rank(){
+    public List<ResponseTeamGetDTO> rank() throws JsonProcessingException {
         return teamService.getRank();
     }
 
