@@ -1,10 +1,12 @@
 package com.pickandlol.pickandlol.Bean;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pickandlol.pickandlol.Bean.Small.GetTeamByOauthIdDAOBean;
 import com.pickandlol.pickandlol.Model.DTO.ResponseTeamGetDTO;
 import com.pickandlol.pickandlol.Model.DAO.TeamDAO;
+import com.pickandlol.pickandlol.Model.PlayerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,6 +29,9 @@ public class GetTeamBean {
         TeamDAO teamDAO = getTeamByOauthIdDAOBean.exec(oauthId);
         if (teamDAO == null) return null;
 
+        Map<String, PlayerDTO> stringPlayerDTOMap = objectMapper.convertValue(teamDAO.getPlayers(), new TypeReference<Map<String, PlayerDTO>>() {
+        });
+
         Map<String, Object> dataMap = new HashMap<>();
         dataMap.put("name", teamDAO.getName());
         dataMap.put("totalVP", teamDAO.getTotalVP());
@@ -34,7 +39,7 @@ public class GetTeamBean {
         dataMap.put("teamLogo", teamDAO.getTeamLogo());
         dataMap.put("totalStat", teamDAO.getTotalStat());
         dataMap.put("weekStat", teamDAO.getWeekStat());
-        dataMap.put("players", teamDAO.getPlayers());
+        dataMap.put("players", stringPlayerDTOMap);
 
         String data = objectMapper.writeValueAsString(dataMap);
         return ResponseTeamGetDTO.builder()
