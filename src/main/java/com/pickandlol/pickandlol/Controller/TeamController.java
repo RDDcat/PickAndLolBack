@@ -23,7 +23,7 @@ public class TeamController {
     }
 
     @GetMapping("/sync/{oauthId}")
-    public ResponseTeamGetDTO sync(@PathVariable String oauthId){
+    public ResponseTeamGetDTO sync(@PathVariable String oauthId) throws JsonProcessingException {
         return teamService.getTeam(oauthId);
     }
 

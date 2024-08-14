@@ -31,7 +31,7 @@ public class TeamService {
     }
 
     // 팀 정보 조회
-    public ResponseTeamGetDTO getTeam(String oauthId){
+    public ResponseTeamGetDTO getTeam(String oauthId) throws JsonProcessingException {
         return getTeamBean.exec(oauthId);
     }
 
