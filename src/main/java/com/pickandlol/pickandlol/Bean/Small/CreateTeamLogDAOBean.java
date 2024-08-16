@@ -2,6 +2,7 @@ package com.pickandlol.pickandlol.Bean.Small;
 
 import com.pickandlol.pickandlol.Model.DTO.RequestTeamLogSaveDTO;
 import com.pickandlol.pickandlol.Model.DAO.TeamLog;
+import com.pickandlol.pickandlol.Others.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +22,7 @@ public class CreateTeamLogDAOBean {
     public TeamLog exec(Integer updateDate, RequestTeamLogSaveDTO requestTeamLogSaveDTO){
 
         // 현재 날짜와 시간 가져오기
-        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime now = DateTimeUtil.exec();
 
         // 원하는 형식 정의
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm");

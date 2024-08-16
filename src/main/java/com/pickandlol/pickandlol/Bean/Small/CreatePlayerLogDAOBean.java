@@ -5,6 +5,7 @@ import com.pickandlol.pickandlol.Model.Enum.Week;
 import com.pickandlol.pickandlol.Model.DAO.MatchDAO;
 import com.pickandlol.pickandlol.Model.DAO.PlayerLog;
 import com.pickandlol.pickandlol.Model.DTO.RequestPlayerLogSaveDTO;
+import com.pickandlol.pickandlol.Others.DateTimeUtil;
 import com.pickandlol.pickandlol.Others.TimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -72,7 +73,7 @@ public class CreatePlayerLogDAOBean {
                 .playTime(totalSeconds)
                 .date(date)
                 .week(week)
-                .createAt(LocalDateTime.now())
+                .createAt(DateTimeUtil.exec())
                 .build();
     }
 }

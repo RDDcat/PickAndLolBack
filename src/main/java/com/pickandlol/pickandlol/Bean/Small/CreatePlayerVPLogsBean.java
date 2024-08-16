@@ -3,11 +3,11 @@ package com.pickandlol.pickandlol.Bean.Small;
 
 import com.pickandlol.pickandlol.Model.DAO.PlayerDAO;
 import com.pickandlol.pickandlol.Model.DAO.PlayerVPLog;
+import com.pickandlol.pickandlol.Others.DateTimeUtil;
 import com.pickandlol.pickandlol.Others.TimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class CreatePlayerVPLogsBean {
 
     public List<PlayerVPLog> exec(List<PlayerDAO> playerDAOList){
 
-        Integer vpUpdateDate = timeFormatter.exec(LocalDateTime.now());
+        Integer vpUpdateDate = timeFormatter.exec(DateTimeUtil.exec());
 
         List<PlayerVPLog> playerVPLogList = new ArrayList<>();
 

@@ -34,6 +34,7 @@ public class JwtUtil {
     }
 
     public String generateToken(String accessToken, String refreshToken) {
+
         Date now = new Date();
         Date expiredDate = new Date(now.getTime() + JWT_EXPIRE_TIME);
 

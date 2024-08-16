@@ -10,7 +10,7 @@ public class TimeFormatter {
     public String exec(){
 
             // 현재 날짜와 시간 가져오기
-            LocalDateTime now = LocalDateTime.now();
+            LocalDateTime now = DateTimeUtil.exec();
 
             // 원하는 형식 정의
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm");

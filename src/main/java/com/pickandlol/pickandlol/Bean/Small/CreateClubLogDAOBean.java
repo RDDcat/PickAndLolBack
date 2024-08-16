@@ -2,10 +2,9 @@ package com.pickandlol.pickandlol.Bean.Small;
 
 import com.pickandlol.pickandlol.Model.DAO.ClubLog;
 import com.pickandlol.pickandlol.Model.DTO.RequestClubLogSaveDTO;
+import com.pickandlol.pickandlol.Others.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.time.LocalDateTime;
 
 @Component
 public class CreateClubLogDAOBean {
@@ -46,7 +45,7 @@ public class CreateClubLogDAOBean {
                 .midId(requestClubLogSaveDTO.getMidId())
                 .adcId(requestClubLogSaveDTO.getAdcId())
                 .supId(requestClubLogSaveDTO.getSupId())
-                .createdAt(LocalDateTime.now())
+                .createdAt(DateTimeUtil.exec())
                 .build();
     }
 }

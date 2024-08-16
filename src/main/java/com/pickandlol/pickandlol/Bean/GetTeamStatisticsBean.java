@@ -5,6 +5,7 @@ import com.pickandlol.pickandlol.Bean.Small.GetWeekEnum;
 import com.pickandlol.pickandlol.Model.Enum.Week;
 import com.pickandlol.pickandlol.Model.DTO.ResponseTeamStatisticGetDTO;
 import com.pickandlol.pickandlol.Model.DAO.TeamStatisticDAO;
+import com.pickandlol.pickandlol.Others.DateTimeUtil;
 import com.pickandlol.pickandlol.Others.TimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -34,7 +35,7 @@ public class GetTeamStatisticsBean {
 
         // 오늘 날짜 기반으로 몇 주차인지 판단
         // 주차를 Week enum 타입으로 변환
-        Week week = getWeekEnum.exec(LocalDateTime.now());
+        Week week = getWeekEnum.exec(DateTimeUtil.exec());
 
         // 팀 통계 전체 가져오기
         List<TeamStatisticDAO> teamStatisticDAOList = getTeamStatisticsDAOBean.exec();
