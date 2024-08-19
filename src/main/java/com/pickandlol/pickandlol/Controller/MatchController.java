@@ -6,6 +6,8 @@ import com.pickandlol.pickandlol.Model.DTO.RequestMatchSaveDTO;
 import com.pickandlol.pickandlol.Model.DTO.RequestPlayerLogSaveDTO;
 import com.pickandlol.pickandlol.Model.DTO.ResponseMatchGetDTO;
 import com.pickandlol.pickandlol.Service.MatchService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,7 @@ import java.util.Map;
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/match")
+@Tag(name = "Match", description = "구단 경기 정보 관련 API")
 public class MatchController {
 
     MatchService matchService;
@@ -28,12 +31,14 @@ public class MatchController {
     }
 
     // 경기 전체 조회
+    @Operation(summary = "경기 전체 조회", description = "전체 경기 정보를 조회하기 위한 API")
     @GetMapping("")
     public List<ResponseMatchGetDTO> getMatchs() {
         return matchService.getMatchs();
     }
 
     // 경기 정보 저장
+    @Operation(summary = "경기 정보 저장", description = "경기 정보를 저장하기 위한 API")
     @PostMapping("")
     public ResponseEntity<Map<String, Object>> saveMatch(@RequestBody RequestMatchSaveDTO requestMatchSaveDTO) {
         MatchDAO matchId = matchService.saveMatch(requestMatchSaveDTO);
@@ -48,6 +53,7 @@ public class MatchController {
 
 
     // 경기 - 팀 정보 저장
+    @Operation(summary = "경기의 팀 정보 저장", description = "진행된 경기의 1게임당 팀 정보를 각각 저장하기 위한 API")
     @PostMapping("/club")
     public ResponseEntity<Map<String, Object>> saveMatchTeam(@RequestBody RequestClubLogSaveDTO requestClubLogSaveDTO) {
         String clubLogId = matchService.saveMatchTeam(requestClubLogSaveDTO);
@@ -61,6 +67,7 @@ public class MatchController {
     }
 
     // 경기 - 선수 정보 저장
+    @Operation(summary = "경기의 선수 정보 저장", description = "진행된 경기의 한팀의 1게임당 선수 정보를 각각 저장하기 위한 API")
     @PostMapping("/player")
     public ResponseEntity<Map<String, Object>> saveMatchPlayer(@RequestBody RequestPlayerLogSaveDTO requestPlayerLogSaveDTO) {
         String playerLogId = matchService.saveMatchPlayer(requestPlayerLogSaveDTO);
