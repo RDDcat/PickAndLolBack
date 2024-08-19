@@ -1,77 +1,20 @@
 package com.pickandlol.pickandlol.Controller;
 
-import com.pickandlol.pickandlol.Model.DAO.Member;
-import com.pickandlol.pickandlol.Model.DTO.RequestMemberRefreshTokenDTO;
-import com.pickandlol.pickandlol.Service.MemberService;
-import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpStatus;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.IOException;
-import java.util.Map;
 
 
 @RestController
 @CrossOrigin("*")
+@Tag(name = "Main", description = "Health Check API")
 public class MainController {
 
-    MemberService memberService;
-
-    @Autowired
-    public MainController(MemberService memberService) {
-        this.memberService = memberService;
-    }
-
-    @GetMapping("/")
-    public String health(){
-        return "server on health check";
-    }
-
+    @Operation(summary = "서버 상태 확인", description = "서버 상태를 확인하기 위한 API")
     @GetMapping("/health")
-    public HttpEntity<Object> healthCheck(){
-        return ResponseEntity.ok().build();
+    public ResponseEntity<String> healthCheck() {
+        String message = "server on health check";
+        return ResponseEntity.ok(message);
     }
-
-    @GetMapping("/token/{token}")
-    public ResponseEntity<?> token(@PathVariable(value = "token") String token, HttpServletResponse response) throws IOException {
-
-        System.out.println("token = " + token);
-        Map<String, String> map = memberService.getAccessToken(token);
-
-        if (map.get("accessToken") == null || map.get("refreshToken") == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("token not found");
-        }
-
-        return ResponseEntity.ok(map);
-    }
-
-    @PostMapping("/refresh")
-    public ResponseEntity<?> refreshToken(@RequestBody RequestMemberRefreshTokenDTO requestMemberRefreshTokenDTO, HttpServletResponse response) throws IOException {
-
-        String accessToken = memberService.reissueAccessToken(requestMemberRefreshTokenDTO);
-
-        if (accessToken == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("token not found");
-        }
-
-        return ResponseEntity.ok(Map.of("accessToken", accessToken));
-    }
-
-
-
-    // 로그인
-    @PostMapping("/login")
-    public String login(@RequestBody Member member){
-        return "login successful";
-    }
-
-    // 로그인
-    @PostMapping("/test")
-    public String login(@RequestBody String data){
-        return "test successful"+data;
-    }
-
 }
