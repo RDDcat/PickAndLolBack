@@ -41,6 +41,10 @@ public class SecurityConfig {
                 .requestMatchers("/error")
                 .requestMatchers("/favicon.ico")
 
+                .requestMatchers(HttpMethod.GET, "/swagger-ui/**")
+                .requestMatchers(HttpMethod.GET, "/api-docs/swagger-config")
+                .requestMatchers(HttpMethod.GET, "/api-docs")
+
                 .requestMatchers(HttpMethod.GET, "/match")
                 .requestMatchers(HttpMethod.POST, "/match")
                 .requestMatchers(HttpMethod.POST, "/match/**")
